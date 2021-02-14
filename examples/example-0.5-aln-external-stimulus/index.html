@@ -734,8 +734,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;examples&quot;</span><span class="p">,</span> <span class="s2">&quot;dev&quot;</span><span class="p">]:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
@@ -745,15 +744,12 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
@@ -771,8 +767,6 @@
 <span class="kn">from</span> <span class="nn">neurolib.utils.stimulus</span> <span class="kn">import</span> <span class="n">construct_stimulus</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -785,13 +779,10 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># we add some noise</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -805,22 +796,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">stim_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="s2">&quot;rect&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">stim_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="s2">&quot;ac&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">stim_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="s2">&quot;ac&quot;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">,</span> <span class="n">stim_amp</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -834,12 +819,9 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;ext_exc_current&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stimulus</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;ext_exc_current&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stimulus</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -853,8 +835,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;1 Hz stimulus&quot;</span><span class="p">)</span>
 <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">)</span>
@@ -866,8 +847,6 @@
 <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Stimulus [mV/ms]&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelcolor</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -892,20 +871,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.loadData</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.loadData</span> <span class="kn">import</span> <span class="n">Dataset</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;hcp&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
 
 <span class="c1"># we chose a parameterization in which the brain network oscillates slowly </span>
 <span class="c1"># between up- and down-states</span>
@@ -919,15 +894,12 @@
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">1000</span> 
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">individual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vertical_mark</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">individual</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">vertical_mark</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;A simple plotting function for the timeseries</span>
 <span class="sd">    and the power spectrum of the activity.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -951,8 +923,6 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -965,22 +935,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1012,37 +976,28 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># construct a stimulus</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># construct a stimulus</span>
 <span class="n">ac_stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="n">stim</span><span class="o">=</span><span class="s2">&quot;ac&quot;</span><span class="p">,</span> <span class="n">stim_freq</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
 
 <span class="c1"># this stimulus is 1-dimensional. neurolib will threfore automatically apply it to *all nodes*.</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;ext_exc_current&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ac_stimulus</span> <span class="o">*</span> <span class="mf">5.0</span> 
 </code></pre></div>
 
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </code></pre></div>
-
-
-
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-
-<div class="codehilite"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
-</code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1068,8 +1023,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># this stimulus is 1-dimensional</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># this stimulus is 1-dimensional</span>
 <span class="n">ac_stimulus</span> <span class="o">=</span> <span class="n">construct_stimulus</span><span class="p">(</span><span class="n">stim</span><span class="o">=</span><span class="s2">&quot;ac&quot;</span><span class="p">,</span> <span class="n">stim_freq</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">dt</span><span class="p">)</span>
 
 <span class="c1"># let&#39;s make a N-dimensional stimulus vector out of it, by copying and pasting each entry N times</span>
@@ -1083,18 +1037,13 @@
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;ext_exc_current&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ac_stimulus</span> <span class="o">*</span> <span class="mf">5.0</span> 
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1108,11 +1057,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">individual</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_output_and_spectrum</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">individual</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

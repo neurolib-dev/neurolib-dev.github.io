@@ -868,8 +868,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1">#hide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#hide</span>
 <span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
@@ -879,8 +878,6 @@
 <span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -900,23 +897,19 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1">#hide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#hide</span>
 <span class="kn">import</span> <span class="nn">logging</span>
 <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">()</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1">#hide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#hide</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -946,8 +939,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plasma&#39;</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -967,15 +958,12 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;hcp&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;hcp&quot;</span><span class="p">)</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">FHNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mi">20</span> <span class="o">*</span> <span class="mi">1000</span> <span class="c1">#ms</span>
 <span class="c1"># testing: model.params.duration = 20 * 1000 #ms</span>
 <span class="c1"># original: model.params.duration = 5 * 60 * 1000 #ms</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1003,15 +991,12 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;x_ext&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],))</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="c1"># testing: 2, original: 41</span>
+<div class="highlight"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;x_ext&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">],))</span> <span class="o">*</span> <span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]</span> <span class="c1"># testing: 2, original: 41</span>
                              <span class="p">,</span><span class="s2">&quot;K_gl&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># testing: 2, original: 41</span>
                              <span class="p">,</span><span class="s2">&quot;coupling&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;additive&quot;</span><span class="p">,</span> <span class="s2">&quot;diffusive&quot;</span><span class="p">]</span>
                             <span class="p">},</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;grid&quot;</span><span class="p">)</span>
 <span class="n">search</span> <span class="o">=</span> <span class="n">BoxSearch</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">parameterSpace</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;example-1.2.0.hdf&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1026,11 +1011,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1051,11 +1033,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">pu</span><span class="o">.</span><span class="n">getTrajectorynamesInFile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">HDF_DIR</span><span class="p">,</span> <span class="s2">&quot;example-1.2.0.hdf&quot;</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="n">pu</span><span class="o">.</span><span class="n">getTrajectorynamesInFile</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">HDF_DIR</span><span class="p">,</span> <span class="s2">&quot;example-1.2.0.hdf&quot;</span><span class="p">))</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1080,11 +1059,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">trajectoryName</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">trajectoryName</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1110,22 +1086,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">)))</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">)))</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1139,11 +1109,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">getRun</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">params</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">getRun</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">params</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1174,14 +1141,11 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">rId</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># test:2, original: 1327</span>
+<div class="highlight"><pre><span></span><code><span class="n">rId</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># test:2, original: 1327</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">rId</span><span class="p">]</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">rId</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [ms]&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Activity&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1213,11 +1177,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1305,22 +1266,16 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">x_ext</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">x_ext</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">x_ext</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">x_ext</span><span class="p">)]</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1400,11 +1355,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">eu</span><span class="o">.</span><span class="n">processExplorationResults</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="n">ds</span><span class="p">,</span> <span class="n">bold_transient</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">eu</span><span class="o">.</span><span class="n">processExplorationResults</span><span class="p">(</span><span class="n">search</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">ds</span><span class="o">=</span><span class="n">ds</span><span class="p">,</span> <span class="n">bold_transient</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -1419,11 +1371,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">eu</span><span class="o">.</span><span class="n">findCloseResults</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">K_gl</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">x_ext</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">eu</span><span class="o">.</span><span class="n">findCloseResults</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">K_gl</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">x_ext</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1575,13 +1524,10 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">mean_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">rId</span><span class="p">][</span><span class="s1">&#39;BOLD&#39;</span><span class="p">]),</span> <span class="n">fc</span><span class="p">)</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">mean_corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">rId</span><span class="p">][</span><span class="s1">&#39;BOLD&#39;</span><span class="p">]),</span> <span class="n">fc</span><span class="p">)</span> <span class="k">for</span> <span class="n">fc</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean correlation of run </span><span class="si">{</span><span class="n">rId</span><span class="si">}</span><span class="s2"> with empirical FC matrices is </span><span class="si">{</span><span class="n">mean_corr</span><span class="si">:</span><span class="s2">.02</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1614,12 +1560,9 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plot_key_label</span> <span class="o">=</span> <span class="s2">&quot;Maximum of output&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_key_label</span> <span class="o">=</span> <span class="s2">&quot;Maximum of output&quot;</span>
 <span class="n">eu</span><span class="o">.</span><span class="n">plotExplorationResults</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">,</span> <span class="n">par1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;$x_</span><span class="si">{ext}</span><span class="s1">$&#39;</span><span class="p">],</span> <span class="n">par2</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;K_gl&#39;</span><span class="p">,</span> <span class="s1">&#39;$K$&#39;</span><span class="p">],</span> <span class="n">plot_key</span><span class="o">=</span><span class="s1">&#39;max_x&#39;</span><span class="p">,</span>  <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coupling&#39;</span><span class="p">],</span> <span class="n">by_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;coupling&#39;</span><span class="p">],</span> <span class="n">plot_key_label</span><span class="o">=</span><span class="n">plot_key_label</span><span class="p">,</span> <span class="n">one_figure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1652,12 +1595,9 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plot_key_label</span> <span class="o">=</span> <span class="s2">&quot;FC correlation&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="n">plot_key_label</span> <span class="o">=</span> <span class="s2">&quot;FC correlation&quot;</span>
 <span class="n">eu</span><span class="o">.</span><span class="n">plotExplorationResults</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">,</span> <span class="n">par1</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;$x_</span><span class="si">{ext}</span><span class="s1">$&#39;</span><span class="p">],</span> <span class="n">par2</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;K_gl&#39;</span><span class="p">,</span> <span class="s1">&#39;$K$&#39;</span><span class="p">],</span> <span class="n">plot_key</span><span class="o">=</span><span class="s1">&#39;fc&#39;</span><span class="p">,</span>  <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;coupling&#39;</span><span class="p">],</span> <span class="n">by_label</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;coupling&#39;</span><span class="p">],</span> <span class="n">plot_key_label</span><span class="o">=</span><span class="n">plot_key_label</span><span class="p">,</span> <span class="n">one_figure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

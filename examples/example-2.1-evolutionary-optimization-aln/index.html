@@ -794,8 +794,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
@@ -805,15 +804,12 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
@@ -834,8 +830,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plasma&#39;</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -848,19 +842,15 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Here we define our evaluation function. This function will</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Here we define our evaluation function. This function will</span>
 <span class="c1"># be called reapedly and perform a single simulation. The object</span>
 <span class="c1"># that is passed to the function, `traj`, is a pypet trajectory</span>
 <span class="c1"># and serves as a &quot;bridge&quot; to load the parameter set of this </span>
@@ -894,8 +884,6 @@
     <span class="k">return</span> <span class="n">fitness_tuple</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">outputs</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -918,8 +906,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Here we define the parameters and the range in which we want</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Here we define the parameters and the range in which we want</span>
 <span class="c1"># to perform the evolutionary optimization.</span>
 <span class="c1"># Create a `ParameterSpace` </span>
 <span class="n">pars</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">([</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">],</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]])</span>
@@ -949,20 +936,15 @@
 <span class="c1"># values are lower here for testing</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Enabling `verbose = True` will print statistics and generate plots </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enabling `verbose = True` will print statistics and generate plots </span>
 <span class="c1"># of the current population for each generation.</span>
 <span class="n">evolution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -983,8 +965,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># the current population is always accesible via</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># the current population is always accesible via</span>
 <span class="n">pop</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">pop</span>
 <span class="c1"># we can also use the functions registered to deap</span>
 <span class="c1"># to select the best of the population:</span>
@@ -993,8 +974,6 @@
 <span class="c1"># of 0 is optimal</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best individual&quot;</span><span class="p">,</span> <span class="n">best_10</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;fitness&quot;</span><span class="p">,</span> <span class="n">best_10</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">fitness</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1020,11 +999,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">dfPop</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">dfPop</span><span class="p">(</span><span class="n">outputs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1340,11 +1316,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">dfEvolution</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">dfEvolution</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1489,16 +1462,13 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># a sinple overview of the current population (in this case the </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># a sinple overview of the current population (in this case the </span>
 <span class="c1"># last one) is given via the `info()` method. This provides a </span>
 <span class="c1"># a histogram of the score (= mean fitness) and scatterplots</span>
 <span class="c1"># and density estimates across orthogonal parameter space cross </span>
 <span class="c1"># sections.</span>
 <span class="n">evolution</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1647,8 +1617,7 @@ Mean score across population: -0.85
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># we put this into a try except block since we don&#39;t do testing on networkx</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># we put this into a try except block since we don&#39;t do testing on networkx</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
     <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -1663,8 +1632,6 @@ Mean score across population: -0.85
 <span class="k">except</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;It looks like networkx or pydot are not installed&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

@@ -826,8 +826,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;neurolib&quot;</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
@@ -836,23 +835,18 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
     <span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -882,40 +876,34 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>We first create a class for the model called <code>LinearModel</code> which inherits lots of functionality from the <code>Model</code> base class. We define <code>state_vars</code> and <code>default_output</code> so that <code>neurolib</code> knows how to handle the variables of the system. Next, we define <code>init_vars</code> in order to use the autochunk integration scheme, so we can save a lot of RAM when we run very long simulations. </p>
-<div class="codehilite"><pre><span></span><code><span class="k">class</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">state_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">]</span>
-    <span class="n">default_output</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
-    <span class="n">init_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;x_init&quot;</span><span class="p">]</span>
+<p>We first create a class for the model called <code>LinearModel</code> which inherits lots of functionality from the <code>Model</code> base class. We define <code>state_vars</code> and <code>default_output</code> so that <code>neurolib</code> knows how to handle the variables of the system. Next, we define <code>init_vars</code> in order to use the autochunk integration scheme, so we can save a lot of RAM when we run very long simulations. 
+<div class="highlight"><pre><span></span><code>class LinearModel(Model):
+    state_vars = [&quot;x&quot;]
+    default_output = &quot;x&quot;
+    init_vars = [&quot;x_init&quot;]
 </code></pre></div>
-
-<p>Next we define a simple parameter dictionary called <code>params</code>. In here, we can define all the necessary parameters of the model and change their values later. In this example, we set the timescale <span class="arithmatex">\(\tau\)</span>, the coupling strength <span class="arithmatex">\(K\)</span>, the integration time step <code>dt</code> (in ms) and the duration to 100 ms.</p>
-<div class="codehilite"><pre><span></span><code>params = dict(tau=10, K=1e-2, dt=1e-1, duration=100)
+Next we define a simple parameter dictionary called <code>params</code>. In here, we can define all the necessary parameters of the model and change their values later. In this example, we set the timescale <span class="arithmatex">\(\tau\)</span>, the coupling strength <span class="arithmatex">\(K\)</span>, the integration time step <code>dt</code> (in ms) and the duration to 100 ms.
+<div class="highlight"><pre><span></span><code>params = dict(tau=10, K=1e-2, dt=1e-1, duration=100)
 </code></pre></div>
-
-<p>We are now ready to set up the constructor of our model! This method is supposed to set up the model and prepare it for integration. All the magic happens in the background! We pass the <code>timeIntegration</code> function and the parameter dictionary <code>self.params</code> to the base class using <code>super().__init__()</code>.</p>
-<div class="codehilite"><pre><span></span><code>def __init__(self, Cmat=np.zeros((1,1))):
+We are now ready to set up the constructor of our model! This method is supposed to set up the model and prepare it for integration. All the magic happens in the background! We pass the <code>timeIntegration</code> function and the parameter dictionary <code>self.params</code> to the base class using <code>super().__init__()</code>.
+<div class="highlight"><pre><span></span><code>def __init__(self, Cmat=np.zeros((1,1))):
         self.params[&#39;Cmat&#39;] = Cmat
         super().__init__(timeIntegration, self.params)
 </code></pre></div>
-
-<p>That wasn't too bad, was it? We are finally ready to define the time integration function that crunches the numbers. Remember to put this function outside of the class definition, so we can use use <code>numba</code> acceleration to greatly increase the performance of our code. </p>
-<div class="codehilite"><pre><span></span><code><span class="n">def</span> <span class="n">timeIntegration</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;Cmat&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">p</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">])</span> <span class="c1"># holds time steps</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># holds variable x</span>
+That wasn't too bad, was it? We are finally ready to define the time integration function that crunches the numbers. Remember to put this function outside of the class definition, so we can use use <code>numba</code> acceleration to greatly increase the performance of our code. </p>
+<p><div class="highlight"><pre><span></span><code>def timeIntegration(p):
+    N = p[&#39;Cmat&#39;].shape[0]
+    t = np.arange(1, p[&#39;duration&#39;]/p[&#39;dt&#39;]) # holds time steps
+    x = np.ndarray((N, len(t)+1)) # holds variable x
 </code></pre></div>
-
-<p>Here we prepare the numpy arrays that will hold the simulation results. We have to prepare them before we can execute the numba code. </p>
-<div class="codehilite"><pre><span></span><code>    # <span class="nv">either</span> <span class="nv">use</span> <span class="nv">predefined</span> <span class="nv">initial</span> <span class="nv">conditions</span> <span class="nv">or</span> <span class="k">random</span> <span class="nv">ones</span>
-    <span class="nv">x</span>[:, :<span class="mi">1</span>] <span class="o">=</span> <span class="nv">p</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">x_init</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="k">if</span> <span class="nv">p</span>.<span class="nv">get</span><span class="ss">(</span><span class="s1">&#39;</span><span class="s">x_init</span><span class="s1">&#39;</span><span class="ss">)</span> <span class="nv">is</span> <span class="nv">not</span> <span class="nv">None</span> <span class="k">else</span> <span class="nv">rand</span><span class="ss">((</span><span class="nv">N</span>, <span class="mi">1</span><span class="ss">))</span>
+Here we prepare the numpy arrays that will hold the simulation results. We have to prepare them before we can execute the numba code. 
+<div class="highlight"><pre><span></span><code>    # either use predefined initial conditions or random ones
+    x[:, :1] = p.get(&#39;x_init&#39;) if p.get(&#39;x_init&#39;) is not None else rand((N, 1))
 </code></pre></div>
-
-<p>Next, we make use of a neurolib convention to prepare the initial conditions of our model. If you remember, we defined <code>init_vars</code> above in order to use the autochunk feature. The autochunk feature will automatically fill this parameter with the last state of the last simulated chunk so the model integration can be continued without having to remember the entire output and state variables of the model indefinitely. In this line, we check whether x_init is set or not (which it will be, when we use chunkwise integration). If it is not set, we simply use random initial conditions using <code>rand((N, 1))</code>. Remember that the convention for array dimensions is <code>array[space, time]</code>, meaning that we only fill in the first time step with the initial condition. </p>
-<div class="codehilite"><pre><span></span><code><span class="k">return</span> <span class="nv">njit_integrate</span><span class="ss">(</span><span class="nv">x</span>, <span class="nv">t</span>, <span class="nv">p</span>[<span class="s1">&#39;</span><span class="s">tau</span><span class="s1">&#39;</span>], <span class="nv">p</span>[<span class="s1">&#39;</span><span class="s">K</span><span class="s1">&#39;</span>], <span class="nv">N</span>, <span class="nv">p</span>[<span class="s1">&#39;</span><span class="s">Cmat</span><span class="s1">&#39;</span>], <span class="nv">p</span>[<span class="s1">&#39;</span><span class="s">dt</span><span class="s1">&#39;</span>]<span class="ss">)</span>
+Next, we make use of a neurolib convention to prepare the initial conditions of our model. If you remember, we defined <code>init_vars</code> above in order to use the autochunk feature. The autochunk feature will automatically fill this parameter with the last state of the last simulated chunk so the model integration can be continued without having to remember the entire output and state variables of the model indefinitely. In this line, we check whether x_init is set or not (which it will be, when we use chunkwise integration). If it is not set, we simply use random initial conditions using <code>rand((N, 1))</code>. Remember that the convention for array dimensions is <code>array[space, time]</code>, meaning that we only fill in the first time step with the initial condition. 
+<div class="highlight"><pre><span></span><code>return njit_integrate(x, t, p[&#39;tau&#39;], p[&#39;K&#39;], N, p[&#39;Cmat&#39;], p[&#39;dt&#39;])
 </code></pre></div>
-
-<p>We're ready to call our accelerated integration part 🚀!</p>
+We're ready to call our accelerated integration part 🚀!</p>
 </div>
 </div>
 </div>
@@ -929,25 +917,21 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<div class="codehilite"><pre><span></span><code><span class="nv">@numba</span><span class="p">.</span><span class="n">njit</span><span class="w"></span>
-<span class="n">def</span><span class="w"> </span><span class="n">njit_integrate</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">tau</span><span class="p">,</span><span class="w"> </span><span class="n">K</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">,</span><span class="w"> </span><span class="n">Cmat</span><span class="p">,</span><span class="w"> </span><span class="n">dt</span><span class="p">)</span><span class="err">:</span><span class="w"></span>
+<p><div class="highlight"><pre><span></span><code>@numba.njit
+def njit_integrate(x, t, tau, K, N, Cmat, dt):
 </code></pre></div>
-
-<p>We first have to let <code>numba</code> know which part of the code to precompile. We do this by simply placing the decorator <code>@numba.njit</code> in the line above the integration function. Easy way of getting 100x faster code! ❤️ <code>numba</code>!</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">1</span>, <span class="mi">1</span> <span class="o">+</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">t</span><span class="ss">))</span>: # <span class="k">loop</span> <span class="nv">over</span> <span class="nv">time</span>
-        <span class="nv">inp</span> <span class="o">=</span> <span class="nv">Cmat</span>.<span class="nv">dot</span><span class="ss">(</span><span class="nv">x</span>[:, <span class="nv">i</span><span class="o">-</span><span class="mi">1</span>]<span class="ss">)</span> # <span class="nv">input</span> <span class="nv">vector</span>
-        <span class="k">for</span> <span class="nv">n</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="nv">N</span><span class="ss">)</span>: # <span class="k">loop</span> <span class="nv">over</span> <span class="nv">nodes</span>
+We first have to let <code>numba</code> know which part of the code to precompile. We do this by simply placing the decorator <code>@numba.njit</code> in the line above the integration function. Easy way of getting 100x faster code! ❤️ <code>numba</code>!</p>
+<p><div class="highlight"><pre><span></span><code>    for i in range(1, 1 + len(t)): # loop over time
+        inp = Cmat.dot(x[:, i-1]) # input vector
+        for n in range(N): # loop over nodes
 </code></pre></div>
-
-<p>Next, we do some simple math. We first loop over all time steps. If you have prepared the array <code>t</code> as described above, you can simply loop over its length. In the next line, we calculate the coupling term from the model equation above. However, instead of looping over the sum, we use a little trick here and simply compute the dot product between the coupling matrix <code>G</code> and the state vector <code>x</code>. This results in a <code>N</code>-dimensional vector that carries the amount of input each node receives at each time step. Finally, we loop over all nodes so we can finally add up everything.</p>
-<div class="codehilite"><pre><span></span><code><span class="w">            </span><span class="n">x</span><span class="o">[</span><span class="n">n, i</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">n, i-1</span><span class="o">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="w"> </span><span class="n">x</span><span class="o">[</span><span class="n">n, i-1</span><span class="o">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">tau</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">inp</span><span class="o">[</span><span class="n">n</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="err">#</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">equations</span><span class="w"></span>
+Next, we do some simple math. We first loop over all time steps. If you have prepared the array <code>t</code> as described above, you can simply loop over its length. In the next line, we calculate the coupling term from the model equation above. However, instead of looping over the sum, we use a little trick here and simply compute the dot product between the coupling matrix <code>G</code> and the state vector <code>x</code>. This results in a <code>N</code>-dimensional vector that carries the amount of input each node receives at each time step. Finally, we loop over all nodes so we can finally add up everything.
+<div class="highlight"><pre><span></span><code>            x[n, i] = x[n, i-1] + (- x[n, i-1] / tau + K * inp[n]) * dt # model equations
 </code></pre></div>
-
-<p>In this line, we integrate the equation that we have shown above. This integration scheme is called Euler integration and is the most simple way of solving an ODE. The idea is easy and is best expressed as <code>x_next = x_before + f(x) * dt</code> where <code>f(x)</code> is simply the time derivative <span class="arithmatex">\(\frac{d}{dt} x_i(t)\)</span> shown above.</p>
-<div class="codehilite"><pre><span></span><code>    <span class="k">return</span> <span class="nv">t</span>, <span class="nv">x</span>
+In this line, we integrate the equation that we have shown above. This integration scheme is called Euler integration and is the most simple way of solving an ODE. The idea is easy and is best expressed as <code>x_next = x_before + f(x) * dt</code> where <code>f(x)</code> is simply the time derivative <span class="arithmatex">\(\frac{d}{dt} x_i(t)\)</span> shown above.
+<div class="highlight"><pre><span></span><code>    return t, x
 </code></pre></div>
-
-<p>We're done! The only thing left to do is to return the data so that neurolib can take over from here on. The outputs of this simulation will be available in the <code>model.outputs</code> attribute. You can see an example time series below. </p>
+We're done! The only thing left to do is to return the data so that neurolib can take over from here on. The outputs of this simulation will be available in the <code>model.outputs</code> attribute. You can see an example time series below. </p>
 </div>
 </div>
 </div>
@@ -961,8 +945,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">numba</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numba</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">random</span> <span class="k">as</span> <span class="n">rand</span>
 <span class="kn">from</span> <span class="nn">neurolib.models.model</span> <span class="kn">import</span> <span class="n">Model</span>
@@ -994,43 +977,32 @@
     <span class="k">return</span> <span class="n">t</span><span class="p">,</span> <span class="n">x</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">Cmat</span> <span class="o">=</span> <span class="n">rand</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> <span class="c1"># use a random connectivity matrix</span>
+<div class="highlight"><pre><span></span><code><span class="n">Cmat</span> <span class="o">=</span> <span class="n">rand</span><span class="p">((</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span> <span class="c1"># use a random connectivity matrix</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearModel</span><span class="p">(</span><span class="n">Cmat</span><span class="p">)</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [ms]&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Activity $x$&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1055,26 +1027,20 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># the model is also compatible with chunkwise integration</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># the model is also compatible with chunkwise integration</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span><span class="o">=</span><span class="mi">200000</span>
 <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [ms]&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;BOLD activity&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

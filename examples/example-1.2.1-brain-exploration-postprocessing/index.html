@@ -871,8 +871,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1">#hide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#hide</span>
 <span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
@@ -883,15 +882,12 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1">#hide</span>
+<div class="highlight"><pre><span></span><code><span class="c1">#hide</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
@@ -912,8 +908,6 @@
 <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;hcp&quot;</span><span class="p">)</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -926,8 +920,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span> <span class="c1"># simulates the whole-brain model in 10s chunks by default if bold == True</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span> <span class="c1"># simulates the whole-brain model in 10s chunks by default if bold == True</span>
 <span class="c1"># Resting state fits</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.57</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.6</span>
@@ -938,8 +931,6 @@
 <span class="c1"># testing: model.params[&#39;duration&#39;] = 0.2 * 60 * 1000 #ms</span>
 <span class="c1"># real: model.params[&#39;duration&#39;] = 1.0 * 60 * 1000 #ms</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -965,8 +956,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluateSimulation</span><span class="p">(</span><span class="n">traj</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluateSimulation</span><span class="p">(</span><span class="n">traj</span><span class="p">):</span>
     <span class="c1"># get the model from the trajectory using `search.getModelFromTraj(traj)`</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">search</span><span class="o">.</span><span class="n">getModelFromTraj</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
     <span class="c1"># initiate the model with random initial contitions</span>
@@ -1025,8 +1015,6 @@
     <span class="n">search</span><span class="o">.</span><span class="n">saveToPypet</span><span class="p">(</span><span class="n">result_dict</span><span class="p">,</span> <span class="n">traj</span><span class="p">)</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -1039,13 +1027,10 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;mue_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;mui_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)})</span>
+<div class="highlight"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;mue_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;mui_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)})</span>
 <span class="c1"># info: chose np.linspace(0, 3, 21) or more, values here are low for testing</span>
 <span class="n">search</span> <span class="o">=</span> <span class="n">BoxSearch</span><span class="p">(</span><span class="n">evalFunction</span> <span class="o">=</span> <span class="n">evaluateSimulation</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">parameterSpace</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;example-1.2.1.hdf&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1070,11 +1055,8 @@ MainProcess root INFO     BoxSearch: Environment initialized.
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1148,12 +1130,9 @@ MainProcess pypet.environment.Environment INFO     All runs of trajectory `resul
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">)))</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1192,13 +1171,10 @@ MainProcess root INFO     All results loaded.
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
     <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;bold_cc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;fc&#39;</span><span class="p">])</span>
 <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1314,8 +1290,7 @@ MainProcess root INFO     All results loaded.
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;bold_cc&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">),</span> \
            <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mue_ext_mean</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mue_ext_mean</span><span class="p">),</span>
                      <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mui_ext_mean</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mui_ext_mean</span><span class="p">)],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
@@ -1323,8 +1298,6 @@ MainProcess root INFO     All results loaded.
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Input to E&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Input to I&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

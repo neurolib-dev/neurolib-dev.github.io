@@ -735,8 +735,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
@@ -746,15 +745,12 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
@@ -776,8 +772,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plasma&#39;</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -790,8 +784,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span> <span class="c1"># simulates the whole-brain model in 10s chunks by default if bold == True</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span> <span class="c1"># simulates the whole-brain model in 10s chunks by default if bold == True</span>
 <span class="c1"># Resting state fits</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.57</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.6</span>
@@ -803,8 +796,6 @@
 <span class="c1"># testing: aln.params[&#39;duration&#39;] = 0.2 * 60 * 1000 #ms</span>
 <span class="c1"># real: aln.params[&#39;duration&#39;] = 1.0 * 60 * 1000 #ms</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -818,8 +809,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluateSimulation</span><span class="p">(</span><span class="n">traj</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">evaluateSimulation</span><span class="p">(</span><span class="n">traj</span><span class="p">):</span>
     <span class="n">rid</span> <span class="o">=</span> <span class="n">traj</span><span class="o">.</span><span class="n">id</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">getModelFromTraj</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
     <span class="n">defaultDuration</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span>
@@ -858,8 +848,6 @@
     <span class="k">return</span> <span class="n">fitness_tuple</span><span class="p">,</span> <span class="p">{}</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -872,12 +860,9 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">pars</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">([</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma_ou&#39;</span><span class="p">,</span> <span class="s1">&#39;Ke_gl&#39;</span><span class="p">,</span> <span class="s1">&#39;signalV&#39;</span><span class="p">],</span> 
+<div class="highlight"><pre><span></span><code><span class="n">pars</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">([</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;sigma_ou&#39;</span><span class="p">,</span> <span class="s1">&#39;Ke_gl&#39;</span><span class="p">,</span> <span class="s1">&#39;signalV&#39;</span><span class="p">],</span> 
                       <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">500.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">400.0</span><span class="p">]])</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -891,13 +876,10 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">evolution</span> <span class="o">=</span> <span class="n">Evolution</span><span class="p">(</span><span class="n">evaluateSimulation</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;nsga2&#39;</span><span class="p">,</span> <span class="n">weightList</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">BOLDs</span><span class="p">),</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">POP_INIT_SIZE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">POP_SIZE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">NGEN</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;example-2.2.hdf&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">evolution</span> <span class="o">=</span> <span class="n">Evolution</span><span class="p">(</span><span class="n">evaluateSimulation</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;nsga2&#39;</span><span class="p">,</span> <span class="n">weightList</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">BOLDs</span><span class="p">),</span> <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">POP_INIT_SIZE</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">POP_SIZE</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">NGEN</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;example-2.2.hdf&quot;</span><span class="p">)</span>
 <span class="c1">#testing: evolution = Evolution(evaluateSimulation, pars, algorithm = &#39;nsga2&#39;, weightList = [1.0] * len(ds.BOLDs), model = model, POP_INIT_SIZE=4, POP_SIZE = 4, NGEN=2)</span>
 <span class="c1"># real: evolution = Evolution(evaluateSimulation, pars, algorithm = &#39;nsga2&#39;, weightList = [1.0] * len(ds.BOLDs), model = model, POP_INIT_SIZE=1600, POP_SIZE = 160, NGEN=100)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -911,11 +893,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
@@ -943,11 +922,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1019,39 +995,30 @@ Mean score across population: 0.53
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># This will load results from disk in case the session is </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># This will load results from disk in case the session is </span>
 <span class="c1"># started newly and the trajectory is not in memory</span>
 <span class="n">traj</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">gens</span><span class="p">,</span> <span class="n">all_scores</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">getScoresDuringEvolution</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">gens</span><span class="p">,</span> <span class="n">all_scores</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">getScoresDuringEvolution</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>   
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>   
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">gens</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">all_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">gens</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">all_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">all_scores</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Generation #&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Score&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

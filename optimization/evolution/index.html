@@ -2179,15 +2179,16 @@ This object can be further used to easily analyse the population.</p>
       </h2>
 <div class="doc doc-contents ">
 <p>Load evolution from previously saved simulatoins.</p>
-<p>Example usage:</p>
-<div class="codehilite">
-<pre><span></span><code><span class="n">evaluateSimulation</span> <span class="o">=</span> <span class="n">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="c1"># the funciton can be ommited, that's why we define a lambda here</span>
-<span class="n">pars</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">([</span><span class="s1">'a'</span><span class="p">,</span> <span class="s1">'b'</span><span class="p">],</span> <span class="c1"># should be same as previously saved evolution</span>
-              <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">]])</span>
-<span class="n">evolution</span> <span class="o">=</span> <span class="n">Evolution</span><span class="p">(</span><span class="n">evaluateSimulation</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">weightList</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">])</span>
-<span class="n">evolution</span> <span class="o">=</span> <span class="n">evolution</span><span class="o">.</span><span class="n">loadEvolution</span><span class="p">(</span><span class="s2">"data/evolution-results-2020-05-15-00H-24M-48S.dill"</span><span class="p">)</span>
+<p>Example usage:
+<div class="highlight">
+<pre><span></span><code>evaluateSimulation = lambda x: x # the funciton can be ommited, that's why we define a lambda here
+pars = ParameterSpace(['a', 'b'], # should be same as previously saved evolution
+              [[0.0, 4.0], [0.0, 5.0]])
+evolution = Evolution(evaluateSimulation, pars, weightList = [1.0])
+evolution = evolution.loadEvolution("data/evolution-results-2020-05-15-00H-24M-48S.dill")
 </code></pre>
 </div>
+</p>
 <p><strong>Parameters:</strong></p>
 <table>
 <thead>

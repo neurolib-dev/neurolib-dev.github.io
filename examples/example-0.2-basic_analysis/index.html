@@ -833,8 +833,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
@@ -844,15 +843,12 @@
 <span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
     <span class="kn">import</span> <span class="nn">sys</span>
@@ -869,8 +865,6 @@
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plasma&#39;</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -884,8 +878,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;gw&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;gw&quot;</span><span class="p">)</span>
 <span class="c1"># simulates the whole-brain model</span>
 <span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
 <span class="c1"># Resting state fits</span>
@@ -898,8 +891,6 @@
 <span class="c1"># use 5*60*1000 for real simulation</span>
 <span class="n">aln</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bold</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -919,7 +910,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we can cast the modelling result into our <code>Signal</code> class. <code>Signal</code> is a parent base class for any neuro signal. We also provide three child class for particular signals: <code>RatesSignal</code> (for firing rate of the populations), <code>VoltageSignal</code> (for average membrane potential of the populations), and <code>BOLDSignal</code> (for simulated BOLD). They only differ in name, labels and units. Nothing fancy. Of course, you can implement your own class for your particular results very easily as:</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.signal</span> <span class="kn">import</span> <span class="n">Signal</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.signal</span> <span class="kn">import</span> <span class="n">Signal</span>
 
 
 <span class="k">class</span> <span class="nc">PostSynapticCurrentSignal</span><span class="p">(</span><span class="n">Signal</span><span class="p">):</span>
@@ -928,7 +919,6 @@
     <span class="n">signal_type</span> <span class="o">=</span> <span class="s2">&quot;post_current&quot;</span>
     <span class="n">unit</span> <span class="o">=</span> <span class="s2">&quot;mA&quot;</span>
 </code></pre></div>
-
 <p>and that's it. All useful methods and attributes are directly inhereted from the <code>Signal</code> parent.</p>
 </div>
 </div>
@@ -936,8 +926,7 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># Create Signal out of firing rates</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create Signal out of firing rates</span>
 <span class="n">fr</span> <span class="o">=</span> <span class="n">RatesSignal</span><span class="o">.</span><span class="n">from_model_output</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">time_in_ms</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># optional description</span>
 <span class="n">fr</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Output of the ALN model with default SC and fiber lengths&quot;</span>
@@ -947,20 +936,15 @@
 <span class="n">bold</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;Simulated BOLD of the ALN model with default SC and fiber lengths&quot;</span>
 </code></pre></div>
 
-
-
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># let&#39;s check what&#39;s inside</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># let&#39;s check what&#39;s inside</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">bold</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -987,8 +971,7 @@ Population blood oxygen level-dependent signal representing bold signal with uni
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># inherent attributes</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># inherent attributes</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inherent attributes:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
@@ -1004,8 +987,6 @@ Population blood oxygen level-dependent signal representing bold signal with uni
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1036,8 +1017,7 @@ Computed attributes:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># internal representation of the signal is just xarray&#39;s DataArray</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># internal representation of the signal is just xarray&#39;s DataArray</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
 <span class="c1"># xarray is just pandas on steroids, i.e. it supports multi-dimensional arrays, not only 2D</span>
 
@@ -1045,8 +1025,6 @@ Computed attributes:
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1106,8 +1084,7 @@ Just a side note, all operations can be done inplace (everything happens inside 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># basic operations</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># basic operations</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="n">std</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># so, are all temporal means close to zero?</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">),</span> <span class="mf">0.</span><span class="p">))</span>
@@ -1124,8 +1101,6 @@ Just a side note, all operations can be done inplace (everything happens inside 
 <span class="n">detrended_segments</span> <span class="o">=</span> <span class="n">fr</span><span class="o">.</span><span class="n">detrend</span><span class="p">(</span><span class="n">segments</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1166,16 +1141,13 @@ True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">sampling_frequency</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">sampling_frequency</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fr</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;original&quot;</span><span class="p">)</span>
 <span class="n">fr</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">to_frequency</span><span class="o">=</span><span class="mf">1000.</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">sampling_frequency</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fr</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;resampled&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1217,8 +1189,7 @@ True
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># init again to start fresh</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># init again to start fresh</span>
 <span class="n">fr</span> <span class="o">=</span> <span class="n">RatesSignal</span><span class="o">.</span><span class="n">from_model_output</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">time_in_ms</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">fr</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;original&quot;</span><span class="p">)</span>
 
@@ -1250,8 +1221,6 @@ True
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">amplitude</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">({</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;amplitude $\alpha$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1299,13 +1268,10 @@ Designing a one-pass, zero-phase, non-causal bandpass filter:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># in case you forget that happened in the processing, you can easily check all steps:</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># in case you forget that happened in the processing, you can easily check all steps:</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phase</span><span class="o">.</span><span class="n">preprocessing_steps</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">amplitude</span><span class="o">.</span><span class="n">preprocessing_steps</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1332,20 +1298,16 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># and you can save your signal for future generations! (saved as netCDF file)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># and you can save your signal for future generations! (saved as netCDF file)</span>
 <span class="n">phase</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;phase_from_some_experiment&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># and then load it</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># and then load it</span>
 <span class="n">phase_loaded</span> <span class="o">=</span> <span class="n">RatesSignal</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s2">&quot;phase_from_some_experiment&quot;</span><span class="p">)</span>
 <span class="c1"># compare whether it is the same</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">phase</span> <span class="o">==</span> <span class="n">phase_loaded</span><span class="p">)</span>
@@ -1356,8 +1318,6 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <span class="c1"># delete file</span>
 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;phase_from_some_experiment.nc&quot;</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1387,8 +1347,7 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># this will iterate over whole data and return one 1D temporal slice at the time, each slice is Signal class</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># this will iterate over whole data and return one 1D temporal slice at the time, each slice is Signal class</span>
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">fr</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;signal&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">ts</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">ts</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
 
@@ -1396,8 +1355,6 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">ts</span> <span class="ow">in</span> <span class="n">fr</span><span class="o">.</span><span class="n">iterate</span><span class="p">(</span><span class="n">return_as</span><span class="o">=</span><span class="s2">&quot;xr&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">ts</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">ts</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1735,13 +1692,10 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># sliding window - let&#39;s iterate over temporal windows of 0.5seconds, with 0.1s translation and boxcar window function</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># sliding window - let&#39;s iterate over temporal windows of 0.5seconds, with 0.1s translation and boxcar window function</span>
 <span class="k">for</span> <span class="n">window</span> <span class="ow">in</span> <span class="n">fr</span><span class="o">.</span><span class="n">sliding_window</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">window_function</span><span class="o">=</span><span class="s2">&quot;boxcar&quot;</span><span class="p">,</span> <span class="n">lengths_in_seconds</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">window</span><span class="p">),</span> <span class="n">window</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">window</span><span class="o">.</span><span class="n">start_time</span><span class="p">,</span> <span class="n">window</span><span class="o">.</span><span class="n">end_time</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1763,8 +1717,7 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># apply 1D function - Signal supports applying 1D function per temporal slice</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># apply 1D function - Signal supports applying 1D function per temporal slice</span>
 <span class="c1"># both are supported: function that reduces temporal dimension (e.g. mean which reduces timeseries of length N to one number),</span>
 <span class="c1"># and functions that preserve shape</span>
 
@@ -1778,8 +1731,6 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <span class="c1"># still Signal</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">absolute_value</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1818,8 +1769,7 @@ That's why <code>Signal</code> class supports functional connectivity computatio
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># basic FC from excitatory rates - using correlation</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># basic FC from excitatory rates - using correlation</span>
 <span class="n">fc_exc</span> <span class="o">=</span> <span class="n">fr</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">functional_connectivity</span><span class="p">(</span><span class="n">fc_function</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">)</span>
 <span class="c1"># results is DataArray with space coordinates</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fc_exc</span><span class="p">),</span> <span class="n">fc_exc</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">fc_exc</span><span class="o">.</span><span class="n">coords</span><span class="p">)</span>
@@ -1835,8 +1785,6 @@ That's why <code>Signal</code> class supports functional connectivity computatio
 
 <span class="c1"># so fc_function can be any function that can take (nodes x time) array and transform it to (nodes x nodes) connectivity matrix</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -1870,8 +1818,7 @@ That's why <code>Signal</code> class supports functional connectivity computatio
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># band-specific FC</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># band-specific FC</span>
 <span class="n">BANDS</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&quot;delta&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;low_freq&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;high_freq&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">},</span>
     <span class="s2">&quot;theta&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;low_freq&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;high_freq&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">},</span>
@@ -1895,8 +1842,6 @@ That's why <code>Signal</code> class supports functional connectivity computatio
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">band</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">filt_spec</span><span class="p">[</span><span class="s1">&#39;low_freq&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">filt_spec</span><span class="p">[</span><span class="s1">&#39;high_freq&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">Hz&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">
@@ -2011,16 +1956,13 @@ resample to 1000.0Hz -&gt; detrend -&gt; 0.5s constant both sides padding -&gt; 
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-
-<div class="codehilite"><pre><span></span><code><span class="c1"># time-varying FC</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># time-varying FC</span>
 <span class="k">for</span> <span class="n">window</span> <span class="ow">in</span> <span class="n">fr</span><span class="o">.</span><span class="n">sliding_window</span><span class="p">(</span><span class="n">length</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">window_function</span><span class="o">=</span><span class="s2">&quot;boxcar&quot;</span><span class="p">,</span> <span class="n">lengths_in_seconds</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="n">fc</span> <span class="o">=</span> <span class="n">window</span><span class="p">[</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">functional_connectivity</span><span class="p">(</span><span class="n">fc_function</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;FC: </span><span class="si">{</span><span class="n">window</span><span class="o">.</span><span class="n">start_time</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">window</span><span class="o">.</span><span class="n">end_time</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-
-
 
 </div>
 <div class="output_wrapper">

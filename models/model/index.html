@@ -1080,11 +1080,10 @@
 <p>Models are the core of <code>neurolib</code>. The <code>Model</code> superclass will help you to load, simulate, and analyse models. It also makes it very easy to implement your own neural mass model (see <a href="/examples/example-0.6-custom-model/">Example 0.6 custom model</a>).</p>
 <h2 id="loading-a-model">Loading a model</h2>
 <p>To load a model, we need to import the submodule of a model and instantiate it. This example shows how to load a single node of the <code>ALNModel</code>. See <a href="/examples/example-0-aln-minimal/">Example 0 aln minimal</a> on how to simulate a whole-brain network using this model.</p>
-<div class="codehilite"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.models.aln</span> <span class="kn">import</span> <span class="n">ALNModel</span> <span class="c1"># Import the model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span> <span class="c1"># Create an instance</span>
-<span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span> <span class="c1"># Run it</span>
+<div class="highlight"><pre><span></span><code>from neurolib.models.aln import ALNModel # Import the model
+model = ALNModel() # Create an instance
+model.run() # Run it
 </code></pre></div>
-
 <h2 id="model-base-class-methods">Model base class methods</h2>
 <div class="doc doc-object doc-class">
 <h2 class="hidden-toc" id="neurolib.models.model.Model" style="visibility: hidden; position: absolute;">
