@@ -726,6 +726,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=docs%2Fexamples%2Fexample-2.2-evolution-brain-network-aln-resting-state-fit.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="evolutionary-optimization-of-a-whole-brain-model">Evolutionary optimization of a whole-brain model</h1>
 <p>This notebook provides an example for the use of the evolutionary optimization framework built-in to the library. Under the hood, the implementation of the evolutionary algorithm is powered by <code>deap</code> and <code>pypet</code> cares about the parallelization and storage of the simulation data for us.</p>
 <p>We want to optimize a whole-brain network that should produce simulated BOLD activity (fMRI data) that is similar to the empirical dataset. We measure the fitness of each simulation by computing the <code>func.matrix_correlation</code> of the functional connectivity <code>func.fc(model.BOLD.BOLD)</code> to the empirical data <code>ds.FCs</code>. The ones that are closest to the empirical data get a higher fitness and have a higher chance of reproducing and survival. </p>

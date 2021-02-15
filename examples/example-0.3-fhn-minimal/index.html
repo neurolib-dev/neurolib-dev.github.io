@@ -784,6 +784,13 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=docs%2Fexamples%2Fexample-0.3-fhn-minimal.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="the-fitz-hugh-nagumo-oscillator">The Fitz-Hugh Nagumo oscillator</h1>
 <p>In this notebook, the basic use of the implementation of the Fitz-Hugh Nagumo (<code>fhn</code>) model is presented. Usually, the <code>fhn</code> model is used to represent a single neuron (for example in <code>Cakan et al. (2014)</code>, "Heterogeneous delays in neural networks"). This is due to the difference in timescales of the two equations that define the FHN model: The first equation is often referred to as the "fast variable" whereas the second one is the "slow variable". This makes it possible to create a model with a very fast spiking mechanism but with a slow refractory period. </p>
 <p>In our case, we are using a parameterization of the <code>fhn</code> model that is not quite as usual. Inspired by the paper by <code>Kostova et al. (2004)</code> "FitzHugh–Nagumo revisited: Types of bifurcations, periodical forcing and stability regions by a Lyapunov functional.", the implementation in <code>neurolib</code> produces a slowly oscillating dynamics and has the advantage to incorporate an external input term that causes a Hopf bifurcation. This means, that the model roughly approximates the behaviour of the <code>aln</code> model: For low input values, there is a low-activity fixed point, for intermediate inputs, there is an oscillatory region, and for high input values, the system is in a high-activity fixed point. Thus, it offers a simple way of exploring the dynamics of a neural mass model with these properties, such as the <code>aln</code> model.</p>
