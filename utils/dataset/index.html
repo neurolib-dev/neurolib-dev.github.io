@@ -659,6 +659,40 @@
     neurolib.utils.loadData.Dataset
   </a>
   
+    <nav class="md-nav" aria-label="neurolib.utils.loadData.Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--structural-dti-data" class="md-nav__link">
+    Structural DTI data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--connectivity-matrix-normalization" class="md-nav__link">
+    Connectivity matrix normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--functional-mri-data" class="md-nav__link">
+    Functional MRI data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -780,6 +814,40 @@
     neurolib.utils.loadData.Dataset
   </a>
   
+    <nav class="md-nav" aria-label="neurolib.utils.loadData.Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--structural-dti-data" class="md-nav__link">
+    Structural DTI data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--connectivity-matrix-normalization" class="md-nav__link">
+    Connectivity matrix normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--functional-mri-data" class="md-nav__link">
+    Functional MRI data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -832,7 +900,60 @@
 <h2 class="hidden-toc" id="neurolib.utils.loadData.Dataset" style="visibility: hidden; position: absolute;">
         </h2>
 <div class="doc doc-contents first">
-<p>Dataset class.</p>
+<p>This class is for loading empirical Datasets. Datasets are stored as matrices and can
+include functional (e.g. fMRI) and structural (e.g. DTI) data.</p>
+<h3 id="neurolib.utils.loadData.Dataset--format">Format</h3>
+<p>Empirical datasets are
+stored in the <code>neurolib/data/datasets</code> directory. In each dataset, subject-wise functional
+and structural data is stored as MATLAB <code>.mat</code> matrices that can be opened in
+Python using SciPy's <code>loadmat</code> function. Structural data are
+<span class="arithmatex">\(N \times N\)</span>, and functional time series are <span class="arithmatex">\(N \times t\)</span> matrices, <span class="arithmatex">\(N\)</span> being the number
+of brain regions and <span class="arithmatex">\(t\)</span> the number of time steps. Example datasets are included in <code>neurolib</code>
+and custom datasets can be added by placing them in the dataset directory.</p>
+<h3 id="neurolib.utils.loadData.Dataset--structural-dti-data">Structural DTI data</h3>
+<p>To simulate a whole-brain network model, first we need to load the structural connectivity
+matrices from a DTI data set. The matrices are usually a result of processing DTI data and
+performing fiber tractography using software like <em>FSL</em> or
+<em>DSIStudio</em>. The handling of the datasets is done by the
+<code>Dataset</code> class, and the attributes in the following refer to its instances.
+Upon initialization, the subject-wise data set is loaded from disk. For all examples
+in this paper, we use freely available data from the ConnectomeDB of the
+Human Connectome Project (HCP). For a given parcellation of the brain
+into <span class="arithmatex">\(N\)</span> brain regions, these matrices are the <span class="arithmatex">\(N \times N\)</span> adjacency matrix <code>self.Cmat</code>,
+i.e. the structural connectivity matrix, which determines the coupling strengths between
+brain areas, and the fiber length matrix <code>Dmat</code> which determines the signal
+transmission delays. The two example datasets currently included in <code>neurolib</code> use the the 80
+cortical regions of the AAL2 atlas to define the brain areas and are
+sorted in a LRLR-ordering.</p>
+<h3 id="neurolib.utils.loadData.Dataset--connectivity-matrix-normalization">Connectivity matrix normalization</h3>
+<p>The elements of the structural connectivity matrix <code>Cmat</code> are typically the number
+of reconstructed fibers from DTI tractography. Since the number of fibers depends on the
+method and the parameters of the (probabilistic or deterministic) tractography, they need to
+be normalized using one of the three implemented methods. The first method <code>max</code> is to
+simply divide the entries of  <code>Cmat</code> by the largest entry, such that the the largest
+entry becomes 1. The second method  <code>waytotal</code> divides the entries of each column of
+<code>Cmat</code> by the number fiber tracts generated from the respective brain region during
+probabilistic tractography in FSL, which is contained in the <code>waytotal.txt</code> file.
+The third method <code>nvoxel</code> divides the entries of each column of <code>Cmat</code> by the
+size, e.g., the number of voxels of the corresponding brain area. The last two methods yield
+an asymmetric connectivity matrix, while the first one keeps <code>Cmat</code> symmetric.
+All normalization steps are done on the subject-wise matrices <code>Cmats</code> and
+<code>Dmats</code>. In a final step, all matrices can also be averaged across all subjects
+to yield one <code>Cmat</code> and <code>Dmat</code> per dataset.</p>
+<h3 id="neurolib.utils.loadData.Dataset--functional-mri-data">Functional MRI data</h3>
+<p>Subject-wise fMRI time series must be in a <span class="arithmatex">\((N \times t)\)</span>-dimensional format, where <span class="arithmatex">\(N\)</span> is the
+number of brain regions and <span class="arithmatex">\(t\)</span> the length of the time series. Each region-wise time series
+represents the BOLD activity averaged across all voxels of that region, which can be also obtained
+from software like FSL. Functional connectivity (FC) captures the spatial correlation structure
+of the BOLD time series averaged across the entire time of the recording. FC matrices are
+accessible via the attribute <code>FCs</code> and are generated by computing the Pearson correlation
+of the time series between all regions, yielding a <span class="arithmatex">\(N \times N\)</span> matrix for each subject.</p>
+<p>To capture the temporal fluctuations of time-dependent FC(t), which are lost when averaging
+across the entire recording time, functional connectivity dynamics matrices (<code>FCDs</code>) are
+computed as the element-wise Pearson correlation of time-dependent FC(t) matrices in a moving
+window across the BOLD time series of a chosen window length of, for example, 1 min. This
+yields a <span class="arithmatex">\(t_{FCD} \times t_{FCD}\)</span> FCD matrix for each subject, with <span class="arithmatex">\(t_{FCD}\)</span> being the number
+of steps the window was moved.</p>
 <div class="doc doc-children">
 <div class="doc doc-object doc-method">
 <h2 class="doc doc-heading" id="neurolib.utils.loadData.Dataset.__init__">
