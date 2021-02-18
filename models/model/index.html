@@ -1863,7 +1863,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <td><code>chunksize</code></td>
 <td><code>int, optional</code></td>
 <td>
-<p>size of the chunk to simulate in dt, defaults to 2s</p>
+<p>size of the chunk to simulate in dt, if set will imply chunkwise=True, defaults to 2s</p>
 </td>
 <td><code>None</code></td>
 </tr>
@@ -1918,7 +1918,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <span class="sd">    :type inputs: list[np.ndarray|]</span>
 <span class="sd">    :param chunkwise: simulate model chunkwise or in one single run, defaults to False</span>
 <span class="sd">    :type chunkwise: bool, optional</span>
-<span class="sd">    :param chunksize: size of the chunk to simulate in dt, defaults to 2s</span>
+<span class="sd">    :param chunksize: size of the chunk to simulate in dt, if set will imply chunkwise=True, defaults to 2s</span>
 <span class="sd">    :type chunksize: int, optional</span>
 <span class="sd">    :param bold: simulate BOLD signal (only for chunkwise integration), defaults to False</span>
 <span class="sd">    :type bold: bool, optional</span>
