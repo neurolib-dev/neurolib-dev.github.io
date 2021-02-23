@@ -1032,15 +1032,15 @@ pip install .
 </code></pre></div>
 It is recommended to clone or fork the entire repository since it will also include all examples and tests.</p>
 <h2 id="project-layout">Project layout</h2>
-<div class="highlight"><pre><span></span><code>neurolib/                       # Main module
+<div class="highlight"><pre><span></span><code>neurolib/                   # Main module
 ├── models/                     # Neural mass models
     ├──model.py                 # Base model class
-    └── /.../                   # Implemented neural models
+    └── /.../               # Implemented mass models
 ├── optimize/                   # Optimization submodule
     ├── evolution/              # Evolutionary optimization
     └── exploration/            # Parameter exploration
-├── data/                       # Empirical datasets (structural, functional)
-├── utils/                      # Utility belt
+├── data/                   # Empirical datasets (structural, functional)
+├── utils/                  # Utility belt
     ├── atlases.py              # Atlases (Region names, coordinates)
     ├── collections.py          # Custom data types
     ├── functions.py            # Useful functions
@@ -1050,8 +1050,8 @@ It is recommended to clone or fork the entire repository since it will also incl
     ├── signal.py               # Signal processing functions
     └── stimulus.py             # Stimulus construction
 ├── examples/                   # Example Jupyter notebooks
-├── docs/                       # Documentation 
-└── tests/                      # Automated tests
+├── docs/                   # Documentation 
+└── tests/                  # Automated tests
 </code></pre></div>
 <h2 id="examples">Examples</h2>
 <p>Example <a href="../examples/">IPython Notebooks</a> on how to use the library can be found in the <code>./examples/</code> directory, don't forget to check them out! You can run the examples in your browser using Binder by clicking <a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib.git/master?filepath=examples">here</a> or one of the following links:</p>
