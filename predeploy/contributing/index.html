@@ -304,6 +304,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contributing-examples" class="md-nav__link">
+    Contributing examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#contributing-brain-data" class="md-nav__link">
     Contributing brain data
   </a>
@@ -852,6 +859,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#contributing-examples" class="md-nav__link">
+    Contributing examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#contributing-brain-data" class="md-nav__link">
     Contributing brain data
   </a>
@@ -903,6 +917,14 @@ for example in <a href="https://marcobelo.medium.com/setting-up-python-black-on-
 <li>The <code>model.py</code> file which contains the class of the model. Here the model specifies attributes like its name, its state variables, its initial value parameters. Additionally, in the constructor (the <code>__init__()</code> method), the model loads its default parameters.</li>
 <li>The <code>loadDefaultParams.py</code> file contains a function (<code>loadDefaultParams()</code>) which has the arguments <code>Cmat</code> for the structural connectivity matrix, <code>Dmat</code> for the delay matrix and <code>seed</code> for the seed of the random number generator. This function returns a dictionary (or <code>dotdict</code>, see <code>neurolib/utils/collections.py</code>) with all parrameters inside.</li>
 <li>The <code>timeIntegration.py</code> file which contains a <code>timeIntegration()</code> function which has the argument <code>params</code> coming from the previous step. Here, we need to prepare the numerical integration. We load all relevant parameters from the <code>params</code> dictionary and pass it to the main integration loop. The integration loop is written such that it can be accelerated by <code>numba</code> (<a href="https://numba.pydata.org/">numba's page</a>) which speeds up the integration by a factor of around 1000. </li>
+</ul>
+<h2 id="contributing-examples">Contributing examples</h2>
+<p>We very much welcome example contributions since they help new users to learn how to make use of <code>neurolib</code>. They can include basic usage examples or tutorials of <code>neurolib</code>'s features, or a demonstration of how to solve a specific scientific task using neural mass models or whole-brain networks.</p>
+<ul>
+<li>Examples are provided as Jupyter Notebooks in the <code>/examples/</code> directory of the project repository.</li>
+<li>Notebooks should have a brief description of what they are trying to accomplish at the beginning.</li>
+<li>It is recommended to change the working directory to the root directory at the very beginning of the notebook (<code>os.chdir('..')</code>).</li>
+<li>Notebooks should be structured with different subheadings (Markdown style). Please also describe in words what you are doing in code. </li>
 </ul>
 <h2 id="contributing-brain-data">Contributing brain data</h2>
 <p>We have a few small datasets already in neurolib so everyone can start simulating right away. If you'd like to contribute more data to the project, please feel invited to do so. We're looking for more structural connectivity matrices and fiber length matrices in the MATLAB matrix <code>.mat</code> format (which can be loaded by <code>scipy.loadmat</code>). We also appreciate BOLD data, EEG data, or MEG data. Other modalities could be useful as well. Please be aware that the data has to be in a parcellated form, i.e., the brain areas need to be organized according to an atlas like the AAL2 atlas (or others).</p>
