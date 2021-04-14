@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
     
     
       
@@ -18,7 +18,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.33e2939f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.9299cb39.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ef6f36e2.min.css">
@@ -755,6 +755,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#neurolib.utils.signal.Signal.time" class="md-nav__link">
+    time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#neurolib.utils.signal.Signal.__eq__" class="md-nav__link">
     __eq__()
   </a>
@@ -876,6 +883,13 @@
         <li class="md-nav__item">
   <a href="#neurolib.utils.signal.Signal.resample" class="md-nav__link">
     resample()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.signal.Signal.rolling" class="md-nav__link">
+    rolling()
   </a>
   
 </li>
@@ -1008,6 +1022,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#neurolib.utils.signal.Signal.time" class="md-nav__link">
+    time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#neurolib.utils.signal.Signal.__eq__" class="md-nav__link">
     __eq__()
   </a>
@@ -1129,6 +1150,13 @@
         <li class="md-nav__item">
   <a href="#neurolib.utils.signal.Signal.resample" class="md-nav__link">
     resample()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.signal.Signal.rolling" class="md-nav__link">
+    rolling()
   </a>
   
 </li>
@@ -1353,6 +1381,29 @@ order.</p>
     <div class="doc doc-contents ">
 
       <p>Return starting time of the signal.</p>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.time">
+<code class="highlight language-python"><span class="n">time</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return time vector.</p>
     </div>
 
   </div>
@@ -1605,10 +1656,12 @@ instance with different data, but same metadata.</p>
         <span class="n">data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="mf">1000.0</span>
     <span class="n">data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="mi">6</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="c1"># assert time dimension is last</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims_not_time</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]))</span>
     <span class="c1"># compute dt and sampling frequency</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">6</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">sampling_frequency</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">process_steps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">process_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;raw </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">signal_type</span><span class="si">}</span><span class="s2"> signal: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="si">}</span><span class="s2">--</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">]</span>
 </code></pre></div>
         </details>
     </div>
@@ -1674,8 +1727,10 @@ instance with different data, but same metadata.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">(</span>
         <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> representing </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">signal_type</span><span class="si">}</span><span class="s2"> signal with unit of &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2"> with user-provided description: `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">`. &quot;</span>
-        <span class="sa">f</span><span class="s2">&quot;Shape of the signal is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> with dimensions </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">unit</span><span class="si">}</span><span class="s2"> with user-provided description: `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">description</span><span class="si">}</span><span class="s2">`&quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;. Shape of the signal is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> with dimensions &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="si">}</span><span class="s2">. Signal starts at </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">start_time</span><span class="si">}</span><span class="s2"> and ends at &quot;</span>
+        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">end_time</span><span class="si">}</span><span class="s2">.&quot;</span>
     <span class="p">)</span>
 </code></pre></div>
         </details>
@@ -1903,9 +1958,7 @@ performed in each part.</p>
 </table>
         <details class="quote">
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">low_freq</span><span class="p">,</span> <span class="n">high_freq</span><span class="p">,</span> <span class="n">l_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">h_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">low_freq</span><span class="p">,</span> <span class="n">high_freq</span><span class="p">,</span> <span class="n">l_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">h_trans_bandwidth</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Filter data. Can be:</span>
 <span class="sd">        low-pass (low_freq is None, high_freq is not None),</span>
@@ -2016,18 +2069,18 @@ performed in each part.</p>
     <span class="c1"># init class</span>
     <span class="n">signal</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">xarray</span><span class="p">)</span>
     <span class="c1"># if nc file has atrributes, copy them to signal class</span>
-    <span class="n">process_steps</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">if</span> <span class="n">xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
+        <span class="n">process_steps</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">xarray</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">PROCESS_STEPS_KEY</span> <span class="ow">in</span> <span class="n">k</span><span class="p">:</span>
                 <span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">PROCESS_STEPS_KEY</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:])</span>
                 <span class="n">process_steps</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">process_steps</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">setattr</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">PROCESS_STEPS_KEY</span><span class="p">,</span> <span class="n">process_steps</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No metadata found, setting empty...&quot;</span><span class="p">)</span>
+        <span class="n">process_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;raw </span><span class="si">{</span><span class="n">signal</span><span class="o">.</span><span class="n">signal_type</span><span class="si">}</span><span class="s2"> signal: </span><span class="si">{</span><span class="n">signal</span><span class="o">.</span><span class="n">start_time</span><span class="si">}</span><span class="s2">--&quot;</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">signal</span><span class="o">.</span><span class="n">end_time</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">]</span>
+    <span class="nb">setattr</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="bp">cls</span><span class="o">.</span><span class="n">PROCESS_STEPS_KEY</span><span class="p">,</span> <span class="n">process_steps</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">signal</span>
 </code></pre></div>
         </details>
@@ -2076,7 +2129,7 @@ performed in each part.</p>
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.functional_connectivity">
-<code class="highlight language-python"><span class="n">functional_connectivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fc_function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">corrcoef</span> <span class="n">at</span> <span class="mh">0x7fdeca2a9710</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">functional_connectivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fc_function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">corrcoef</span> <span class="n">at</span> <span class="mh">0x7f9ac32f4710</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -2100,7 +2153,7 @@ performed in each part.</p>
         <td><code>fc_function</code></td>
         <td><code></code></td>
         <td><p>function which to use for FC computation, should take 2D array as space x time and convert it to space x space with desired measure</p></td>
-        <td><code>&lt;function corrcoef at 0x7fdeca2a9710&gt;</code></td>
+        <td><code>&lt;function corrcoef at 0x7f9ac32f4710&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -2132,7 +2185,9 @@ performed in each part.</p>
         <span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
-            <span class="n">fc_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="s2">&quot;space&quot;</span><span class="p">],</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;space&quot;</span><span class="p">]},</span>
+            <span class="n">fc_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">),</span>
+            <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="s2">&quot;space&quot;</span><span class="p">],</span>
+            <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;space&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s2">&quot;space&quot;</span><span class="p">]},</span>
         <span class="p">)</span>
 </code></pre></div>
         </details>
@@ -2237,7 +2292,7 @@ performed in each part.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Subselect part of signal using pandas' <code>isel</code>, i.e. selecting by index,
+      <p>Subselect part of signal using xarray's <code>isel</code>, i.e. selecting by index,
 hence integers.</p>
 
 <p><strong>Parameters:</strong></p>
@@ -2254,7 +2309,7 @@ hence integers.</p>
       <tr>
         <td><code>loc_args</code></td>
         <td><code>tuple|list</code></td>
-        <td><p>arguments you'd give to df.lioc[], i.e. slice of indices you want to select, in seconds as a len=2 list or tuple</p></td>
+        <td><p>arguments you'd give to xr.isel(), i.e. slice of indices you want to select, in seconds as a len=2 list or tuple</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -2269,10 +2324,10 @@ hence integers.</p>
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">isel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">isel_args</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Subselect part of signal using pandas&#39; `isel`, i.e. selecting by index,</span>
+<span class="sd">    Subselect part of signal using xarray&#39;s `isel`, i.e. selecting by index,</span>
 <span class="sd">    hence integers.</span>
 
-<span class="sd">    :param loc_args: arguments you&#39;d give to df.lioc[], i.e. slice of</span>
+<span class="sd">    :param loc_args: arguments you&#39;d give to xr.isel(), i.e. slice of</span>
 <span class="sd">        indices you want to select, in seconds as a len=2 list or tuple</span>
 <span class="sd">    :type loc_args: tuple|list</span>
 <span class="sd">    :param inplace: whether to do the operation in place or return</span>
@@ -2341,11 +2396,18 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 <span class="sd">        instance of NeuroSignal with the same attributes as the mother signal</span>
 <span class="sd">    :type return_as: str</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">stacked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">stack</span><span class="p">({</span><span class="s2">&quot;all&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims_not_time</span><span class="p">})</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;No dimensions along which to stack...&quot;</span><span class="p">)</span>
+        <span class="n">stacked</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+
     <span class="k">if</span> <span class="n">return_as</span> <span class="o">==</span> <span class="s2">&quot;xr&quot;</span><span class="p">:</span>
-        <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">stack</span><span class="p">({</span><span class="s2">&quot;all&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims_not_time</span><span class="p">})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+        <span class="k">yield from</span> <span class="n">stacked</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">return_as</span> <span class="o">==</span> <span class="s2">&quot;signal&quot;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">stack</span><span class="p">({</span><span class="s2">&quot;all&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">dims_not_time</span><span class="p">})</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__constructor__</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;select </span><span class="si">{</span><span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">name_coords</span><span class="p">,</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">stacked</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">):</span>
+            <span class="n">name_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dims_not_time</span><span class="p">,</span> <span class="n">name_coords</span><span class="p">)}</span>
+            <span class="k">yield</span> <span class="n">name_dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__constructor__</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;select </span><span class="si">{</span><span class="n">column</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data type not understood: </span><span class="si">{</span><span class="n">return_as</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -2489,9 +2551,7 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 </table>
         <details class="quote">
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pad</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">how_much</span><span class="p">,</span> <span class="n">in_seconds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">padding_type</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">pad</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">how_much</span><span class="p">,</span> <span class="n">in_seconds</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">padding_type</span><span class="o">=</span><span class="s2">&quot;constant&quot;</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Pad signal by `how_much` on given side of given type.</span>
 
@@ -2639,6 +2699,94 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 
 
 
+<h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.rolling">
+<code class="highlight language-python"><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roll_over</span><span class="p">,</span> <span class="n">function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">mean</span> <span class="n">at</span> <span class="mh">0x7f9ac3ae6a70</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dropnans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return rolling reduction over signal's time dimension. The window is
+centered around the midpoint.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>roll_over</code></td>
+        <td><code>float</code></td>
+        <td><p>window to use, in seconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>function</code></td>
+        <td><code>callable</code></td>
+        <td><p>function to use for reduction</p></td>
+        <td><code>&lt;function mean at 0x7f9ac3ae6a70&gt;</code></td>
+      </tr>
+      <tr>
+        <td><code>dropnans</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to drop NaNs - will shorten time dimension, or not</p></td>
+        <td><code>True</code></td>
+      </tr>
+      <tr>
+        <td><code>inplace</code></td>
+        <td><code>bool</code></td>
+        <td><p>whether to do the operation in place or return</p></td>
+        <td><code>True</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">rolling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roll_over</span><span class="p">,</span> <span class="n">function</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">dropnans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return rolling reduction over signal&#39;s time dimension. The window is</span>
+<span class="sd">    centered around the midpoint.</span>
+
+<span class="sd">    :param roll_over: window to use, in seconds</span>
+<span class="sd">    :type roll_over: float</span>
+<span class="sd">    :param function: function to use for reduction</span>
+<span class="sd">    :type function: callable</span>
+<span class="sd">    :param dropnans: whether to drop NaNs - will shorten time dimension, or</span>
+<span class="sd">        not</span>
+<span class="sd">    :type dropnans: bool</span>
+<span class="sd">    :param inplace: whether to do the operation in place or return</span>
+<span class="sd">    :type inplace: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">callable</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+    <span class="n">rolling</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">roll_over</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sampling_frequency</span><span class="p">),</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">function</span><span class="p">)</span>
+    <span class="n">add_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;rolling </span><span class="si">{</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> over </span><span class="si">{</span><span class="n">roll_over</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">dropnans</span><span class="p">:</span>
+        <span class="n">rolling</span> <span class="o">=</span> <span class="n">rolling</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="n">add_steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="s2">&quot;; drop NaNs&quot;</span>
+    <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">rolling</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">process_steps</span> <span class="o">+=</span> <span class="n">add_steps</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__constructor__</span><span class="p">(</span><span class="n">rolling</span><span class="p">)</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_steps</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.save">
 <code class="highlight language-python"><span class="n">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></code>
 
@@ -2701,7 +2849,7 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 
     <div class="doc doc-contents ">
 
-      <p>Subselect part of signal using pandas' <code>sel</code>, i.e. selecting by actual
+      <p>Subselect part of signal using xarray's <code>sel</code>, i.e. selecting by actual
 physical index, hence time in seconds.</p>
 
 <p><strong>Parameters:</strong></p>
@@ -2718,7 +2866,7 @@ physical index, hence time in seconds.</p>
       <tr>
         <td><code>sel_args</code></td>
         <td><code>tuple|list</code></td>
-        <td><p>arguments you'd give to df.sel[], i.e. slice of times you want to select, in seconds as a len=2 list or tuple</p></td>
+        <td><p>arguments you'd give to xr.sel(), i.e. slice of times you want to select, in seconds as a len=2 list or tuple</p></td>
         <td><em>required</em></td>
       </tr>
       <tr>
@@ -2733,10 +2881,10 @@ physical index, hence time in seconds.</p>
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">sel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel_args</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Subselect part of signal using pandas&#39; `sel`, i.e. selecting by actual</span>
+<span class="sd">    Subselect part of signal using xarray&#39;s `sel`, i.e. selecting by actual</span>
 <span class="sd">    physical index, hence time in seconds.</span>
 
-<span class="sd">    :param sel_args: arguments you&#39;d give to df.sel[], i.e. slice of times</span>
+<span class="sd">    :param sel_args: arguments you&#39;d give to xr.sel(), i.e. slice of times</span>
 <span class="sd">        you want to select, in seconds as a len=2 list or tuple</span>
 <span class="sd">    :type sel_args: tuple|list</span>
 <span class="sd">    :param inplace: whether to do the operation in place or return</span>
@@ -2949,7 +3097,7 @@ to end with the final timeseries point!</p>
     <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d892486b.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7353b375.min.js"></script>
       
         <script src="../../js/config.js"></script>
       
