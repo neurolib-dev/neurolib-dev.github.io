@@ -1511,7 +1511,7 @@ order.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Copy attrbutes from other to self. Used when constructing class
+      <p>Copy attributes from other to self. Used when constructing class
 instance with different data, but same metadata.</p>
 
 <p><strong>Parameters:</strong></p>
@@ -1543,7 +1543,7 @@ instance with different data, but same metadata.</p>
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="n">add_steps</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Copy attrbutes from other to self. Used when constructing class</span>
+<span class="sd">    Copy attributes from other to self. Used when constructing class</span>
 <span class="sd">    instance with different data, but same metadata.</span>
 
 <span class="sd">    :param other: other instance of `Signal`</span>
@@ -1580,13 +1580,13 @@ instance with different data, but same metadata.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Get item selectes in output dimension.</p>
+      <p>Get item selects in output dimension.</p>
 
         <details class="quote">
           <summary>Source code in <code>neurolib/utils/signal.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Get item selectes in output dimension.</span>
+<span class="sd">    Get item selects in output dimension.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">add_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;select `</span><span class="si">{</span><span class="n">pos</span><span class="si">}</span><span class="s2">` output&quot;</span><span class="p">]</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__constructor__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="n">pos</span><span class="p">))</span><span class="o">.</span><span class="n">__finalize__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">add_steps</span><span class="p">)</span>
@@ -1846,7 +1846,7 @@ performed in each part.</p>
       <tr>
         <td><code>segments</code></td>
         <td><code>list|None</code></td>
-        <td><p>segments for detrening, if None will detrend whole signal, given as indices of the time array</p></td>
+        <td><p>segments for detrending, if None will detrend whole signal, given as indices of the time array</p></td>
         <td><code>None</code></td>
       </tr>
       <tr>
@@ -1864,7 +1864,7 @@ performed in each part.</p>
 <span class="sd">    Linearly detrend signal. If segments are given, detrending will be</span>
 <span class="sd">    performed in each part.</span>
 
-<span class="sd">    :param segments: segments for detrening, if None will detrend whole</span>
+<span class="sd">    :param segments: segments for detrending, if None will detrend whole</span>
 <span class="sd">        signal, given as indices of the time array</span>
 <span class="sd">    :type segments: list|None</span>
 <span class="sd">    :param inplace: whether to do the operation in place or return</span>
@@ -2068,7 +2068,7 @@ performed in each part.</p>
     <span class="n">xarray</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">load_dataarray</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
     <span class="c1"># init class</span>
     <span class="n">signal</span> <span class="o">=</span> <span class="bp">cls</span><span class="p">(</span><span class="n">xarray</span><span class="p">)</span>
-    <span class="c1"># if nc file has atrributes, copy them to signal class</span>
+    <span class="c1"># if nc file has attributes, copy them to signal class</span>
     <span class="k">if</span> <span class="n">xarray</span><span class="o">.</span><span class="n">attrs</span><span class="p">:</span>
         <span class="n">process_steps</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">xarray</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -2129,7 +2129,7 @@ performed in each part.</p>
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.functional_connectivity">
-<code class="highlight language-python"><span class="n">functional_connectivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fc_function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">corrcoef</span> <span class="n">at</span> <span class="mh">0x7f9ac32f4710</span><span class="o">&gt;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">functional_connectivity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fc_function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">corrcoef</span> <span class="n">at</span> <span class="mh">0x7f45b3763710</span><span class="o">&gt;</span><span class="p">)</span></code>
 
 
 </h2>
@@ -2153,7 +2153,7 @@ performed in each part.</p>
         <td><code>fc_function</code></td>
         <td><code></code></td>
         <td><p>function which to use for FC computation, should take 2D array as space x time and convert it to space x space with desired measure</p></td>
-        <td><code>&lt;function corrcoef at 0x7f9ac32f4710&gt;</code></td>
+        <td><code>&lt;function corrcoef at 0x7f45b3763710&gt;</code></td>
       </tr>
   </tbody>
 </table>
@@ -2700,7 +2700,7 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.signal.Signal.rolling">
-<code class="highlight language-python"><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roll_over</span><span class="p">,</span> <span class="n">function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">mean</span> <span class="n">at</span> <span class="mh">0x7f9ac3ae6a70</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dropnans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">rolling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">roll_over</span><span class="p">,</span> <span class="n">function</span><span class="o">=&lt;</span><span class="n">function</span> <span class="n">mean</span> <span class="n">at</span> <span class="mh">0x7f45b3f55a70</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">dropnans</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 
 </h2>
@@ -2731,7 +2731,7 @@ centered around the midpoint.</p>
         <td><code>function</code></td>
         <td><code>callable</code></td>
         <td><p>function to use for reduction</p></td>
-        <td><code>&lt;function mean at 0x7f9ac3ae6a70&gt;</code></td>
+        <td><code>&lt;function mean at 0x7f45b3f55a70&gt;</code></td>
       </tr>
       <tr>
         <td><code>dropnans</code></td>
