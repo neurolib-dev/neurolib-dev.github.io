@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.5">
     
     
       
@@ -978,7 +978,7 @@
 
 
 <h2 class="doc doc-heading" id="neurolib.optimize.exploration.exploration.BoxSearch.__init__">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameterSpace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">evalFunction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">saveAllModelOutputs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameterSpace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">evalFunction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">saveAllModelOutputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">ncores</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
@@ -1036,11 +1036,25 @@ for every parameter.</p>
         <td><p>If True, save all outputs of model, else only default output of the model will be saved. Note: if saveAllModelOutputs==False and the model's parameter model.params['bold']==True, then BOLD output will be saved as well, defaults to False</p></td>
         <td><code>False</code></td>
       </tr>
+      <tr>
+        <td><code>ncores</code></td>
+        <td><code>int, optional</code></td>
+        <td><p>Number of cores to simulate on (max cores default), defaults to None</p></td>
+        <td><code>None</code></td>
+      </tr>
   </tbody>
 </table>
         <details class="quote">
           <summary>Source code in <code>neurolib/optimize/exploration/exploration.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">parameterSpace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">evalFunction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">saveAllModelOutputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">parameterSpace</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">evalFunction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">saveAllModelOutputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">ncores</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Either a model has to be passed, or an evalFunction. If an evalFunction</span>
 <span class="sd">    is passed, then the evalFunction will be called and the model is accessible to the</span>
 <span class="sd">    evalFunction via `self.getModelFromTraj(traj)`. The parameters of the current</span>
@@ -1062,6 +1076,9 @@ for every parameter.</p>
 <span class="sd">        saved. Note: if saveAllModelOutputs==False and the model&#39;s parameter model.params[&#39;bold&#39;]==True, then BOLD</span>
 <span class="sd">        output will be saved as well, defaults to False</span>
 <span class="sd">    :type saveAllModelOutputs: bool</span>
+
+<span class="sd">    :param ncores: Number of cores to simulate on (max cores default), defaults to None</span>
+<span class="sd">    :type ncores: int, optional</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">model</span>
     <span class="k">if</span> <span class="n">evalFunction</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -1086,6 +1103,12 @@ for every parameter.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">filename</span> <span class="o">=</span> <span class="n">filename</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">saveAllModelOutputs</span> <span class="o">=</span> <span class="n">saveAllModelOutputs</span>
+
+    <span class="c1"># number of cores</span>
+    <span class="k">if</span> <span class="n">ncores</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ncores</span> <span class="o">=</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">cpu_count</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ncores</span> <span class="o">=</span> <span class="n">ncores</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Number of processes: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ncores</span><span class="p">))</span>
 
     <span class="c1"># bool to check whether pypet was initialized properly</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">initialized</span> <span class="o">=</span> <span class="kc">False</span>
@@ -2021,10 +2044,10 @@ and stores all data into the pypet hdf file.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.4fa0e4ee.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.d351de03.min.js", "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.1d3bfcf1.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a1609d9a.min.js"></script>
       
         <script src="../../js/config.js"></script>
       
