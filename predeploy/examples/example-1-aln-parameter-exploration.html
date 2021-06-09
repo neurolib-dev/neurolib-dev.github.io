@@ -1,0 +1,993 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2, mkdocs-material-7.1.7">
+    
+    
+      
+        <title>Example 1 aln parameter exploration - Neurolib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-189722517-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Neurolib" class="md-header__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurolib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Example 1 aln parameter exploration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Neurolib" class="md-nav__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Neurolib
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing.html" class="md-nav__link">
+        Contributing to neurolib
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0-aln-minimal.html" class="md-nav__link">
+        Example 0 aln minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.1-hopf-minimal.html" class="md-nav__link">
+        Example 0.1 hopf minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.2-basic_analysis.html" class="md-nav__link">
+        Example 0.2 basic analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.3-fhn-minimal.html" class="md-nav__link">
+        Example 0.3 fhn minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.4-wc-minimal.html" class="md-nav__link">
+        Example 0.4 wc minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.5-aln-external-stimulus.html" class="md-nav__link">
+        Example 0.5 aln external stimulus
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-0.6-custom-model.html" class="md-nav__link">
+        Example 0.6 custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="example-1-aln-parameter-exploration.html" class="md-nav__link md-nav__link--active">
+        Example 1 aln parameter exploration
+      </a>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-1.1-custom-parameter-exploration.html" class="md-nav__link">
+        Example 1.1 custom parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-1.2-brain-network-exploration.html" class="md-nav__link">
+        Example 1.2 brain network exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-1.2.1-brain-exploration-postprocessing.html" class="md-nav__link">
+        Example 1.2.1 brain exploration postprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-1.3-aln-bifurcation-diagram.html" class="md-nav__link">
+        Example 1.3 aln bifurcation diagram
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-2-evolutionary-optimization-minimal.html" class="md-nav__link">
+        Example 2 evolutionary optimization minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-2.0.1-save-and-load-evolution.html" class="md-nav__link">
+        Example 2.0.1 save and load evolution
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-2.1-evolutionary-optimization-aln.html" class="md-nav__link">
+        Example 2.1 evolutionary optimization aln
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-2.2-evolution-brain-network-aln-resting-state-fit.html" class="md-nav__link">
+        Example 2.2 evolution brain network aln resting state fit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-3-meg-functional-connectivity.html" class="md-nav__link">
+        Example 3 meg functional connectivity
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-4-multimodel-intro.html" class="md-nav__link">
+        Example 4 multimodel intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="example-4.1-creating-new-model.html" class="md-nav__link">
+        Example 4.1 creating new model
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Exploration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exploration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exploration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exploration/boxsearch.html" class="md-nav__link">
+        BoxSearch
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/model.html" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../models/parameters.html" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Optimization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimization/evolution.html" class="md-nav__link">
+        Evolution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utils" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/dataset.html" class="md-nav__link">
+        Dataset
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/functions.html" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/parameterspace.html" class="md-nav__link">
+        ParameterSpace
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/signal.html" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/stimulus.html" class="md-nav__link">
+        Stimulus
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/neurolib-dev/neurolib/edit/master/docs/examples/example-1-aln-parameter-exploration.ipynb" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                  <h1>Example 1 aln parameter exploration</h1>
+                
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var scriptElement = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    scriptElement.src = widgetRendererSrc;
+    document.body.appendChild(scriptElement);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?urlpath=%2Ftree%2Fdocs%2Fexamples%2Fexample-1-aln-parameter-exploration.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># change to the root directory of the project</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;examples&quot;</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+
+<span class="c1"># This will reload all imports as soon as the code changes</span>
+<span class="o">%</span><span class="n">load_ext</span> <span class="n">autoreload</span>
+<span class="o">%</span><span class="n">autoreload</span> <span class="mi">2</span>    
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">sys</span>
+    <span class="err">!</span><span class="p">{</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span><span class="p">}</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">neurolib.models.aln</span> <span class="kn">import</span> <span class="n">ALNModel</span>
+<span class="kn">from</span> <span class="nn">neurolib.utils.parameterSpace</span> <span class="kn">import</span> <span class="n">ParameterSpace</span>
+<span class="kn">from</span> <span class="nn">neurolib.optimize.exploration</span> <span class="kn">import</span> <span class="n">BoxSearch</span>
+
+<span class="c1"># a nice color map</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;image.cmap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;plasma&#39;</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;mue_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="s2">&quot;mui_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)})</span>
+<span class="c1"># info: chose np.linspace(0, 3, 21) or more, values here are low for testing</span>
+<span class="n">search</span> <span class="o">=</span> <span class="n">BoxSearch</span><span class="p">(</span><span class="n">aln</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="s2">&quot;example-1.hdf&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of results: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">)))</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="c1"># Example analysis of the results</span>
+<span class="c1"># The .results attribute is a list and can be indexed by the run </span>
+<span class="c1"># number (which is also the index of the pandas dataframe .dfResults).</span>
+<span class="c1"># Here we compute the maximum firing rate of the node in the last second</span>
+<span class="c1"># and add the result (a float) to the pandas dataframe.</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+    <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;max_r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">][:,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):])</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="s1">&#39;max_r&#39;</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">),</span> \
+           <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mue_ext_mean</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mue_ext_mean</span><span class="p">),</span>
+                     <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mui_ext_mean</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">mui_ext_mean</span><span class="p">)],</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Maximum rate [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Input to E&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Input to I&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_text output_subarea output_execute_result">
+<pre>
+<code>Text(0, 0.5, &#39;Input to I&#39;)</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAEKCAYAAAB0cRxpAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4zLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvnQurowAAIABJREFUeJzt3XuYXVWZ5/Hvry65QwIEQkzQoEQZRATMQGjU5iIKtEO0pRG0MShOph0UsHVsdOYRdZxn1GdaFLVliosExQDNRSKCijQ0MK2BAOEOTbhJIhASgYQ7qXrnj72LnBRVtdep7H1qV9Xv47Ofc84+6+y9zjH1svZe611LEYGZmQ2sbbgrYGZWdw6UZmYFHCjNzAo4UJqZFXCgNDMr4EBpZlagskApaYKkmyTdLuluSV/vp8x4SRdKWilpmaQ5VdXHzGyoqmxRvgwcFBHvBPYEDpU0v0+Z44GnI2IX4DTg2xXWx8xGKEmfzxtcd0lakjfEds4bWCvzBte4qs5fWaCMzHP5y8586zu6fQGwOH9+MXCwJFVVJzMbeSTNAk4E5kXE7kA7cDRZw+q0vKH1NFnDqxIdVR0YQFI7cAuwC/CjiFjWp8gs4DGAiNgo6VlgO2Btn+MsAhZlr8a9q03bV1ltG+Vmt3Umlx0/7tWkch2dG5PKtXd2J5+7vSOtbFviuQHU2ZNU7taHn18bEUP+Q3vf+yfFunVp9V9x6yu/iYhDC4p1ABMlvQpMAh4HDgI+lr+/GPga8OMhVTjh5JWJiG5gT0nTgMsk7R4Rdw3hOF1AF0B72+yYNO6EkmtqY8k/TJqVXPbNb3oyqdwOM59KKrfNjKeTz73VDs8klZs049nkY47bYX1Suc5jlz2afNB+rFvXzXW/T/udp41/eFdJyxt2deV/8wBExGpJ/wf4I/Ai8FuyBtgzEdH7X4lVZA2vSlQaKHtFxDOSrgUOBRoD5WpgJ2CVpA5gKrCuFXUysyoJetpTC6+NiHkDHknahuw23c7AM8A/k8WSlqmy13v7vCWJpInAIcB9fYotBRbmz48E/iU8S4fZyBeg7rakLcH7gIcj4qmIeBW4FNgfmJY3sABmkzW8KlFlr/dM4FpJdwA3A1dHxBWSviHpiLzM2cB2klYCfw+cUmF9zKxFBKhHSVuCPwLzJU3KO3sPBu4BriVrYEHW4Lq8iu8CFV56R8QdwF797P9qw/OXgL+pqg5mNkwClNZvVHyoiGWSLgZuBTYCt5H1WfwKuEDSN/N9Z5dzxtdryT1KMxuDSgqUABFxKnBqn90PAfuUd5aBOVCaWfkCNIp6GxwozawSZV1614EDpZmVL0Ddo6dJ6UBpY05bW/ofsBLLpibeqonr0UqSeVt5PewWpZnZwLLhQW5RmpkNLHCL0sysiHu9zcwGE6D0SY1qz4HSzKoxiqZtcKA0s0p4HKWZ2WDcmWNmVsydOWZmRdyiNDMbmALUPXrWCXSgtDGnvS29qZOacpicmtjM9WjZ5241tyjNzAbhzhwzswQ1begOhQOlmVUicT2cEaHKxcXMbKwKoFtpWwFJb5O0omFbL+lkSdtKulrSA/njNlV9HQdKM6tGT+JWICLuj4g9I2JP4F3AC8BlZKu2XhMRc4FrqHAVVwdKMytfNLE152DgwYh4FFgALM73LwY+tKXVHojvUZpZBQTp9yinS1re8LorIroGKHs0sCR/PiMiHs+fPwHMaL6eaRwozawakRwo10bEvKJCksYBRwBfft2pIkIVDij1pbeZlS+y2YNStiYcBtwaEU/mr5+UNBMgf1xT7pfYxC1KG3PURPOgLTGLJ3kRsmYWNqsg26eZ82+x8lMYj2HTZTfAUmAh8K388fKyT9jLLUozK1+Q3aNM2RJImgwcAlzasPtbwCGSHgDel7+uRGUtSkk7AeeR3WANshu03+9T5gCy/wo8nO+6NCK+UVWdzKyF0u9RFh8q4nlguz771pH1gleuykvvjcAXIuJWSVsBt0i6OiLu6VPuhoj4YIX1MLPh4FzvYnm3/eP58w2S7gVmAX0DpZmNOiq1RTncWnKPUtIcYC9gWT9v7yfpdklXSXp7K+pjZhULiB4lbSNB5b3ekqYAlwAnR8T6Pm/fCrwpIp6TdDjwC2BuP8dYBCwCENMqrrGZlWIUTdxbaYtSUidZkDw/Ii7t+35ErI+I5/LnVwKdkqb3U64rIuZFxLys88vMai3ILr1TthGgyl5vAWcD90bEdwcosyPwZD6qfh+ywL2uqjqZWQuNkMvqFFVeeu8PHAvcKWlFvu8rwBsBIuIM4EjgM5I2Ai8CR0eMolXTzcaskdNaTFFlr/eNwKC/VET8EPhhVXUws2HSO+B8lHAKo405w7m4WFPzNqSmGzaTltjC2BWjqDPHgdLMquFLbzOzQfjS28ysiDtzzMyKuUVpZjawiGwbLRwozawa3aNnulsHSjMrX0D4HqWZ2WCaWoWx9hwozawablGajVxtTWSypC8ulliuidgxrNk+JSjz0lvSNOAsYHeyUZqfAu4HLgTmAI8AR0XE06WdtMHoudtqZvURZEtBpGxpvg/8OiJ2Bd4J3AucAlwTEXOBa/LXlXCgNLNKRHdb0lZE0lTgvWTTNhIRr0TEM8ACYHFebDHwoYq+igOlmVUgddLe7PJ8uqTlDduiPkfbGXgK+Imk2ySdlS9fOyNfmwvgCbIVXyvhe5RmVokm7lGujYh5g7zfAewNfC4ilkn6Pn0us/PJvyu7AesWpZlVo0dpW7FVwKqI6F2c8GKywPmkpJkA+eOaSr4HDpRmVpWS1syJiCeAxyS9Ld91MNmy10uBhfm+hcDlVXwN8KW3mVUgovSJez8HnC9pHPAQ8Emyht5Fko4HHgWOKvOEjRwozawCKnUcZUSsAPq7j3lwaScZhAOlmVXDmTlmI1dHe3dy2eFcMye5bDPxqLqO4c0FhHO9zcwK1KRFKemvE4q9FBFXDvSmA6WZVaJG06ydSdYjPliF3gs4UJpZC4XqtFztVRHxqcEKSPrZYO87UJpZ6YL6tCgj4m+3tIwHnJtZNcrLzCmFpAcl/V2ffVekfNaB0szKly8FkbK10KvAgZJ+kg9cB5iV8kEHSjOrRkkpjCV6ISI+SjaX5Q2S3kh2l6BQZYFS0k6SrpV0j6S7JZ3UTxlJOl3SSkl3SNq7qvqYWSultSZb3KIUQER8B/jvwG+B2SkfrLIzZyPwhYi4VdJWwC2Sro6IexrKHAbMzbd9gR/nj2Y2kpWf612Gr/Y+iYjfSfoAmybVGFRlgTKfUPPx/PkGSfeS3Q9oDJQLgPMiIoA/SJomaWbDZJxmNgLVqde74Up1dT9XrUmdOS0ZHiRpDrAXsKzPW7OAxxper8r3bRYo8xmPFwGIaVVV08aI9vYmFhdrT1vUJXkRssTjZYUT0yKbWTCshYuL1SUzB/jHhufvApazafB5AAcVHaDyQClpCnAJcHJErB/KMSKiC+gCaG+b3cL/p81saFSbXO+IOLD3uaTbIqIwMPZVaaCU1EkWJM+PiEv7KbIa2Knh9ex8n5mNZFGfS+8+htTQqrLXW2Srpt0bEd8doNhS4BN57/d84FnfnzQbHaKnLWkbCapsUe4PHAvcKWlFvu8rwBsBIuIMsiT0w4GVwAtksxab2SgQTdyOrZKkH7CpJTlb0umN70fEiUXHqLLX+0YKZsrLe7tPqKoOZjZMgjp15ixveH7LUA7gSTHMrHRR8lIQkh4BNgDdwMaImCdpW+BCYA7wCHBURDz9urpELN7S84+MGwRmNuJUkJlzYETs2bAG+CnANRExF7iGPmt995L0taIDF5Vxi9LMqlH9pfcC4ID8+WLgOuAf+in3aUmDDU0UcDTwtYEKOFCaWfkCerqTL1inS2q8j9iVj53uc0R+q2whof+bvz+jYZTME8CMAY5/JrBVQR3OHOxNB0obc1KzaLKyqdkxacdranGx1AyiKo5ZhvRTrW24nB7IuyNitaQdgKsl3bfZqSJCA/y4EfH15JoMwPcozawC5c4eFBGr88c1wGXAPsCTkmYC5I9rKvoyDpRmVr7eSTHKCJSSJuczkCFpMvB+4C6yhJXe2X8Wki0gVglfeptZ+cpd13sGcFmW7EcH8POI+LWkm4GLJB0PPAocVdYJ+3KgNLNKlJWeGBEPAe/sZ/864ODU40h6K9mctzMiYndJewBHRMQ3iz7rS28zq0AtZzg/E/gy2do5RMQdZMOCCg3YopR0J/33Wyk7R+zRfD3NbEwIiPpNiDgpIm7KL+F7bUz54GCX3h/coiqZ2ZhVpxnOG6yV9BbyBqCkI+kzSfhABgyUEfFoOXUzszGpJhP3NjiBbALwXSWtBh4GPp7yQXfmmFklatiijIh4Xz7EqC1fy2vnlA86UNqo0TH4rH6byrV3Jx8zeS2ckstBehZPFevwbLEQPfWblPcSYO+IeL5h38Vk6+gMKilQShoHvDV/eX9EvNp0Fc1sTKlLi1LSrsDbgamS/rrhra2BCSnHKAyUkg4gm5njEbIe750kLYyI65utsJmNITUJlMDbyDqnpwH/qWH/BuA/pxwgpUX5j8D7I+J+eG3Q5hISmqtmNjZF1GcpiIi4HLhc0n4R8fuhHCMlUHb2Bsn8pP+er65oZjagulx6N7hN0glkl+GvXXJHxKeKPphyt3W5pLMkHZBvZ7L5GhRmZq9Tw8ycnwI7Ah8A/pVseewNKR9MaVF+hmz8Ue9KZTcAP2q+jmY2dtSy13uXiPgbSQsiYrGkn5PFs0IpgfLv8nW5X1ubW9JJwPeHVlczG/XqtQpjr97ROs9I2p1sVvQdUj6YEvIX9rPvuLR6mdlYVOZ8lCXqkrQN8D/I5rK8B/h2ygcHmxTjGOBjwM6Slja8tRXw56HX1czGgjp15khqA9bny9leD7y5mc8Pdun9b2QJ49PJhgj12gDc0WQ9zWwsqdHwIICI6JH0JeCioXy+aFKMR4H9hlg3swGlphsCdEZ7UrnZPVOSyrV3vJx87tQUxuRyTSzulZqa2FQKYzNlt0gtO3N+J+mLwIXAa2mMEVF4hexcbzMrXU2nWfto/nhCw74g4TK8spAv6RxJayTdNcD7B0h6VtKKfPtqVXUxs9YruzNHUruk2yRdkb/eWdIySSslXZjPSTFIfWLnfrake5WFgTIfClS4rx/nAocWlLkhIvbMt28kHNPMRoKopNf7JODehtffBk6LiF2Ap4HjS/wGm6lseFA+aYZ7x83GpHLXzJE0G/gr4Kz8tYCDyKZJg2zing9V8EWA4R8etJ+k24E/AV+MiLsHqMsiYBGAmFbSqc2sUukznE+X1JgW3RURXX3KfA/4Eln8AdgOeCYiete8WQXMGmpViwzn8KBbgTdFxHOSDgd+Acztr2D+o3UBtLfNrt+SRWa2mQia6fVeGxHzBnpT0geBNRFxSz7t45DlS9TOoSH2RcSlRZ8btuFBEbG+4fmVkv5J0vSIWFvF+cystUpchXF/4Ii8QTWBbMLd7wPTJHXkrcrZwOrBDiLpHGAP4G6gd5xUAEMPlA0H38CmZWvHAZ3A8xGxddFnC467I/BkRISkfcjul67bkmOaWX2UNTwoIr5Mth5370TiX4yIj0v6Z+BI4AKyvpTLCw41PyJ2G0odCgNlRPTeE+i9gboAmF/0OUlLgAPI7j+sAk4lC7JExBlkX/AzkjYCLwJHR9RwJWAzG4KW5HH/A3CBpG8CtwFnF5T/vaTdIuKeZk/U1IDzPJD9QtKpwCkFZY8peP+HwA+bOb/VX2rGzYyeycnHfMfGbZLK/eXUtKyTjvYXk8/d3pG2EFlquaYWF0st20S2T1Nlt1AVgTIirgOuy58/BOzTxMfPIwuWTwAvky1tExGxR9EHUy69GxfjaQPmAS81UTkzG2MiapmZczZwLHAnm+5RJklpUTYuxrORbJGxBc2cxMzGnp7u2uV6PxURS4uLvV7KPcpPDuXAZjaWtXyuyRS35bOa/5Ls0hvYwuFBvSS9mawrfj5Z7/fvgc/n9wfMzF6vnpfeE8kC5Psb9pUzPAj4OdkaOR/OXx9Ntlztvs3V0czGijrOHrQlV8cpgXJSRPy04fXPJP23oZ7QzMaGugVKST9h05jw16QsV5sSKK+SdArZoM4gm9PtSknb5ifxxBdm1kctJ+69ouH5BLKr5D+lfDAlUB6VP/6XPvuPJnHSSzMbYwIifVKMloiISxpf50kxN6Z8NqXXe+ch1svMxqg63qPsx1wSl6tNysyR9Be8fsaN84ZSMzMbG+qWkNwwb4XyxyfI0iALpQwP+inwFmAF0JunFWTpQDYGTIz0TNddu9PSDd/ds1VxodxDbCwuBIzvTEsj7OhMOx5Ae3tqamJaVGgqhTEx3bCei4tBT81alI3zVjQr5S9gHrCbJ6wws2T1HEdZ/nyUDe4CdiSbxNfMrFDUsNe70vkoyWY4v0fSTWye9nNE81U1s7Gihi3K6uajBL42lAOb2RhWw+FBVDkfZUT869DqZGZjWQ1blOXPR9lnCYjN3soPvkVLQZjZ6BX1nD2o/Pkot6Qr3cyshoGyuvkozcyaFtBdUq+3pAnA9cB4sph1cUScKmlnsjkotgNuAY6NiFcGOVR181GamTWr5BTGl4GDIuI5SZ3AjZKuAv4eOC0iLpB0BnA88ONBjlPpfJQ2wqQu8LVdz8SkcvM2Tk8+90HbvZpU7sVX0soBvLK+M6nchPEvJJXr6EjPzOlIzPZpT8z2aetIvzXWlrhgGU1k+7R0cbGSkoDyZJfn8ped+RbAQcDH8v2LyUboDBgoq56P0sysSeV25khqJ7u83oVsIvEHgWciove/UKuAWQN89ksR8R1JP6D/+ShPLDq/A6WZlS+ayvWeLml5w+uuiOja7HAR3cCekqYBlwG7NlGbe/PH5YOWGoQDpZmVLqCZFMa1ETEv6bgRz0i6FtgPmCapI29VzgZWD/CZX+ZPL4yIzZbalpR0X6leyZhmNmpEKGkrImn7vCWJpInAIWStxGuBI/NiC4HLCw51k6T5Dcf9CPBvKd/FLUozq4DKnGZtJrA4v0/ZBlwUEVdIuge4QNI3gdvIBpQP5uPAOZKuA95ANqzooJQKOFCaWekiypu4NyLuAPbqZ/9DwD5NHOdOSf8L+CmwAXhvRKxK+Wxll96SzpG0RtJdA7wvSadLWinpDkl7V1UXM2u96FHS1iqSzgZOJptq7ZPAFZJOSPlslfcozwUOHeT9w8jWrJgLLGLwgaJmNsKUdY+yRHcCB0bEwxHxG2BfIKmBVtmld0RcL2nOIEUWAOflg0n/IGmapJkR4QmCzUa4COiu2TRrEfG9Pq+fJcvmKTSc9yhnAY81vO4dMPq6QClpEVmrEzGtJZWrm9RsG4CdutPmMzkoMePmoLen/7dr8uS07Jiv35K0+B0AH+hsTyo3fnxatk/nuPSsoPbELJ72xLVoUjN4AJSYmaPOJlJgmim7heo2KYakucD/BnYjW9cbgIgoXHJ7RAwPioiuiJgXEfOkycNdHTMrlPV6p2wt9BOyW3wbgQPJ5qf8WcoHhzNQrgZ2ang94IBRMxtZskkx0rYWmhgR1wCKiEcj4mvAX6V8cDgD5VLgE3nv93zgWd+fNBs9atiZ87KkNuABSZ+V9GFgSsoHK7tHKWkJcABZHucq4FSyWT+IiDOAK4HDgZXAC2Td9WY2GgR0d9frHiVwEjAJOBH4n2SDzRemfLDKXu9jCt4PIGkMk5mNLCXPR1mKiLg5f/ocTTbMnJljZhVoeUfNgCQNuvxDytLbDpRmVr7Wd9QMZj+yoYhLgGXQxFi7nAOlmZUuaGo+yqrtSDbj0DFkM6L/ClgSEXenHmBEjKM0s5GnLsODIqI7In4dEQuB+WQdyNdJ+mzqMdyiNLNK1CmFUdJ4sjGTxwBzgNPJZkpP4kA5zMZHWnre23q2ST7m4UoaGsZ73n1fUrntZ65LPveVv9o3qdwu3ekXM1tPSUv7Gz9+sJVKN+lsIo2wPXFxsbbEY6qJxcU0LjGFMbEc0LIUxmEYTD4gSecBu5MNSfx6RPQ7o9lgHCjNrBI1ukf5t8DzZOMoT5Req5fIRipuXXQAB0ozq0RdWpQRscV9MQ6UZlaJugTKMrjX28xK1zs8qIzZgyTtJOlaSfdIulvSSfn+bSVdLemB/DH9Rn6THCjNrHwB3Ylbgo3AFyJiN7LhPSdI2g04BbgmIuYC1+SvK+FAaWalC5S8FR4r4vGIuDV/voFsqdpZZKskLM6LLQY+VNHX8T1KM6tGTwX3KPPlZfYiS0Wc0TA14xPAjPLPmHGgNLNKNBEnp0ta3vC6KyK6+haSNAW4BDg5ItY3DPMhIkJSZd1HDpRmVrqsMye5+NqImDdYAUmdZEHy/Ii4NN/9ZO+ChJJmAmuGWt8iDpQVSc242at7+6RyC7ZKOx7A/n9xW1K5GW/+U1K5Vfe/MfncN7yUlvmxm9L/6U2ZlJZxM2FCWrlxiRk8AJ2JC5Z1jEtchKyJhc1Ss31IPDdAjGvdmJ3EjppCypqOZwP3RsR3G95aSjbx7rfyx8vLOePrOVCaWSVKDMn7A8cCd0pake/7ClmAvEjS8cCjwFHlnXJzDpRmVroAysoqj4gbGXgOyYNLOs2gHCjNrBKjKDHHgdLMqtGaeYpaw4HSzErXu673aOFAaWaVaGKWzNpzoDSz0pXZmVMHDpRmVgkHSjOzAqPoFqUDZTNSs20A9t+4Y1K5D++YliUy/z23JJ975m5/TCr30tNpa+tc9rt3Jp97VuId/O0T18EBmDL5paRyEyamlRuXmMED0JmYxdORmMHTPiE9M0fjE3+j8el3A3smtiZ8+dLbzKxQEKOoTVnpfJSSDpV0v6SVkl43qaak4yQ9JWlFvn26yvqYWet0J24jQWUtSkntwI+AQ4BVwM2SlkbEPX2KXhgRyQuRm1n9jbZL7ypblPsAKyPioYh4BbiAbEZiMxsDQpG0jQRVBspZwGMNr1fl+/r6iKQ7JF0saacK62NmLdSTuI0Ew71mzi+BORGxB3A1m9a/2IykRZKWS1oe8XxLK2hmzeu99HagLLYaaGwhzs73vSYi1kXEy/nLs4B39XegiOiKiHkRMU+aXEllzaxc3UTSNhJUGShvBuZK2lnSOOBoshmJX5NP397rCLLV1cxshAt6BwgV/28kqKzXOyI2Svos8BugHTgnIu6W9A1geUQsBU6UdATZur1/Bo6rqj5m1loj5bI6RaUDziPiSuDKPvu+2vD8y8CXq6yDmQ2PKF6yOy9YaTVK4cwc0lMTD371DcnHPPItzyaV2/fA5cWFgBl7PZx87p5X077PLVfum1RuXRMTC76pM63sNlu/mHzMraa8kFRu0uS0Y06YlJbqCDBuYmIKY2K5tolNLC42ObHspPR00J5JyUW3SNaZMwIiYKLh7vU2s1GqrF5vSedIWiPproZ920q6WtID+eM25X+DTRwozax0kdjjndjrfS5waJ99pwDXRMRc4Jr8dWUcKM2sEj1E0lYkIq4n6+xttIBN464XAx8qt/ab8z1KM6tEcmcOTJfUeLO+KyK6Cj4zIyIez58/AcxosnpNcaA0s9I12ZmzNiLmDflcESFVmzTuS28zq0TFA86f7E1YyR/XlFbxfjhQmlklKs71XgoszJ8vBC4f+qGK+dLbzErX2+tdBklLgAPI7mWuAk4FvgVcJOl44FHgqFJONgAHSjOrRE9Jtw0j4pgB3jq4lBMkGLWBsoP0LrfDXpmdVO7je64uLpSb9/6bksptMy8t40bj0ifN/+Pl/U7C9DoXLXtLUrk3pK+pxvZTXy4uBGwz7bnkY07ZOm1qvYmJmTnjExcrAxiXWLZzSlq59slpvw8Ak9KyfXomp1/Abpzcmrttoy0zZ9QGSjMbXqMnTDpQmllF3KI0MxtEABsdKM3MBjNyJuVN4UBpZqVzZ46ZWRGVNzyoDhwozax0vaswjhYOlGZWCV96m5kNIkthHD1tSgdKM6uEW5QjwGGv7JRcdtF7Hkgqt+cHbk4+5uT/+EhSudguLU1t/dL/kHzuH597SFK5N3Sk/UPeITEtEWD6thuSyk2dmlYOYKupaemOk6cmpjpunbZYGcC4xLIdiYultU1NT5+MaWmLi22cmnxIXt06fXGzLeVAaWY2CA8PMjNL0JM+L03tOVCaWencojQzKxAEr7rX28xscG5RmpkVGE2BstLpjiUdKul+SSslndLP++MlXZi/v0zSnCrrY2atEQTd6knaUhTFkqpVFigltQM/Ag4DdgOOkbRbn2LHA09HxC7AacC3q6qPmbVOAN35AmNFW5HEWFKpKluU+wArI+KhiHgFuABY0KfMAmBx/vxi4GBJo2hQgdnYFMAr6knaEqTEkkpVeY9yFvBYw+tVwL4DlYmIjZKeBbYD1jYWkrQIWJS/fPm5l79yV9HJlzRR0SU3JBbsv9x0+tS3GmnZQ5mlaXXamHi4dU2cuv+yLfqNkrk+xd62JR/uidW/2fDSl6cnFp8gaXnD666I6Gp4nRJLKjUiOnPyH60LQNLyiJg3zFV6Td3qA/Wrk+szuLrVB7I6bcnnI+LQsupSB1Veeq8GGhOuZ+f7+i0jqQOYSnPtFzMb/VJiSaWqDJQ3A3Ml7SxpHHA0sLRPmaXAwvz5kcC/RMToGVNgZmVIiSWVquzSO7/n+FngN0A7cE5E3C3pG8DyiFgKnA38VNJK4M9kP0CRruIiLVW3+kD96uT6DK5u9YEa1WmgWNLKOsgNODOzwVU64NzMbDRwoDQzK1DbQFm39MeE+hwn6SlJK/Lt0xXX5xxJayT1O6ZUmdPz+t4hae9hrs8Bkp5t+H2+WnF9dpJ0raR7JN0t6aR+yrTsN0qsT8t+I0kTJN0k6fa8Pl/vp4xTjHtFRO02shu2DwJvBsYBtwO79SnzX4Ez8udHAxcOc32OA37Ywt/ovcDewF0DvH84cBUgYD6wbJjrcwBwRQt/n5nA3vnzrYB/7+f/s5b9Ron1adlvlH/nKfnzTmAZML9PmZb9jdV9q2uLsm7pj8OeQtVXRFxPNlJgIAuA8yLzB2CapJnDWJ+WiojHI+LW/PkG4F6yDI9GLfuNEuvTMvl37l2MqDPf+vbsOsU4V9dA2V/KUt9/VJt13UIFAAADbElEQVSlPwK96Y/DVR+Aj+SXcBdLSl/drBqpdW6l/fJLvaskvb1VJ80vGfciazU1GpbfaJD6QAt/I0ntklYAa4CrI2LA36cFf2O1VtdAORL9EpgTEXsAV7Ppv8SWuRV4U0S8E/gB8ItWnFTSFOAS4OSIWN+Kc25BfVr6G0VEd0TsSZbpso+k3as830hW10BZt/THwvpExLqI6F3X9SzgXRXVJdWwp301ioj1vZd6EXEl0CkpddKEIZHUSRaUzo+IS/sp0tLfqKg+w/Eb5ed6BrgW6Juf7RTjXF0DZd3SHwvr0+fe1hFk96CG01LgE3nP7nzg2Yh4fLgqI2nH3vtbkvYh+7dX2R9dfq6zgXsj4rsDFGvZb5RSn1b+RpK2lzQtfz4ROAS4r08xpxjnajl7UFSX/lhlfU6UdATZ5GV/JusFr4ykJWS9pNMlrQJOJbshT0ScAVxJ1qu7EngB+OQw1+dI4DOSNgIvAkdX/Ee3P3AscGd+Hw7gK8AbG+rUyt8opT6t/I1mAouVTYrbBlwUEVcM199Y3TmF0cysQF0vvc3MasOB0sysgAOlmVkBB0ozswIOlGZmBRwoDQBJzxWXavqYcyR9rNn3Co73YsPsOiskfaKc2poNrJbjKG3UmAN8DPh5k+8N5sE87c6sZdyitM3kcyJel0/scZ+k8xuyRR6R9B1Jd+ZzGe6S7z9X0pENx+htnX4LeE/e8vt8n1Nt9l4+P+JP8mPfJunAVnxfsxRuUVp/9gLeDvwJ+H9kWSU35u89GxHvyC95vwd8cJDjnAJ8MSL6K7PZe5K+QDb71zsk7Qr8VtJbI+KlPp97S0NmC8DnIuKGZr+gWTPcorT+3BQRqyKiB1hBdpnca0nD434lnvPdwM8AIuI+4FHgrf2UezAi9mzYHCStcg6U1p+XG553s/mVR/TzfCP5vyVJbWSzwJuNGg6U1qyPNjz+Pn/+CJumlTuCfDIMYAPZsgf96fveDcDHASS9lWyyiPtLqbHZFvI9SmvWNpLuIGt1HpPvOxO4XNLtwK+B5/P9dwDd+f5zI+K0huNs9h7wT8CPJd1J1kI9rmF+z0Z971GeExGnl/TdzPrl2YMsmaRHgHkRsXa462LWSr70NjMr4BalmVkBtyjNzAo4UJqZFXCgNDMr4EBpZlbAgdLMrMD/B1abiWoFPDEHAAAAAElFTkSuQmCC
+"
+>
+</div>
+</div>
+</div>
+</div>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="example-0.6-custom-model.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Example 0.6 custom model" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Example 0.6 custom model
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="example-1.1-custom-parameter-exploration.html" class="md-footer__link md-footer__link--next" aria-label="Next: Example 1.1 custom parameter exploration" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Example 1.1 custom parameter exploration
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://twitter.com/neurolib-dev" target="_blank" rel="noopener" title="neurolib on Twitter" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      
+        <script src="../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
