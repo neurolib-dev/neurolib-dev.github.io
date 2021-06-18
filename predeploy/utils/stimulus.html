@@ -946,6 +946,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ModelInput.to_model" class="md-nav__link">
+    to_model()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#neurolib.utils.stimulus.ModelInput.update_params" class="md-nav__link">
     update_params()
   </a>
@@ -1160,8 +1167,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#neurolib.utils.stimulus.construct_stimulus" class="md-nav__link">
-    construct_stimulus()
+  <a href="#neurolib.utils.stimulus.RectifiedInput" class="md-nav__link">
+    RectifiedInput()
   </a>
   
 </li>
@@ -1406,6 +1413,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ModelInput.to_model" class="md-nav__link">
+    to_model()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#neurolib.utils.stimulus.ModelInput.update_params" class="md-nav__link">
     update_params()
   </a>
@@ -1620,8 +1634,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#neurolib.utils.stimulus.construct_stimulus" class="md-nav__link">
-    construct_stimulus()
+  <a href="#neurolib.utils.stimulus.RectifiedInput" class="md-nav__link">
+    RectifiedInput()
   </a>
   
 </li>
@@ -1957,6 +1971,7 @@ of arbitrary many objects.</p>
     <span class="k">if</span> <span class="n">length_ratios</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">length_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">noise_processes</span><span class="p">)</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">noise_processes</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">length_ratios</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="n">length_ratios</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span> <span class="o">=</span> <span class="n">length_ratios</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">noise_processes</span><span class="p">)</span>
 </code></pre></div>
@@ -1989,10 +2004,13 @@ of arbitrary many objects.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># normalize ratios to sum = 1</span>
     <span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+    <span class="n">concat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
         <span class="p">[</span><span class="n">process</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="k">for</span> <span class="n">process</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">noise_processes</span><span class="p">,</span> <span class="n">ratios</span><span class="p">)],</span>
         <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
     <span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="c1"># due to rounding errors, the overall length might be longer by a few dt</span>
+    <span class="k">return</span> <span class="n">concat</span><span class="p">[:</span><span class="n">length</span><span class="p">,</span> <span class="p">:]</span>
 </code></pre></div>
         </details>
     </div>
@@ -2403,10 +2421,8 @@ of arbitrary many objects.</p>
           <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
-    <span class="c1"># need to adjust times for stimulus start</span>
-    <span class="n">times</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">stim_start</span>
-    <span class="n">linear_inp</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">*</span> <span class="n">times</span> <span class="o">*</span> <span class="p">(</span><span class="n">times</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">*</span> <span class="p">(</span>
-        <span class="n">times</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span>
+    <span class="n">linear_inp</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span>
     <span class="p">)</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim_input</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">linear_inp</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_iid</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </code></pre></div>
@@ -2650,7 +2666,9 @@ of arbitrary many objects.</p>
 <span class="sd">    :param dt: some reasonable &quot;speed&quot; of input, in milliseconds</span>
 <span class="sd">    :type dt: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">array</span>
 </code></pre></div>
         </details>
     </div>
@@ -2718,7 +2736,9 @@ of arbitrary many objects.</p>
 <span class="sd">    :type shift_start_time: float</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">CubicHermiteSpline</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">+</span> <span class="n">shift_start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">))</span>
+    <span class="n">splines</span> <span class="o">=</span> <span class="n">CubicHermiteSpline</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">+</span> <span class="n">shift_start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">splines</span>
 </code></pre></div>
         </details>
     </div>
@@ -2809,6 +2829,66 @@ of arbitrary many objects.</p>
     <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">}</span>
     <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ModelInput.to_model">
+<code class="highlight language-python"><span class="n">to_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return numpy array of stimuli based on model parameters.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>model</code></td>
+        <td><code>`neurolib.models.Model`</code></td>
+        <td><p>neurolib's model</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return numpy array of stimuli based on model parameters.</span>
+
+<span class="sd">    :param model: neurolib&#39;s model</span>
+<span class="sd">    :type model: `neurolib.models.Model`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">Model</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_iid</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_iid</span> <span class="o">!=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Model has </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> nodes; but stimulus&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; has </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_iid</span><span class="si">}</span><span class="s2"> dims. Will set number of dims to number &quot;</span>
+            <span class="s2">&quot;of model nodes.&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_iid</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span>
+    <span class="c1"># core neurolib uses nodes x time</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
 </code></pre></div>
         </details>
     </div>
@@ -3691,6 +3771,8 @@ speed.</p>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">stim_start</span> <span class="o">=</span> <span class="n">stim_start</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">stim_end</span> <span class="o">=</span> <span class="n">stim_end</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_default_stim_start</span> <span class="o">=</span> <span class="n">stim_start</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_default_stim_end</span> <span class="o">=</span> <span class="n">stim_end</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
         <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">,</span>
         <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
@@ -4002,15 +4084,17 @@ Supports summation of arbitrary many objects.</p>
 
 
 
-<h2 class="doc doc-heading" id="neurolib.utils.stimulus.construct_stimulus">
-<code class="highlight language-python"><span class="n">construct_stimulus</span><span class="p">(</span><span class="n">stim</span><span class="o">=</span><span class="s1">&#39;dc&#39;</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">stim_amp</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stim_bias</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_periods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nostim_before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nostim_after</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.RectifiedInput">
+<code class="highlight language-python"><span class="n">RectifiedInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
 
 
 </h2>
 
     <div class="doc doc-contents ">
 
-      <p>Constructs a stimulus that can be applied to a model</p>
+      <p>Return rectified input, i.e. a negative step current, followed by positive
+exponentially increasing and then slowly decaying amplitude, typically used
+for bistablity detection.</p>
 
 <p><strong>Parameters:</strong></p>
 <table>
@@ -4024,58 +4108,16 @@ Supports summation of arbitrary many objects.</p>
   </thead>
   <tbody>
       <tr>
-        <td><code>stim</code></td>
-        <td><code>str, optional</code></td>
-        <td><p>Stimulation type: 'ac':oscillatory stimulus, 'dc': stimple step current, 'rect': step current in negative then positive direction with slowly decaying amplitude, used for bistability detection, defaults to 'dc'</p></td>
-        <td><code>&#39;dc&#39;</code></td>
+        <td><code>amplitude</code></td>
+        <td><code>float</code></td>
+        <td><p>overall amplitude (both negative and positive) for the rectified stimulus</p></td>
+        <td><em>required</em></td>
       </tr>
       <tr>
-        <td><code>duration</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Duration of stimulus in ms, defaults to 6000</p></td>
-        <td><code>6000</code></td>
-      </tr>
-      <tr>
-        <td><code>dt</code></td>
-        <td><code>float, optional</code></td>
-        <td><p>Integration time step in ms, defaults to 0.1</p></td>
-        <td><code>0.1</code></td>
-      </tr>
-      <tr>
-        <td><code>stim_amp</code></td>
-        <td><code>float, optional</code></td>
-        <td><p>Amplitude of stimulus (for AdEx: in mV/ms, multiply by conductance C to get current in pA), defaults to 0.2</p></td>
-        <td><code>0.2</code></td>
-      </tr>
-      <tr>
-        <td><code>stim_freq</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Stimulation frequency, defaults to 1</p></td>
+        <td><code>num_iid</code></td>
+        <td><code>int</code></td>
+        <td><p>how many independent realisation of the input we want - for constant inputs the array is just copied, for noise this means independent realisation</p></td>
         <td><code>1</code></td>
-      </tr>
-      <tr>
-        <td><code>stim_bias</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Stimulation offset (bias), defaults to 0</p></td>
-        <td><code>0</code></td>
-      </tr>
-      <tr>
-        <td><code>n_periods</code></td>
-        <td><code>[type], optional</code></td>
-        <td><p>Numer of periods of stimulus, defaults to None</p></td>
-        <td><code>None</code></td>
-      </tr>
-      <tr>
-        <td><code>nostim_before</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Time before stimulation, defaults to 0</p></td>
-        <td><code>0</code></td>
-      </tr>
-      <tr>
-        <td><code>nostim_after</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Time after stimulation, defaults to 0</p></td>
-        <td><code>0</code></td>
       </tr>
   </tbody>
 </table>
@@ -4089,129 +4131,41 @@ Supports summation of arbitrary many objects.</p>
   </thead>
   <tbody>
     <tr>
-      <td><code>numpy.ndarray</code></td>
-      <td><p>Stimulus timeseries</p></td>
+      <td><code>`ConctatenatedInput`</code></td>
+      <td><p>concatenated input which represents rectified stimulus</p></td>
     </tr>
-  </tbody>
-</table>
-<p><strong>Exceptions:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><code>ValueError</code></td>
-        <td><p>Raises error if unsupported stimulus type is chosen.</p></td>
-      </tr>
   </tbody>
 </table>
         <details class="quote">
           <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">construct_stimulus</span><span class="p">(</span>
-    <span class="n">stim</span><span class="o">=</span><span class="s2">&quot;dc&quot;</span><span class="p">,</span>
-    <span class="n">duration</span><span class="o">=</span><span class="mi">6000</span><span class="p">,</span>
-    <span class="n">dt</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
-    <span class="n">stim_amp</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
-    <span class="n">stim_freq</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-    <span class="n">stim_bias</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">n_periods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">nostim_before</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">nostim_after</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Constructs a stimulus that can be applied to a model</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">RectifiedInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return rectified input, i.e. a negative step current, followed by positive</span>
+<span class="sd">    exponentially increasing and then slowly decaying amplitude, typically used</span>
+<span class="sd">    for bistablity detection.</span>
 
-<span class="sd">    :param stim: Stimulation type: &#39;ac&#39;:oscillatory stimulus, &#39;dc&#39;: stimple step current,</span>
-<span class="sd">                &#39;rect&#39;: step current in negative then positive direction with slowly</span>
-<span class="sd">                decaying amplitude, used for bistability detection, defaults to &#39;dc&#39;</span>
-<span class="sd">    :type stim: str, optional</span>
-<span class="sd">    :param duration: Duration of stimulus in ms, defaults to 6000</span>
-<span class="sd">    :type duration: int, optional</span>
-<span class="sd">    :param dt: Integration time step in ms, defaults to 0.1</span>
-<span class="sd">    :type dt: float, optional</span>
-<span class="sd">    :param stim_amp: Amplitude of stimulus (for AdEx: in mV/ms, multiply by conductance C to get current in pA), defaults to 0.2</span>
-<span class="sd">    :type stim_amp: float, optional</span>
-<span class="sd">    :param stim_freq: Stimulation frequency, defaults to 1</span>
-<span class="sd">    :type stim_freq: int, optional</span>
-<span class="sd">    :param stim_bias: Stimulation offset (bias), defaults to 0</span>
-<span class="sd">    :type stim_bias: int, optional</span>
-<span class="sd">    :param n_periods: Numer of periods of stimulus, defaults to None</span>
-<span class="sd">    :type n_periods: [type], optional</span>
-<span class="sd">    :param nostim_before: Time before stimulation, defaults to 0</span>
-<span class="sd">    :type nostim_before: int, optional</span>
-<span class="sd">    :param nostim_after: Time after stimulation, defaults to 0</span>
-<span class="sd">    :type nostim_after: int, optional</span>
-<span class="sd">    :raises ValueError: Raises error if unsupported stimulus type is chosen.</span>
-<span class="sd">    :return: Stimulus timeseries</span>
-<span class="sd">    :rtype: numpy.ndarray</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="sd">&quot;&quot;&quot;Constructs a sitmulus that can be applied as input to a model</span>
-
-<span class="sd">    TODO: rewrite</span>
-
-<span class="sd">    stim:       Stimulus type: &#39;ac&#39;:oscillatory stimulus, &#39;dc&#39;: stimple step current, </span>
-<span class="sd">                &#39;rect&#39;: step current in negative then positive direction with slowly</span>
-<span class="sd">                decaying amplitude, used for bistability detection</span>
-<span class="sd">    stim_amp:   Amplitude of stimulus (for AdEx: in mV/ms, multiply by conductance C to get current in pA)</span>
+<span class="sd">    :param amplitude: overall amplitude (both negative and positive) for the</span>
+<span class="sd">        rectified stimulus</span>
+<span class="sd">    :type amplitude: float</span>
+<span class="sd">    :param num_iid: how many independent realisation of</span>
+<span class="sd">        the input we want - for constant inputs the array is just copied,</span>
+<span class="sd">        for noise this means independent realisation</span>
+<span class="sd">    :type num_iid: int</span>
+<span class="sd">    :return: concatenated input which represents rectified stimulus</span>
+<span class="sd">    :rtype: `ConctatenatedInput`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">sinus_stim</span><span class="p">(</span><span class="n">f</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">positive</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cycles</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t_pause</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="n">dt</span> <span class="o">/</span> <span class="n">f</span><span class="p">))</span>
-        <span class="n">sinus_function</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(((</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span> <span class="o">+</span> <span class="n">positive</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_pause</span><span class="p">)))</span>
-        <span class="n">sinus_function</span> <span class="o">*=</span> <span class="n">amplitude</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">sinus_function</span><span class="p">,</span> <span class="n">cycles</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">stim</span> <span class="o">==</span> <span class="s2">&quot;ac&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Oscillatory stimulus&quot;&quot;&quot;</span>
-        <span class="n">n_periods</span> <span class="o">=</span> <span class="n">n_periods</span> <span class="ow">or</span> <span class="nb">int</span><span class="p">(</span><span class="n">stim_freq</span><span class="p">)</span>
-
-        <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(</span>
-            <span class="p">(</span>
-                <span class="p">[</span><span class="n">stim_bias</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">nostim_before</span> <span class="o">/</span> <span class="n">dt</span><span class="p">),</span>
-                <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">sinus_stim</span><span class="p">(</span><span class="n">stim_freq</span><span class="p">,</span> <span class="n">stim_amp</span><span class="p">)</span> <span class="o">+</span> <span class="n">stim_bias</span><span class="p">,</span> <span class="n">n_periods</span><span class="p">),</span>
-            <span class="p">)</span>
-        <span class="p">)</span>
-        <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">stimulus</span><span class="p">,</span> <span class="p">[</span><span class="n">stim_bias</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">nostim_after</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)))</span>
-    <span class="k">elif</span> <span class="n">stim</span> <span class="o">==</span> <span class="s2">&quot;dc&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Simple DC input and return to baseline&quot;&quot;&quot;</span>
-        <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">(([</span><span class="n">stim_bias</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">nostim_before</span> <span class="o">/</span> <span class="n">dt</span><span class="p">),</span> <span class="p">[</span><span class="n">stim_bias</span> <span class="o">+</span> <span class="n">stim_amp</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)))</span>
-        <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">stimulus</span><span class="p">,</span> <span class="p">[</span><span class="n">stim_bias</span><span class="p">]</span> <span class="o">*</span> <span class="nb">int</span><span class="p">(</span><span class="n">nostim_after</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)))</span>
-        <span class="n">stimulus</span><span class="p">[</span><span class="n">stimulus</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">elif</span> <span class="n">stim</span> <span class="o">==</span> <span class="s2">&quot;rect&quot;</span><span class="p">:</span>
-        <span class="sd">&quot;&quot;&quot;Rectified step current with slow decay&quot;&quot;&quot;</span>
-        <span class="c1"># construct input</span>
-        <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
-        <span class="n">tot_len</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
-        <span class="n">stim_epoch</span> <span class="o">=</span> <span class="n">tot_len</span> <span class="o">/</span> <span class="mi">6</span>
-
-        <span class="n">stim_increase_counter</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">stim_decrease_counter</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">stim_step_increase</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="o">/</span> <span class="n">stim_epoch</span>
-
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">stimulus</span><span class="p">):</span>
-            <span class="k">if</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">stim_epoch</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">stim_epoch</span><span class="p">:</span>
-                <span class="n">stimulus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="n">stim_amp</span>
-            <span class="k">elif</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">stim_epoch</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">stim_epoch</span><span class="p">:</span>
-                <span class="n">stimulus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">stim_increase_counter</span><span class="p">)</span> <span class="o">*</span> <span class="n">stim_amp</span>
-                <span class="n">stim_increase_counter</span> <span class="o">+=</span> <span class="n">stim_step_increase</span>
-            <span class="k">elif</span> <span class="mf">3.0</span> <span class="o">*</span> <span class="n">stim_epoch</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="n">stim_epoch</span><span class="p">:</span>
-                <span class="n">stimulus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="n">stim_amp</span>
-            <span class="k">elif</span> <span class="mf">3.5</span> <span class="o">*</span> <span class="n">stim_epoch</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">stim_epoch</span><span class="p">:</span>
-                <span class="n">stimulus</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">stim_decrease_counter</span><span class="p">)</span> <span class="o">*</span> <span class="n">stim_amp</span>
-                <span class="n">stim_decrease_counter</span> <span class="o">+=</span> <span class="n">stim_step_increase</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stimulus </span><span class="si">{</span><span class="n">stim</span><span class="si">}</span><span class="s1"> not found. Use &quot;ac&quot;, &quot;dc&quot; or &quot;rect&quot;.&#39;</span><span class="p">)</span>
-
-    <span class="c1"># repeat stimulus until full length</span>
-    <span class="n">steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="n">stimlength</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stimulus</span><span class="p">))</span>
-    <span class="n">stimulus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">stimulus</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">steps</span> <span class="o">/</span> <span class="n">stimlength</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
-    <span class="n">stimulus</span> <span class="o">=</span> <span class="n">stimulus</span><span class="p">[:</span><span class="n">steps</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">stimulus</span>
+    <span class="k">return</span> <span class="n">ConcatenatedInput</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=-</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">),</span>
+            <span class="n">ExponentialInput</span><span class="p">(</span><span class="n">inp_max</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">exp_type</span><span class="o">=</span><span class="s2">&quot;rise&quot;</span><span class="p">,</span> <span class="n">exp_coef</span><span class="o">=</span><span class="mf">12.5</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=-</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">),</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">),</span>
+            <span class="n">ExponentialInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">exp_type</span><span class="o">=</span><span class="s2">&quot;decay&quot;</span><span class="p">,</span> <span class="n">exp_coef</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">),</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">num_iid</span><span class="o">=</span><span class="n">num_iid</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">length_ratios</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">)</span>
 </code></pre></div>
         </details>
     </div>
