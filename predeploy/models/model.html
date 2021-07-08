@@ -1,0 +1,2735 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.9">
+    
+    
+      
+        <title>Models - Neurolib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../css/pandas-dataframe.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-189722517-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#models" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Neurolib" class="md-header__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurolib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Models
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Neurolib" class="md-nav__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Neurolib
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing.html" class="md-nav__link">
+        Contributing to neurolib
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0-aln-minimal.html" class="md-nav__link">
+        Example 0 aln minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.1-hopf-minimal.html" class="md-nav__link">
+        Example 0.1 hopf minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.2-basic_analysis.html" class="md-nav__link">
+        Example 0.2 basic analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.3-fhn-minimal.html" class="md-nav__link">
+        Example 0.3 fhn minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.4-wc-minimal.html" class="md-nav__link">
+        Example 0.4 wc minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.5-aln-external-stimulus.html" class="md-nav__link">
+        Example 0.5 aln external stimulus
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-0.6-custom-model.html" class="md-nav__link">
+        Example 0.6 custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-1-aln-parameter-exploration.html" class="md-nav__link">
+        Example 1 aln parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-1.1-custom-parameter-exploration.html" class="md-nav__link">
+        Example 1.1 custom parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-1.2-brain-network-exploration.html" class="md-nav__link">
+        Example 1.2 brain network exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-1.2.1-brain-exploration-postprocessing.html" class="md-nav__link">
+        Example 1.2.1 brain exploration postprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-1.3-aln-bifurcation-diagram.html" class="md-nav__link">
+        Example 1.3 aln bifurcation diagram
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-2-evolutionary-optimization-minimal.html" class="md-nav__link">
+        Example 2 evolutionary optimization minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-2.0.1-save-and-load-evolution.html" class="md-nav__link">
+        Example 2.0.1 save and load evolution
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-2.1-evolutionary-optimization-aln.html" class="md-nav__link">
+        Example 2.1 evolutionary optimization aln
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-2.2-evolution-brain-network-aln-resting-state-fit.html" class="md-nav__link">
+        Example 2.2 evolution brain network aln resting state fit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-3-meg-functional-connectivity.html" class="md-nav__link">
+        Example 3 meg functional connectivity
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-4-multimodel-intro.html" class="md-nav__link">
+        Example 4 multimodel intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-4.1-multimodel-custom-model.html" class="md-nav__link">
+        Example 4.1 multimodel custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/example-4.2-multimodel-backends-and-optimization.html" class="md-nav__link">
+        Example 4.2 multimodel backends and optimization
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Exploration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exploration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exploration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../exploration/boxsearch.html" class="md-nav__link">
+        BoxSearch
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      <label class="md-nav__link" for="__nav_5">
+        Models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="model.html" class="md-nav__link md-nav__link--active">
+        Models
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-a-model" class="md-nav__link">
+    Loading a model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-base-class-methods" class="md-nav__link">
+    Model base class methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model" class="md-nav__link">
+    neurolib.models.model.Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.__getitem__" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.autochunk" class="md-nav__link">
+    autochunk()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.checkChunkwise" class="md-nav__link">
+    checkChunkwise()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.clearModelState" class="md-nav__link">
+    clearModelState()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getMaxDelay" class="md-nav__link">
+    getMaxDelay()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getOutput" class="md-nav__link">
+    getOutput()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getOutputs" class="md-nav__link">
+    getOutputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.initializeBold" class="md-nav__link">
+    initializeBold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.initializeRun" class="md-nav__link">
+    initializeRun()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.integrate" class="md-nav__link">
+    integrate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.integrateChunkwise" class="md-nav__link">
+    integrateChunkwise()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.randomICs" class="md-nav__link">
+    randomICs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.run" class="md-nav__link">
+    run()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setInitialValuesToLastState" class="md-nav__link">
+    setInitialValuesToLastState()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setInputs" class="md-nav__link">
+    setInputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setOutput" class="md-nav__link">
+    setOutput()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setSamplingDt" class="md-nav__link">
+    setSamplingDt()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setStateVariables" class="md-nav__link">
+    setStateVariables()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.simulateBold" class="md-nav__link">
+    simulateBold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.storeOutputsAndStates" class="md-nav__link">
+    storeOutputsAndStates()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.xr" class="md-nav__link">
+    xr()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="parameters.html" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Optimization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimization/evolution.html" class="md-nav__link">
+        Evolution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      <label class="md-nav__link" for="__nav_7">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utils" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/dataset.html" class="md-nav__link">
+        Dataset
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/functions.html" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/parameterspace.html" class="md-nav__link">
+        ParameterSpace
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/signal.html" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../utils/stimulus.html" class="md-nav__link">
+        Stimulus
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loading-a-model" class="md-nav__link">
+    Loading a model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-base-class-methods" class="md-nav__link">
+    Model base class methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model" class="md-nav__link">
+    neurolib.models.model.Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.output" class="md-nav__link">
+    output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.__getitem__" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.autochunk" class="md-nav__link">
+    autochunk()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.checkChunkwise" class="md-nav__link">
+    checkChunkwise()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.clearModelState" class="md-nav__link">
+    clearModelState()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getMaxDelay" class="md-nav__link">
+    getMaxDelay()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getOutput" class="md-nav__link">
+    getOutput()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.getOutputs" class="md-nav__link">
+    getOutputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.initializeBold" class="md-nav__link">
+    initializeBold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.initializeRun" class="md-nav__link">
+    initializeRun()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.integrate" class="md-nav__link">
+    integrate()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.integrateChunkwise" class="md-nav__link">
+    integrateChunkwise()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.randomICs" class="md-nav__link">
+    randomICs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.run" class="md-nav__link">
+    run()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setInitialValuesToLastState" class="md-nav__link">
+    setInitialValuesToLastState()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setInputs" class="md-nav__link">
+    setInputs()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setOutput" class="md-nav__link">
+    setOutput()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setSamplingDt" class="md-nav__link">
+    setSamplingDt()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.setStateVariables" class="md-nav__link">
+    setStateVariables()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.simulateBold" class="md-nav__link">
+    simulateBold()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.storeOutputsAndStates" class="md-nav__link">
+    storeOutputsAndStates()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.models.model.Model.xr" class="md-nav__link">
+    xr()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/neurolib-dev/neurolib/edit/master/docs/models/model.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="models">Models</h1>
+<p>Models are the core of <code>neurolib</code>. The <code>Model</code> superclass will help you to load, simulate, and analyse models. It also makes it very easy to implement your own neural mass model (see <a href="/examples/example-0.6-custom-model/">Example 0.6 custom model</a>).</p>
+<h2 id="loading-a-model">Loading a model</h2>
+<p>To load a model, we need to import the submodule of a model and instantiate it. This example shows how to load a single node of the <code>ALNModel</code>. See <a href="/examples/example-0-aln-minimal/">Example 0 aln minimal</a> on how to simulate a whole-brain network using this model.</p>
+<div class="highlight"><pre><span></span><code>from neurolib.models.aln import ALNModel # Import the model
+model = ALNModel() # Create an instance
+model.run() # Run it
+</code></pre></div>
+<h2 id="model-base-class-methods">Model base class methods</h2>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="neurolib.models.model.Model"></a>
+    <div class="doc doc-contents first">
+
+      <p>The Model base class runs models, manages their outputs, parameters and more.
+This class should serve as the base class for all implemented models.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+  <div class="doc doc-object doc-attribute">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.output">
+<code class="highlight language-python"><span class="n">output</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-property"><code>property</code></small>
+      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Returns value of default output as defined by <code>self.default_output</code>.
+Note that all outputs are saved in the attribute <code>self.outputs</code>.</p>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.__getitem__">
+<code class="highlight language-python"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Index outputs with a dictionary-like key, e.g., <code>model['rates_exc']</code>.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Index outputs with a dictionary-like key, e.g., `model[&#39;rates_exc&#39;]`.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.autochunk">
+<code class="highlight language-python"><span class="n">autochunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Executes a single chunk of integration, either for a given duration
+or a single timestep <code>dt</code>. Gathers all inputs to the model and resets
+the initial conditions as a preparation for the next chunk.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>list[np.ndarray|], optional</code></td>
+        <td><p>list of input values, ordered according to self.input_vars, defaults to None</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>chunksize</code></td>
+        <td><code>int, optional</code></td>
+        <td><p>length of a chunk to simulate in dt, defaults 1</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>append_outputs</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>append the chunkwise outputs to the outputs attribute, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">autochunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Executes a single chunk of integration, either for a given duration</span>
+<span class="sd">    or a single timestep `dt`. Gathers all inputs to the model and resets</span>
+<span class="sd">    the initial conditions as a preparation for the next chunk.</span>
+
+<span class="sd">    :param inputs: list of input values, ordered according to self.input_vars, defaults to None</span>
+<span class="sd">    :type inputs: list[np.ndarray|], optional</span>
+<span class="sd">    :param chunksize: length of a chunk to simulate in dt, defaults 1</span>
+<span class="sd">    :type chunksize: int, optional</span>
+<span class="sd">    :param append_outputs: append the chunkwise outputs to the outputs attribute, defaults to False</span>
+<span class="sd">    :type append_outputs: bool, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># set the duration for this chunk</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+
+    <span class="c1"># set inputs</span>
+    <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setInputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="c1"># run integration</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
+
+    <span class="c1"># set initial conditions to last state for the next chunk</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.checkChunkwise">
+<code class="highlight language-python"><span class="n">checkChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Checks if the model fulfills requirements for chunkwise simulation.
+Checks whether the sampling rate for outputs fits to chunksize and duration.
+Throws errors if not.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">checkChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if the model fulfills requirements for chunkwise simulation.</span>
+<span class="sd">    Checks whether the sampling rate for outputs fits to chunksize and duration.</span>
+<span class="sd">    Throws errors if not.&quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;State variable names not given.&quot;</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Initial value variable names not given.&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span><span class="p">),</span> <span class="s2">&quot;State variables are not same length as initial values.&quot;</span>
+
+    <span class="c1"># throw a warning if the user is nasty</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span> <span class="o">%</span> <span class="n">chunksize</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;It is strongly advised to use a `chunksize` (</span><span class="si">{</span><span class="n">chunksize</span><span class="si">}</span><span class="s2">) that is a divisor of `duration / dt` (</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2">).&quot;</span>
+        <span class="p">)</span>
+
+    <span class="c1"># if `sampling_dt` is set, do some checks</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># sample_dt checks are required after setting chunksize</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">]</span>
+        <span class="p">),</span> <span class="s2">&quot;`chunksize * dt` must be &gt;= `sampling_dt`&quot;</span>
+
+        <span class="c1"># ugly floating point modulo hack: instead of float1%float2==0, we do</span>
+        <span class="c1"># (float1/float2)%1==0</span>
+        <span class="k">assert</span> <span class="p">((</span><span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">])</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Chunksize </span><span class="si">{</span><span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> must be divisible by sampling dt &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sampling_dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">%</span> <span class="p">(</span><span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">]))</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Last chunk of size </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">%</span> <span class="p">(</span><span class="n">chunksize</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">])</span><span class="si">}</span><span class="s2"> must be divisible by sampling dt &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sampling_dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.clearModelState">
+<code class="highlight language-python"><span class="n">clearModelState</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Clears the model's state to create a fresh one</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">clearModelState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Clears the model&#39;s state to create a fresh one&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
+    <span class="c1"># reinitialize bold model</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.getMaxDelay">
+<code class="highlight language-python"><span class="n">getMaxDelay</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Computes the maximum delay of the model. This function should be overloaded
+if the model has internal delays (additional to delay between nodes defined by Dmat)
+such as the delay between an excitatory and inhibitory population within each brain area.
+If this function is not overloaded, the maximum delay is assumed to be defined from the
+global delay matrix <code>Dmat</code>.</p>
+<p>Note: Maxmimum delay is given in units of dt.</p>
+
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>int</code></td>
+      <td><p>maxmimum delay of the model in units of dt</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getMaxDelay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Computes the maximum delay of the model. This function should be overloaded</span>
+<span class="sd">    if the model has internal delays (additional to delay between nodes defined by Dmat)</span>
+<span class="sd">    such as the delay between an excitatory and inhibitory population within each brain area.</span>
+<span class="sd">    If this function is not overloaded, the maximum delay is assumed to be defined from the</span>
+<span class="sd">    global delay matrix `Dmat`.</span>
+
+<span class="sd">    Note: Maxmimum delay is given in units of dt.</span>
+
+<span class="sd">    :return: maxmimum delay of the model in units of dt</span>
+<span class="sd">    :rtype: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;dt&quot;</span><span class="p">)</span>
+    <span class="n">Dmat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;lengthMat&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">Dmat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># divide Dmat by signalV</span>
+        <span class="n">signalV</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;signalV&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">signalV</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">Dmat</span> <span class="o">=</span> <span class="n">Dmat</span> <span class="o">/</span> <span class="n">signalV</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if signalV is 0, eliminate delays</span>
+            <span class="n">Dmat</span> <span class="o">=</span> <span class="n">Dmat</span> <span class="o">*</span> <span class="mf">0.0</span>
+
+    <span class="c1"># only if Dmat and dt exist, a global max delay can be computed</span>
+    <span class="k">if</span> <span class="n">Dmat</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">dt</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Dmat_ndt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">around</span><span class="p">(</span><span class="n">Dmat</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># delay matrix in multiples of dt</span>
+        <span class="n">max_global_delay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">amax</span><span class="p">(</span><span class="n">Dmat_ndt</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">max_global_delay</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">max_global_delay</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.getOutput">
+<code class="highlight language-python"><span class="n">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get an output of a given name (dot.semarated)</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>A key, grouped outputs in the form group.subgroup.variable</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code></code></td>
+      <td><p>Output data</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get an output of a given name (dot.semarated)</span>
+<span class="sd">    :param name: A key, grouped outputs in the form group.subgroup.variable</span>
+<span class="sd">    :type name: str</span>
+
+<span class="sd">    :returns: Output data</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Output name must be a string.&quot;</span>
+    <span class="n">keys</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+    <span class="n">lastOutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">lastOutput</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> not found in outputs.&quot;</span>
+        <span class="n">lastOutput</span> <span class="o">=</span> <span class="n">lastOutput</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lastOutput</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.getOutputs">
+<code class="highlight language-python"><span class="n">getOutputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Get all outputs of an output group. Examples: <code>getOutputs("BOLD")</code> or simply <code>getOutputs()</code></p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>group</code></td>
+        <td><code>str</code></td>
+        <td><p>Group name, subgroups separated by dots. If left empty (default), all outputs of the root group are returned.</p></td>
+        <td><code>&#39;&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getOutputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Get all outputs of an output group. Examples: `getOutputs(&quot;BOLD&quot;)` or simply `getOutputs()`</span>
+
+<span class="sd">    :param group: Group name, subgroups separated by dots. If left empty (default), all outputs of the root group</span>
+<span class="sd">        are returned.</span>
+<span class="sd">    :type group: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Group name must be a string.&quot;</span>
+
+    <span class="k">def</span> <span class="nf">filterOutputsFromGroupDict</span><span class="p">(</span><span class="n">groupDict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a dictionary with the output data of a group disregarding all other nested dicts.</span>
+<span class="sd">        :param groupDict: Dictionary of outputs (can include other groups)</span>
+<span class="sd">        :type groupDict: dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">groupDict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="s2">&quot;Not a dictionary.&quot;</span>
+        <span class="c1"># make a deep copy of the dictionary</span>
+        <span class="n">returnDict</span> <span class="o">=</span> <span class="n">groupDict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">groupDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="k">del</span> <span class="n">returnDict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">returnDict</span>
+
+    <span class="c1"># if a group deeper than the root is given, select the last node</span>
+    <span class="n">lastOutput</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">group</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">group</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
+            <span class="k">assert</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">lastOutput</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> not found in outputs.&quot;</span>
+            <span class="n">lastOutput</span> <span class="o">=</span> <span class="n">lastOutput</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">lastOutput</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> does not refer to a group.&quot;</span>
+    <span class="c1"># filter out all output *groups* that might be in this node and return only output data</span>
+    <span class="k">return</span> <span class="n">filterOutputsFromGroupDict</span><span class="p">(</span><span class="n">lastOutput</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.initializeBold">
+<code class="highlight language-python"><span class="n">initializeBold</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialize BOLD model.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">initializeBold</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialize BOLD model.&quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="c1"># function to transform model state before passing it to the bold model</span>
+    <span class="c1"># Note: This can be used like the parameter \epsilon in Friston2000</span>
+    <span class="c1"># (neural efficacy) by multiplying the input with a constant via</span>
+    <span class="c1"># self.boldInputTransform = lambda x: x * epsilon</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;boldInputTransform&quot;</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span> <span class="o">=</span> <span class="n">bold</span><span class="o">.</span><span class="n">BOLDModel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.initializeRun">
+<code class="highlight language-python"><span class="n">initializeRun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializeBold</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Initialization before each run.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>initializeBold</code></td>
+        <td><code>bool</code></td>
+        <td><p>initialize BOLD model</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">initializeRun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializeBold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Initialization before each run.</span>
+
+<span class="sd">    :param initializeBold: initialize BOLD model</span>
+<span class="sd">    :type initializeBold: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># get the maxDelay of the system</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">maxDelay</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getMaxDelay</span><span class="p">()</span>
+
+    <span class="c1"># length of the initial condition</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">maxDelay</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># check dt / sampling_dt</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setSamplingDt</span><span class="p">()</span>
+
+    <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
+        <span class="n">initializeBold</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># set up the bold model, if it didn&#39;t happen yet</span>
+    <span class="k">if</span> <span class="n">initializeBold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.integrate">
+<code class="highlight language-python"><span class="n">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Calls each models <code>integration</code> function and saves the state and the outputs of the model.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>append</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calls each models `integration` function and saves the state and the outputs of the model.</span>
+
+<span class="sd">    :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
+<span class="sd">    :type append: bool, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># run integration</span>
+    <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">storeOutputsAndStates</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">)</span>
+
+    <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
+        <span class="n">simulate_bold</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="c1"># bold simulation after integration</span>
+    <span class="k">if</span> <span class="n">simulate_bold</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulateBold</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.integrateChunkwise">
+<code class="highlight language-python"><span class="n">integrateChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Repeatedly calls the chunkwise integration for the whole duration of the simulation.
+If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>chunksize</code></td>
+        <td><code>int</code></td>
+        <td><p>size of each chunk to simulate in units of dt</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>bold</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>simulate BOLD model after each chunk, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>append_outputs</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>append the chunkwise outputs to the outputs attribute, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">integrateChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Repeatedly calls the chunkwise integration for the whole duration of the simulation.</span>
+<span class="sd">    If `bold==True`, the BOLD model is simulated after each chunk.</span>
+
+<span class="sd">    :param chunksize: size of each chunk to simulate in units of dt</span>
+<span class="sd">    :type chunksize: int</span>
+<span class="sd">    :param bold: simulate BOLD model after each chunk, defaults to False</span>
+<span class="sd">    :type bold: bool, optional</span>
+<span class="sd">    :param append_outputs: append the chunkwise outputs to the outputs attribute, defaults to False</span>
+<span class="sd">    :type append_outputs: bool, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">totalDuration</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span>
+
+    <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">]</span>
+    <span class="c1"># create a shallow copy of the parameters</span>
+    <span class="n">lastT</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">totalDuration</span> <span class="o">-</span> <span class="n">lastT</span> <span class="o">&gt;=</span> <span class="n">dt</span> <span class="o">-</span> <span class="mf">1e-6</span><span class="p">:</span>
+        <span class="c1"># Determine the size of the next chunk</span>
+        <span class="c1"># account for floating point errors</span>
+        <span class="n">remainingChunkSize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">totalDuration</span> <span class="o">-</span> <span class="n">lastT</span><span class="p">)</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+        <span class="n">currentChunkSize</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">remainingChunkSize</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">autochunk</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">currentChunkSize</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
+        <span class="c1"># we save the last simulated time step</span>
+        <span class="n">lastT</span> <span class="o">+=</span> <span class="n">currentChunkSize</span> <span class="o">*</span> <span class="n">dt</span>
+        <span class="c1"># or</span>
+        <span class="c1"># lastT = self.state[&quot;t&quot;][-1]</span>
+
+    <span class="c1"># set duration back to its original value</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">totalDuration</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.randomICs">
+<code class="highlight language-python"><span class="n">randomICs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generates a new set of uniformly-distributed random initial conditions for the model.</p>
+<p>TODO: All parameters are drawn from the same distribution / range. Allow for independent ranges.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>min</code></td>
+        <td><code>float</code></td>
+        <td><p>Minium of uniform distribution</p></td>
+        <td><code>0</code></td>
+      </tr>
+      <tr>
+        <td><code>max</code></td>
+        <td><code>float</code></td>
+        <td><p>Maximum of uniform distribution</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">randomICs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Generates a new set of uniformly-distributed random initial conditions for the model.</span>
+
+<span class="sd">    TODO: All parameters are drawn from the same distribution / range. Allow for independent ranges.</span>
+
+<span class="sd">    :param min: Minium of uniform distribution</span>
+<span class="sd">    :type min: float</span>
+<span class="sd">    :param max: Maximum of uniform distribution</span>
+<span class="sd">    :type max: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">iv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="nb">min</span><span class="p">,</span> <span class="nb">max</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.run">
+<code class="highlight language-python"><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Main interfacing function to run a model.</p>
+<p>The model can be run in three different ways:
+1) <code>model.run()</code> starts a new run.
+2) <code>model.run(chunkwise=True)</code> runs the simulation in chunks of length <code>chunksize</code>.
+3) <code>mode.run(continue_run=True)</code> continues the simulation of a previous run.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>list[np.ndarray|]</code></td>
+        <td><p>list of inputs to the model, must have the same order as model.input_vars. Note: no sanity check is performed for performance reasons. Take care of the inputs yourself.</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>chunkwise</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>simulate model chunkwise or in one single run, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>chunksize</code></td>
+        <td><code>int, optional</code></td>
+        <td><p>size of the chunk to simulate in dt, if set will imply chunkwise=True, defaults to 2s</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>bold</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>simulate BOLD signal (only for chunkwise integration), defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>append</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>continue_run</code></td>
+        <td><code>bool</code></td>
+        <td><p>continue a simulation by using the initial values from a previous simulation</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">append_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Main interfacing function to run a model.</span>
+
+<span class="sd">    The model can be run in three different ways:</span>
+<span class="sd">    1) `model.run()` starts a new run.</span>
+<span class="sd">    2) `model.run(chunkwise=True)` runs the simulation in chunks of length `chunksize`.</span>
+<span class="sd">    3) `mode.run(continue_run=True)` continues the simulation of a previous run.</span>
+
+<span class="sd">    :param inputs: list of inputs to the model, must have the same order as model.input_vars. Note: no sanity check is performed for performance reasons. Take care of the inputs yourself.</span>
+<span class="sd">    :type inputs: list[np.ndarray|]</span>
+<span class="sd">    :param chunkwise: simulate model chunkwise or in one single run, defaults to False</span>
+<span class="sd">    :type chunkwise: bool, optional</span>
+<span class="sd">    :param chunksize: size of the chunk to simulate in dt, if set will imply chunkwise=True, defaults to 2s</span>
+<span class="sd">    :type chunksize: int, optional</span>
+<span class="sd">    :param bold: simulate BOLD signal (only for chunkwise integration), defaults to False</span>
+<span class="sd">    :type bold: bool, optional</span>
+<span class="sd">    :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
+<span class="sd">    :type append: bool, optional</span>
+<span class="sd">    :param continue_run: continue a simulation by using the initial values from a previous simulation</span>
+<span class="sd">    :type continue_run: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># TODO: legacy argument support</span>
+    <span class="k">if</span> <span class="n">append_outputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">append</span> <span class="o">=</span> <span class="n">append_outputs</span>
+
+    <span class="c1"># if a previous run is not to be continued clear the model&#39;s state</span>
+    <span class="k">if</span> <span class="n">continue_run</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clearModelState</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">initializeRun</span><span class="p">(</span><span class="n">initializeBold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
+
+    <span class="c1"># enable chunkwise if chunksize is set</span>
+    <span class="n">chunkwise</span> <span class="o">=</span> <span class="n">chunkwise</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">True</span>
+
+    <span class="k">if</span> <span class="n">chunkwise</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">continue_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">chunksize</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">2000</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span>
+
+        <span class="c1"># check if model is safe for chunkwise integration</span>
+        <span class="c1"># and whether sampling_dt is compatible with duration and chunksize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">checkChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">bold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
+            <span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrateChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+
+    <span class="c1"># check if there was a problem with the simulated data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">checkOutputs</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.setInitialValuesToLastState">
+<code class="highlight language-python"><span class="n">setInitialValuesToLastState</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Reads the last state of the model and sets the initial conditions to that state for continuing a simulation.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setInitialValuesToLastState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Reads the last state of the model and sets the initial conditions to that state for continuing a simulation.&quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">iv</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">):</span>
+        <span class="c1"># if state variables are one-dimensional (in space only)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span>
+        <span class="c1"># if they are space-time arrays</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># we set the next initial condition to the last state</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">][:,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.setInputs">
+<code class="highlight language-python"><span class="n">setInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Take inputs from a list and store it in the appropriate model parameter for external input.
+TODO: This is not safe yet, checks should be implemented whether the model has inputs defined or not for example.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>list[np.ndarray(), ...]</code></td>
+        <td><p>list of inputs</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Take inputs from a list and store it in the appropriate model parameter for external input.</span>
+<span class="sd">    TODO: This is not safe yet, checks should be implemented whether the model has inputs defined or not for example.</span>
+
+<span class="sd">    :param inputs: list of inputs</span>
+<span class="sd">    :type inputs: list[np.ndarray(), ...]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">iv</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_vars</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">iv</span><span class="p">]</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.setOutput">
+<code class="highlight language-python"><span class="n">setOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Adds an output to the model, typically a simulation result.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the output in dot.notation, a la "outputgroup.output"</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>`numpy.ndarray`</code></td>
+        <td><p>Output data, can't be a dictionary!</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Adds an output to the model, typically a simulation result.</span>
+<span class="sd">    :params name: Name of the output in dot.notation, a la &quot;outputgroup.output&quot;</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :params data: Output data, can&#39;t be a dictionary!</span>
+<span class="sd">    :type data: `numpy.ndarray`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="nb">dict</span><span class="p">),</span> <span class="s2">&quot;Output data cannot be a dictionary.&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Output name must be a string.&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">),</span> <span class="s2">&quot;Output must be a `numpy.ndarray`.&quot;</span>
+
+    <span class="c1"># remove initial conditions from output</span>
+    <span class="k">if</span> <span class="n">removeICs</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">!=</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to truncate data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># subsample to sampling dt</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to subsample data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="c1"># if the output is a single name (not dot.separated)</span>
+    <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
+        <span class="c1"># append data</span>
+        <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
+            <span class="c1"># special treatment for time data:</span>
+            <span class="c1"># increment the time by the last recorded duration</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">data</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># save all data into output dict</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="c1"># set output as an attribute</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># build results dictionary and write into self.outputs</span>
+        <span class="c1"># dot.notation iteration</span>
+        <span class="n">keys</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+        <span class="n">level</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span>  <span class="c1"># not copy, reference!</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
+            <span class="c1"># if it&#39;s the last iteration, store data</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># TODO: this needs to be append-aware like above</span>
+                <span class="c1"># if append:</span>
+                <span class="c1">#     if k == &quot;t&quot;:</span>
+                <span class="c1">#         data += level[k][-1]</span>
+                <span class="c1">#     level[k] = np.hstack((level[k], data))</span>
+                <span class="c1"># else:</span>
+                <span class="c1">#     level[k] = data</span>
+                <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="c1"># if key is in outputs, then go deeper</span>
+            <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">level</span><span class="p">:</span>
+                <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+            <span class="c1"># if it&#39;s a new key, create new nested dictionary, set attribute, then go deeper</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+                <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.setSamplingDt">
+<code class="highlight language-python"><span class="n">setSamplingDt</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Checks if sampling_dt is set correctly and sets self.<code>sample_every</code>
+1) Check if sampling_dt is multiple of dt
+2) Check if semplind_dt is greater than duration</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setSamplingDt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Checks if sampling_dt is set correctly and sets self.`sample_every`</span>
+<span class="sd">    1) Check if sampling_dt is multiple of dt</span>
+<span class="sd">    2) Check if semplind_dt is greater than duration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">],</span> <span class="s2">&quot;`sampling_dt` needs to be &gt;= `dt`&quot;</span>
+        <span class="k">assert</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">]</span>
+        <span class="p">),</span> <span class="s2">&quot;`sampling_dt` needs to be lower than `duration`&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sampling_dt&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t handle `sampling_dt`=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;sampling_dt&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.setStateVariables">
+<code class="highlight language-python"><span class="n">setStateVariables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Saves the models current state variables.</p>
+<p>TODO: Cut state variables to length of self.maxDelay
+However, this could be time-memory tradeoff</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>name of the state variable</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>data</code></td>
+        <td><code>np.ndarray</code></td>
+        <td><p>value of the variable</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">setStateVariables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Saves the models current state variables.</span>
+
+<span class="sd">    TODO: Cut state variables to length of self.maxDelay</span>
+<span class="sd">    However, this could be time-memory tradeoff</span>
+
+<span class="sd">    :param name: name of the state variable</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param data: value of the variable</span>
+<span class="sd">    :type data: np.ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># old</span>
+    <span class="c1"># self.state[name] = data.copy()</span>
+
+    <span class="c1"># if the data is temporal, cut off initial values</span>
+    <span class="c1"># NOTE: this shuold actually check for</span>
+    <span class="c1"># if data.shape[1] &gt; 1:</span>
+    <span class="c1"># else: data.copy()</span>
+    <span class="c1"># there coulb be (N, 1)-dimensional output, right now</span>
+    <span class="c1"># it is requred to be of shape (N, )</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.simulateBold">
+<code class="highlight language-python"><span class="n">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Gets the default output of the model and simulates the BOLD model.
+Adds the simulated BOLD signal to outputs.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Gets the default output of the model and simulates the BOLD model.</span>
+<span class="sd">    Adds the simulated BOLD signal to outputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
+        <span class="c1"># first we loop through all state variables</span>
+        <span class="k">for</span> <span class="n">svn</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+            <span class="c1"># the default output is used as the input for the bold model</span>
+            <span class="k">if</span> <span class="n">svn</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_output</span><span class="p">:</span>
+                <span class="n">bold_input</span> <span class="o">=</span> <span class="n">sv</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+                <span class="c1"># logging.debug(f&quot;BOLD input `{svn}` of shape {bold_input.shape}&quot;)</span>
+                <span class="k">if</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="p">:</span>
+                    <span class="c1"># only if the length of the output has a zero mod to the sampling rate,</span>
+                    <span class="c1"># the downsampled output from the boldModel can correctly appended to previous data</span>
+                    <span class="c1"># so: we are lazy here and simply disable appending in that case ...</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">append</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;Output size </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not a multiple of BOLD sampling length </span><span class="si">{</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="si">}</span><span class="s2">, will not append data.&quot;</span>
+                        <span class="p">)</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulating BOLD: boldModel.run(append=</span><span class="si">{</span><span class="n">append</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+                    <span class="c1"># transform bold input according to self.boldInputTransform</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">:</span>
+                        <span class="n">bold_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
+
+                    <span class="c1"># simulate bold model</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold_input</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+
+                    <span class="n">t_BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">t_BOLD</span>
+                    <span class="n">BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">BOLD</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.t_BOLD&quot;</span><span class="p">,</span> <span class="n">t_BOLD</span><span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.BOLD&quot;</span><span class="p">,</span> <span class="n">BOLD</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Will not simulate BOLD if output </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> not at least of duration </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.storeOutputsAndStates">
+<code class="highlight language-python"><span class="n">storeOutputsAndStates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Takes the simulated variables of the integration and stores it to the appropriate model output and state object.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>t</code></td>
+        <td><code>list</code></td>
+        <td><p>time vector</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>variables</code></td>
+        <td><code>numpy.ndarray</code></td>
+        <td><p>variable from time integration</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>append</code></td>
+        <td><code>bool, optional</code></td>
+        <td><p>append output to existing output or overwrite, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">storeOutputsAndStates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Takes the simulated variables of the integration and stores it to the appropriate model output and state object.</span>
+
+<span class="sd">    :param t: time vector</span>
+<span class="sd">    :type t: list</span>
+<span class="sd">    :param variables: variable from time integration</span>
+<span class="sd">    :type variables: numpy.ndarray</span>
+<span class="sd">    :param append: append output to existing output or overwrite, defaults to False</span>
+<span class="sd">    :type append: bool, optional</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># save time array</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setStateVariables</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="c1"># save outputs</span>
+    <span class="k">for</span> <span class="n">svn</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">svn</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_vars</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="n">svn</span><span class="p">,</span> <span class="n">sv</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setStateVariables</span><span class="p">(</span><span class="n">svn</span><span class="p">,</span> <span class="n">sv</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.models.model.Model.xr">
+<code class="highlight language-python"><span class="n">xr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Converts a group of outputs to xarray. Output group needs to contain an
+element that starts with the letter "t" or it will not recognize any time axis.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>group</code></td>
+        <td><code>str</code></td>
+        <td><p>Output group name, example:  "BOLD". Leave empty for top group.</p></td>
+        <td><code>&#39;&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/models/model.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">xr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Converts a group of outputs to xarray. Output group needs to contain an</span>
+<span class="sd">    element that starts with the letter &quot;t&quot; or it will not recognize any time axis.</span>
+
+<span class="sd">    :param group: Output group name, example:  &quot;BOLD&quot;. Leave empty for top group.</span>
+<span class="sd">    :type group: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">group</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span> <span class="s2">&quot;Group name must be a string.&quot;</span>
+    <span class="c1"># take all outputs of one group: disregard all dictionaries because they are subgroups</span>
+    <span class="n">outputDict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOutputs</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+    <span class="c1"># make sure that there is a time array</span>
+    <span class="n">timeDictKey</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">if</span> <span class="s2">&quot;t&quot;</span> <span class="ow">in</span> <span class="n">outputDict</span><span class="p">:</span>
+        <span class="n">timeDictKey</span> <span class="o">=</span> <span class="s2">&quot;t&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">outputDict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">):</span>
+                <span class="n">timeDictKey</span> <span class="o">=</span> <span class="n">k</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Assuming </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> to be the time axis.&quot;</span><span class="p">)</span>
+                <span class="k">break</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">timeDictKey</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;No time array found (starting with t) in output group </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">del</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">outputNames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">outputDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">outputNames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">nNodes</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nNodes</span><span class="p">))</span>
+    <span class="n">allOutputsStacked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>  <span class="c1"># What? Where? When?</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">allOutputsStacked</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">outputNames</span><span class="p">,</span> <span class="n">nodes</span><span class="p">,</span> <span class="n">t</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;output&quot;</span><span class="p">,</span> <span class="s2">&quot;space&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../exploration/boxsearch.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: BoxSearch" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              BoxSearch
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="parameters.html" class="md-footer__link md-footer__link--next" aria-label="Next: Parameters" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Parameters
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://twitter.com/neurolib-dev" target="_blank" rel="noopener" title="neurolib on Twitter" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.82b56eb2.min.js"></script>
+      
+        <script src="../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
