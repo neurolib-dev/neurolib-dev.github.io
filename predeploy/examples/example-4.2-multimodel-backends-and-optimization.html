@@ -1478,8 +1478,8 @@ and we will simply explore over one particular <code>Ke</code> of inhibitory mas
 
 <span class="c1"># parameters = ParameterSpace(</span>
 <span class="c1">#     {</span>
-<span class="c1">#         &quot;*EXC*noise*mu&quot;: np.linspace(0, 3, 21),</span>
-<span class="c1">#         &quot;*INH*noise*mu&quot;: np.linspace(0, 3, 21),</span>
+<span class="c1">#         &quot;*EXC*input*mu&quot;: np.linspace(0, 3, 21),</span>
+<span class="c1">#         &quot;*INH*input*mu&quot;: np.linspace(0, 3, 21),</span>
 <span class="c1">#     },</span>
 <span class="c1">#     allow_star_notation=True,</span>
 <span class="c1"># )</span>
@@ -1489,10 +1489,10 @@ and we will simply explore over one particular <code>Ke</code> of inhibitory mas
 <span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="c1"># 2 values per dimension is for quick testing only, for real exploration use e.g. 21 or rather much more</span>
-        <span class="s2">&quot;ALNNode_0.ALNMassEXC_0.noise_0.mu&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="s2">&quot;ALNNode_0.ALNMassINH_1.noise_0.mu&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
-        <span class="c1"># &quot;ALNNode_0.ALNMassEXC_0.noise_0.mu&quot;: np.linspace(0, 3, 21),</span>
-        <span class="c1"># &quot;ALNNode_0.ALNMassINH_1.noise_0.mu&quot;: np.linspace(0, 3, 21),</span>
+        <span class="s2">&quot;ALNNode_0.ALNMassEXC_0.input_0.mu&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="s2">&quot;ALNNode_0.ALNMassINH_1.input_0.mu&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="c1"># &quot;ALNNode_0.ALNMassEXC_0.input_0.mu&quot;: np.linspace(0, 3, 21),</span>
+        <span class="c1"># &quot;ALNNode_0.ALNMassINH_1.input_0.mu&quot;: np.linspace(0, 3, 21),</span>
     <span class="p">},</span>
     <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1670,14 +1670,14 @@ MainProcess root INFO     All results loaded.
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span>
     <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span>
         <span class="n">values</span><span class="o">=</span><span class="s2">&quot;max_r&quot;</span><span class="p">,</span>
-        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.noise_0.mu&quot;</span><span class="p">,</span>
-        <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.noise_0.mu&quot;</span><span class="p">,</span>
+        <span class="n">index</span><span class="o">=</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.input_0.mu&quot;</span><span class="p">,</span>
+        <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.input_0.mu&quot;</span><span class="p">,</span>
     <span class="p">),</span>
     <span class="n">extent</span><span class="o">=</span><span class="p">[</span>
-        <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.noise_0.mu&quot;</span><span class="p">]),</span>
-        <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.noise_0.mu&quot;</span><span class="p">]),</span>
-        <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.noise_0.mu&quot;</span><span class="p">]),</span>
-        <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.noise_0.mu&quot;</span><span class="p">]),</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.input_0.mu&quot;</span><span class="p">]),</span>
+        <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassEXC_0.input_0.mu&quot;</span><span class="p">]),</span>
+        <span class="nb">min</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.input_0.mu&quot;</span><span class="p">]),</span>
+        <span class="nb">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="p">[</span><span class="s2">&quot;ALNNode_0.ALNMassINH_1.input_0.mu&quot;</span><span class="p">]),</span>
     <span class="p">],</span>
     <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;lower&quot;</span><span class="p">,</span>
 <span class="p">)</span>
@@ -1783,7 +1783,7 @@ MainProcess root INFO     ALNNode: Model initialized.
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="n">pars</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">(</span>
-    <span class="p">[</span><span class="s2">&quot;*EXC*noise*mu&quot;</span><span class="p">,</span> <span class="s2">&quot;*INH*noise*mu&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;*EXC*input*mu&quot;</span><span class="p">,</span> <span class="s2">&quot;*INH*input*mu&quot;</span><span class="p">],</span>
     <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]],</span>
     <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span>
