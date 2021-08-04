@@ -1,0 +1,1571 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+    
+    
+      
+        <title>Dataset - Neurolib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.1118c9be.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ba0d045b.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-189722517-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dataset" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Neurolib" class="md-header__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurolib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dataset
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Neurolib" class="md-nav__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Neurolib
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing to neurolib
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0-aln-minimal/" class="md-nav__link">
+        Example 0 aln minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.1-hopf-minimal/" class="md-nav__link">
+        Example 0.1 hopf minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.2-basic_analysis/" class="md-nav__link">
+        Example 0.2 basic analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.3-fhn-minimal/" class="md-nav__link">
+        Example 0.3 fhn minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.4-wc-minimal/" class="md-nav__link">
+        Example 0.4 wc minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.5-external-stimulus/" class="md-nav__link">
+        Example 0.5 external stimulus
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.6-custom-model/" class="md-nav__link">
+        Example 0.6 custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1-aln-parameter-exploration/" class="md-nav__link">
+        Example 1 aln parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.1-custom-parameter-exploration/" class="md-nav__link">
+        Example 1.1 custom parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.2-brain-network-exploration/" class="md-nav__link">
+        Example 1.2 brain network exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.2.1-brain-exploration-postprocessing/" class="md-nav__link">
+        Example 1.2.1 brain exploration postprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.3-aln-bifurcation-diagram/" class="md-nav__link">
+        Example 1.3 aln bifurcation diagram
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2-evolutionary-optimization-minimal/" class="md-nav__link">
+        Example 2 evolutionary optimization minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.0.1-save-and-load-evolution/" class="md-nav__link">
+        Example 2.0.1 save and load evolution
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.1-evolutionary-optimization-aln/" class="md-nav__link">
+        Example 2.1 evolutionary optimization aln
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.2-evolution-brain-network-aln-resting-state-fit/" class="md-nav__link">
+        Example 2.2 evolution brain network aln resting state fit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-3-meg-functional-connectivity/" class="md-nav__link">
+        Example 3 meg functional connectivity
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4-multimodel-intro/" class="md-nav__link">
+        Example 4 multimodel intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4.1-multimodel-custom-model/" class="md-nav__link">
+        Example 4.1 multimodel custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4.2-multimodel-backends-and-optimization/" class="md-nav__link">
+        Example 4.2 multimodel backends and optimization
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Exploration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exploration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exploration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exploration/boxsearch/" class="md-nav__link">
+        BoxSearch
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/model/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Optimization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimization/evolution/" class="md-nav__link">
+        Evolution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utils" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Dataset
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Dataset
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset" class="md-nav__link">
+    neurolib.utils.loadData.Dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="neurolib.utils.loadData.Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--structural-dti-data" class="md-nav__link">
+    Structural DTI data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--connectivity-matrix-normalization" class="md-nav__link">
+    Connectivity matrix normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--functional-mri-data" class="md-nav__link">
+    Functional MRI data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.getDataPerSubject" class="md-nav__link">
+    getDataPerSubject()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.loadDataset" class="md-nav__link">
+    loadDataset()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.loadMatrix" class="md-nav__link">
+    loadMatrix()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameterspace/" class="md-nav__link">
+        ParameterSpace
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal/" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../stimulus/" class="md-nav__link">
+        Stimulus
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset" class="md-nav__link">
+    neurolib.utils.loadData.Dataset
+  </a>
+  
+    <nav class="md-nav" aria-label="neurolib.utils.loadData.Dataset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--format" class="md-nav__link">
+    Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--structural-dti-data" class="md-nav__link">
+    Structural DTI data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--connectivity-matrix-normalization" class="md-nav__link">
+    Connectivity matrix normalization
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset--functional-mri-data" class="md-nav__link">
+    Functional MRI data
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.getDataPerSubject" class="md-nav__link">
+    getDataPerSubject()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.loadDataset" class="md-nav__link">
+    loadDataset()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.loadData.Dataset.loadMatrix" class="md-nav__link">
+    loadMatrix()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/neurolib-dev/neurolib/edit/master/docs/utils/dataset.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="dataset">Dataset</h1>
+
+
+  <div class="doc doc-object doc-class">
+
+<a id="neurolib.utils.loadData.Dataset"></a>
+    <div class="doc doc-contents first">
+
+      <p>This class is for loading empirical Datasets. Datasets are stored as matrices and can
+include functional (e.g. fMRI) and structural (e.g. DTI) data.</p>
+<h3 id="neurolib.utils.loadData.Dataset--format">Format</h3>
+<p>Empirical datasets are
+stored in the <code>neurolib/data/datasets</code> directory. In each dataset, subject-wise functional
+and structural data is stored as MATLAB <code>.mat</code> matrices that can be opened in
+Python using SciPy's <code>loadmat</code> function. Structural data are
+<span class="arithmatex">\(N \times N\)</span>, and functional time series are <span class="arithmatex">\(N \times t\)</span> matrices, <span class="arithmatex">\(N\)</span> being the number
+of brain regions and <span class="arithmatex">\(t\)</span> the number of time steps. Example datasets are included in <code>neurolib</code>
+and custom datasets can be added by placing them in the dataset directory.</p>
+<h3 id="neurolib.utils.loadData.Dataset--structural-dti-data">Structural DTI data</h3>
+<p>To simulate a whole-brain network model, first we need to load the structural connectivity
+matrices from a DTI data set. The matrices are usually a result of processing DTI data and
+performing fiber tractography using software like <em>FSL</em> or
+<em>DSIStudio</em>. The handling of the datasets is done by the
+<code>Dataset</code> class, and the attributes in the following refer to its instances.
+Upon initialization, the subject-wise data set is loaded from disk. For all examples
+in this paper, we use freely available data from the ConnectomeDB of the
+Human Connectome Project (HCP). For a given parcellation of the brain
+into <span class="arithmatex">\(N\)</span> brain regions, these matrices are the <span class="arithmatex">\(N \times N\)</span> adjacency matrix <code>self.Cmat</code>,
+i.e. the structural connectivity matrix, which determines the coupling strengths between
+brain areas, and the fiber length matrix <code>Dmat</code> which determines the signal
+transmission delays. The two example datasets currently included in <code>neurolib</code> use the the 80
+cortical regions of the AAL2 atlas to define the brain areas and are
+sorted in a LRLR-ordering.</p>
+<h3 id="neurolib.utils.loadData.Dataset--connectivity-matrix-normalization">Connectivity matrix normalization</h3>
+<p>The elements of the structural connectivity matrix <code>Cmat</code> are typically the number
+of reconstructed fibers from DTI tractography. Since the number of fibers depends on the
+method and the parameters of the (probabilistic or deterministic) tractography, they need to
+be normalized using one of the three implemented methods. The first method <code>max</code> is to
+simply divide the entries of  <code>Cmat</code> by the largest entry, such that the the largest
+entry becomes 1. The second method  <code>waytotal</code> divides the entries of each column of
+<code>Cmat</code> by the number fiber tracts generated from the respective brain region during
+probabilistic tractography in FSL, which is contained in the <code>waytotal.txt</code> file.
+The third method <code>nvoxel</code> divides the entries of each column of <code>Cmat</code> by the
+size, e.g., the number of voxels of the corresponding brain area. The last two methods yield
+an asymmetric connectivity matrix, while the first one keeps <code>Cmat</code> symmetric.
+All normalization steps are done on the subject-wise matrices <code>Cmats</code> and
+<code>Dmats</code>. In a final step, all matrices can also be averaged across all subjects
+to yield one <code>Cmat</code> and <code>Dmat</code> per dataset.</p>
+<h3 id="neurolib.utils.loadData.Dataset--functional-mri-data">Functional MRI data</h3>
+<p>Subject-wise fMRI time series must be in a <span class="arithmatex">\((N \times t)\)</span>-dimensional format, where <span class="arithmatex">\(N\)</span> is the
+number of brain regions and <span class="arithmatex">\(t\)</span> the length of the time series. Each region-wise time series
+represents the BOLD activity averaged across all voxels of that region, which can be also obtained
+from software like FSL. Functional connectivity (FC) captures the spatial correlation structure
+of the BOLD time series averaged across the entire time of the recording. FC matrices are
+accessible via the attribute <code>FCs</code> and are generated by computing the Pearson correlation
+of the time series between all regions, yielding a <span class="arithmatex">\(N \times N\)</span> matrix for each subject.</p>
+<p>To capture the temporal fluctuations of time-dependent FC(t), which are lost when averaging
+across the entire recording time, functional connectivity dynamics matrices (<code>FCDs</code>) are
+computed as the element-wise Pearson correlation of time-dependent FC(t) matrices in a moving
+window across the BOLD time series of a chosen window length of, for example, 1 min. This
+yields a <span class="arithmatex">\(t_{FCD} \times t_{FCD}\)</span> FCD matrix for each subject, with <span class="arithmatex">\(t_{FCD}\)</span> being the number
+of steps the window was moved.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.loadData.Dataset.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasetName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">fcd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Load the empirical data sets that are provided with <code>neurolib</code>.</p>
+<p>Right now, datasets work on a per-subject base. A dataset must be located
+in the <code>neurolib/data/datasets/</code> directory. Each subject's dataset
+must be in the <code>subjects</code> subdirectory of that folder. In each subject
+folder there is a directory called <code>functional</code> for time series data
+and <code>structural</code> the structural connectivity data.</p>
+<p>See <code>loadData.loadSubjectFiles()</code> for more details on which files are
+being loaded.</p>
+<p>The structural connectivity data (accessible using the attribute
+loadData.Cmat), can be normalized using the <code>normalizeCmats</code> flag.
+This defaults to "max" which normalizes the Cmat by its maxmimum.
+Other options are <code>waytotal</code> or <code>nvoxel</code>, which normalizes the
+Cmat by dividing every row of the matrix by the waytotal or
+nvoxel files that are provided in the datasets.</p>
+<p>Info: the waytotal.txt and the nvoxel.txt are files extracted from
+the tractography of DTI data using <code>probtrackX</code> from the <code>fsl</code> pipeline.</p>
+<p>Individual subject data is provided with the class attributes:
+self.BOLDs: BOLD timeseries of each individual
+self.FCs: Functional connectivity of BOLD timeseries</p>
+<p>Mean data is provided with the class attributes:
+self.Cmat: Structural connectivity matrix (for coupling strenghts between areas)
+self.Dmat: Fiber length matrix (for delays)
+self.BOLDs: BOLD timeseries of each area
+self.FCs: Functional connectiviy matrices of each BOLD timeseries</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>datasetName</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the dataset to load</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>normalizeCmats</code></td>
+        <td><code>str</code></td>
+        <td><p>Normalization method for the structural connectivity matrix. normalizationMethods = ["max", "waytotal", "nvoxel"]</p></td>
+        <td><code>&#39;max&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>fcd</code></td>
+        <td><code>bool</code></td>
+        <td><p>Compute FCD matrices of BOLD data, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+      <tr>
+        <td><code>subcortical</code></td>
+        <td><code>bool</code></td>
+        <td><p>Include subcortical areas from the atlas or not, defaults to False</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/loadData.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasetName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">fcd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Load the empirical data sets that are provided with `neurolib`.</span>
+
+<span class="sd">    Right now, datasets work on a per-subject base. A dataset must be located</span>
+<span class="sd">    in the `neurolib/data/datasets/` directory. Each subject&#39;s dataset</span>
+<span class="sd">    must be in the `subjects` subdirectory of that folder. In each subject</span>
+<span class="sd">    folder there is a directory called `functional` for time series data</span>
+<span class="sd">    and `structural` the structural connectivity data.</span>
+
+<span class="sd">    See `loadData.loadSubjectFiles()` for more details on which files are</span>
+<span class="sd">    being loaded.</span>
+
+<span class="sd">    The structural connectivity data (accessible using the attribute</span>
+<span class="sd">    loadData.Cmat), can be normalized using the `normalizeCmats` flag.</span>
+<span class="sd">    This defaults to &quot;max&quot; which normalizes the Cmat by its maxmimum.</span>
+<span class="sd">    Other options are `waytotal` or `nvoxel`, which normalizes the</span>
+<span class="sd">    Cmat by dividing every row of the matrix by the waytotal or</span>
+<span class="sd">    nvoxel files that are provided in the datasets.</span>
+
+<span class="sd">    Info: the waytotal.txt and the nvoxel.txt are files extracted from</span>
+<span class="sd">    the tractography of DTI data using `probtrackX` from the `fsl` pipeline.</span>
+
+<span class="sd">    Individual subject data is provided with the class attributes:</span>
+<span class="sd">    self.BOLDs: BOLD timeseries of each individual</span>
+<span class="sd">    self.FCs: Functional connectivity of BOLD timeseries</span>
+
+<span class="sd">    Mean data is provided with the class attributes:</span>
+<span class="sd">    self.Cmat: Structural connectivity matrix (for coupling strenghts between areas)</span>
+<span class="sd">    self.Dmat: Fiber length matrix (for delays)</span>
+<span class="sd">    self.BOLDs: BOLD timeseries of each area</span>
+<span class="sd">    self.FCs: Functional connectiviy matrices of each BOLD timeseries</span>
+
+<span class="sd">    :param datasetName: Name of the dataset to load</span>
+<span class="sd">    :type datasetName: str</span>
+<span class="sd">    :param normalizeCmats: Normalization method for the structural connectivity matrix. normalizationMethods = [&quot;max&quot;, &quot;waytotal&quot;, &quot;nvoxel&quot;]</span>
+<span class="sd">    :type normalizeCmats: str</span>
+<span class="sd">    :param fcd: Compute FCD matrices of BOLD data, defaults to False</span>
+<span class="sd">    :type fcd: bool</span>
+<span class="sd">    :param subcortical: Include subcortical areas from the atlas or not, defaults to False</span>
+<span class="sd">    :type subcortical: bool</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">has_subjects</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">datasetName</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loadDataset</span><span class="p">(</span><span class="n">datasetName</span><span class="p">,</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="n">normalizeCmats</span><span class="p">,</span> <span class="n">fcd</span><span class="o">=</span><span class="n">fcd</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="n">subcortical</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.loadData.Dataset.getDataPerSubject">
+<code class="highlight language-python"><span class="n">getDataPerSubject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">apply</span><span class="o">=</span><span class="s1">&#39;single&#39;</span><span class="p">,</span> <span class="n">apply_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">apply_function_kwargs</span><span class="o">=</span><span class="p">{},</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Load data of a certain kind for all users of the current dataset</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>name</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of data type, i.e. "bold" or "cm"</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>apply</code></td>
+        <td><code>str, optional</code></td>
+        <td><p>Apply function per subject ("single") or on all subjects ("all"), defaults to "single"</p></td>
+        <td><code>&#39;single&#39;</code></td>
+      </tr>
+      <tr>
+        <td><code>apply_function</code></td>
+        <td><code>function, optional</code></td>
+        <td><p>Apply function on data, defaults to None</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>apply_function_kwargs</code></td>
+        <td><code>dict, optional</code></td>
+        <td><p>Keyword arguments of fuction, defaults to {}</p></td>
+        <td><code>{}</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>list[np.ndarray]</code></td>
+      <td><p>Subjectwise data, after function apply</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/loadData.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getDataPerSubject</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">,</span>
+    <span class="n">apply</span><span class="o">=</span><span class="s2">&quot;single&quot;</span><span class="p">,</span>
+    <span class="n">apply_function</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">apply_function_kwargs</span><span class="o">=</span><span class="p">{},</span>
+    <span class="n">normalizeCmats</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load data of a certain kind for all users of the current dataset</span>
+
+<span class="sd">    :param name: Name of data type, i.e. &quot;bold&quot; or &quot;cm&quot;</span>
+<span class="sd">    :type name: str</span>
+<span class="sd">    :param apply: Apply function per subject (&quot;single&quot;) or on all subjects (&quot;all&quot;), defaults to &quot;single&quot;</span>
+<span class="sd">    :type apply: str, optional</span>
+<span class="sd">    :param apply_function: Apply function on data, defaults to None</span>
+<span class="sd">    :type apply_function: function, optional</span>
+<span class="sd">    :param apply_function_kwargs: Keyword arguments of fuction, defaults to {}</span>
+<span class="sd">    :type apply_function_kwargs: dict, optional</span>
+<span class="sd">    :return: Subjectwise data, after function apply</span>
+<span class="sd">    :rtype: list[np.ndarray]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">subject</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;subjects&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">assert</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">value</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Data type </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> not found in dataset of subject </span><span class="si">{</span><span class="n">subject</span><span class="si">}</span><span class="s2">.&quot;</span>
+        <span class="n">val</span> <span class="o">=</span> <span class="n">value</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">apply_function</span> <span class="ow">and</span> <span class="n">apply</span> <span class="o">==</span> <span class="s2">&quot;single&quot;</span><span class="p">:</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="o">**</span><span class="n">apply_function_kwargs</span><span class="p">)</span>
+        <span class="n">values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">apply_function</span> <span class="ow">and</span> <span class="n">apply</span> <span class="o">==</span> <span class="s2">&quot;all&quot;</span><span class="p">:</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">apply_function</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="o">**</span><span class="n">apply_function_kwargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">values</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.loadData.Dataset.loadDataset">
+<code class="highlight language-python"><span class="n">loadDataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasetName</span><span class="p">,</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">fcd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Load data into accessible class attributes.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>datasetName</code></td>
+        <td><code>str</code></td>
+        <td><p>Name of the dataset (must be in <code>datasets</code> directory)</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>normalizeCmats</code></td>
+        <td><code>str, optional</code></td>
+        <td><p>Normalization method for Cmats, defaults to "max"</p></td>
+        <td><code>&#39;max&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Exceptions:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>NotImplementedError</code></td>
+        <td><p>If unknown normalization method is used</p></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/loadData.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loadDataset</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">datasetName</span><span class="p">,</span> <span class="n">normalizeCmats</span><span class="o">=</span><span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="n">fcd</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Load data into accessible class attributes.</span>
+
+<span class="sd">    :param datasetName: Name of the dataset (must be in `datasets` directory)</span>
+<span class="sd">    :type datasetName: str</span>
+<span class="sd">    :param normalizeCmats: Normalization method for Cmats, defaults to &quot;max&quot;</span>
+<span class="sd">    :type normalizeCmats: str, optional</span>
+<span class="sd">    :raises NotImplementedError: If unknown normalization method is used</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># the base directory of the dataset</span>
+    <span class="n">dsBaseDirectory</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;..&quot;</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="p">,</span> <span class="n">datasetName</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dsBaseDirectory</span><span class="p">),</span> <span class="sa">f</span><span class="s2">&quot;Dataset </span><span class="si">{</span><span class="n">datasetName</span><span class="si">}</span><span class="s2"> not found in </span><span class="si">{</span><span class="n">dsBaseDirectory</span><span class="si">}</span><span class="s2">.&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dsBaseDirectory</span> <span class="o">=</span> <span class="n">dsBaseDirectory</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
+
+    <span class="c1"># load all available subject data from disk to memory</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading dataset </span><span class="si">{</span><span class="n">datasetName</span><span class="si">}</span><span class="s2"> from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dsBaseDirectory</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_loadSubjectFiles</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dsBaseDirectory</span><span class="p">,</span> <span class="n">subcortical</span><span class="o">=</span><span class="n">subcortical</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No data loaded.&quot;</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_subjects</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">Cmats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalizeCmats</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">getDataPerSubject</span><span class="p">(</span><span class="s2">&quot;cm&quot;</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="n">normalizeCmats</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">Dmats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDataPerSubject</span><span class="p">(</span><span class="s2">&quot;len&quot;</span><span class="p">)</span>
+
+    <span class="c1"># take the average of all</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">Cmats</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">Dmat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDataPerSubject</span><span class="p">(</span>
+        <span class="s2">&quot;len&quot;</span><span class="p">,</span>
+        <span class="n">apply</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+        <span class="n">apply_function</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+        <span class="n">apply_function_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;axis&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">BOLDs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDataPerSubject</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">FCs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getDataPerSubject</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">apply_function</span><span class="o">=</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">fcd</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">computeFCD</span><span class="p">()</span>
+
+    <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataset </span><span class="si">{</span><span class="n">datasetName</span><span class="si">}</span><span class="s2"> loaded.&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.loadData.Dataset.loadMatrix">
+<code class="highlight language-python"><span class="n">loadMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matFileName</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to furiously load .mat files with scipy.io.loadmat.
+Info: More formats are supported but commented out in the code.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>matFileName</code></td>
+        <td><code>str</code></td>
+        <td><p>Filename of matrix to load</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>key</code></td>
+        <td><code>str</code></td>
+        <td><p>.mat file key in which data is stored (example: "sc")</p></td>
+        <td><code>&#39;&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>numpy.ndarray</code></td>
+      <td><p>Loaded matrix</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/loadData.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loadMatrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">matFileName</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Function to furiously load .mat files with scipy.io.loadmat.</span>
+<span class="sd">    Info: More formats are supported but commented out in the code.</span>
+
+<span class="sd">    :param matFileName: Filename of matrix to load</span>
+<span class="sd">    :type matFileName: str</span>
+<span class="sd">    :param key: .mat file key in which data is stored (example: &quot;sc&quot;)</span>
+<span class="sd">    :type key: str</span>
+
+<span class="sd">    :return: Loaded matrix</span>
+<span class="sd">    :rtype: numpy.ndarray</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">matFileName</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">matFileName</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Loading using scipy.io.loadmat...&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Keys: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">key</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">matrix</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">Loaded key &quot;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Object is still a dict. Here are the keys: </span><span class="si">{</span><span class="n">matrix</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">matrix</span>
+    <span class="k">return</span> <span class="mi">0</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../optimization/evolution/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Evolution" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Evolution
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../functions/" class="md-footer__link md-footer__link--next" aria-label="Next: Functions" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Functions
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://twitter.com/neurolib-dev" target="_blank" rel="noopener" title="neurolib on Twitter" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.2b46852b.min.js"></script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
