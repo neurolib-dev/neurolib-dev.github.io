@@ -1,0 +1,4291 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
+    
+    
+      
+        <title>Stimulus - Neurolib</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.802231af.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
+    
+      
+  
+
+
+
+  
+  
+
+
+
+  <script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-189722517-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+  <script async src="https://www.google-analytics.com/analytics.js"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#stimulus" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Neurolib" class="md-header__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Neurolib
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Stimulus
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Neurolib" class="md-nav__button md-logo" aria-label="Neurolib" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Neurolib
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/neurolib-dev/neurolib/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    neurolib-dev/neurolib
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        Contributing to neurolib
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      <label class="md-nav__link" for="__nav_3">
+        Examples
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Examples" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0-aln-minimal/" class="md-nav__link">
+        Example 0 aln minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.1-hopf-minimal/" class="md-nav__link">
+        Example 0.1 hopf minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.2-basic_analysis/" class="md-nav__link">
+        Example 0.2 basic analysis
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.3-fhn-minimal/" class="md-nav__link">
+        Example 0.3 fhn minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.4-wc-minimal/" class="md-nav__link">
+        Example 0.4 wc minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.5-external-stimulus/" class="md-nav__link">
+        Example 0.5 external stimulus
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-0.6-custom-model/" class="md-nav__link">
+        Example 0.6 custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1-aln-parameter-exploration/" class="md-nav__link">
+        Example 1 aln parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.1-custom-parameter-exploration/" class="md-nav__link">
+        Example 1.1 custom parameter exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.2-brain-network-exploration/" class="md-nav__link">
+        Example 1.2 brain network exploration
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.2.1-brain-exploration-postprocessing/" class="md-nav__link">
+        Example 1.2.1 brain exploration postprocessing
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-1.3-aln-bifurcation-diagram/" class="md-nav__link">
+        Example 1.3 aln bifurcation diagram
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2-evolutionary-optimization-minimal/" class="md-nav__link">
+        Example 2 evolutionary optimization minimal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.0.1-save-and-load-evolution/" class="md-nav__link">
+        Example 2.0.1 save and load evolution
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.1-evolutionary-optimization-aln/" class="md-nav__link">
+        Example 2.1 evolutionary optimization aln
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-2.2-evolution-brain-network-aln-resting-state-fit/" class="md-nav__link">
+        Example 2.2 evolution brain network aln resting state fit
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-3-meg-functional-connectivity/" class="md-nav__link">
+        Example 3 meg functional connectivity
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4-multimodel-intro/" class="md-nav__link">
+        Example 4 multimodel intro
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4.1-multimodel-custom-model/" class="md-nav__link">
+        Example 4.1 multimodel custom model
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/example-4.2-multimodel-backends-and-optimization/" class="md-nav__link">
+        Example 4.2 multimodel backends and optimization
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      <label class="md-nav__link" for="__nav_4">
+        Exploration
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exploration" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Exploration
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../exploration/boxsearch/" class="md-nav__link">
+        BoxSearch
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      <label class="md-nav__link" for="__nav_5">
+        Models
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/model/" class="md-nav__link">
+        Models
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../models/parameters/" class="md-nav__link">
+        Parameters
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      <label class="md-nav__link" for="__nav_6">
+        Optimization
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Optimization" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Optimization
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../optimization/evolution/" class="md-nav__link">
+        Evolution
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      <label class="md-nav__link" for="__nav_7">
+        Utils
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Utils" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Utils
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dataset/" class="md-nav__link">
+        Dataset
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../functions/" class="md-nav__link">
+        Functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parameterspace/" class="md-nav__link">
+        ParameterSpace
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../signal/" class="md-nav__link">
+        Signal
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Stimulus
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Stimulus
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus" class="md-nav__link">
+    neurolib.utils.stimulus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs" class="md-nav__link">
+    BaseMultipleInputs
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseMultipleInputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__getitem__" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__len__" class="md-nav__link">
+    __len__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.get_params" class="md-nav__link">
+    get_params()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.update_params" class="md-nav__link">
+    update_params()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus" class="md-nav__link">
+    ConcatenatedStimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="ConcatenatedStimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput" class="md-nav__link">
+    ExponentialInput
+  </a>
+  
+    <nav class="md-nav" aria-label="ExponentialInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input" class="md-nav__link">
+    Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__and__" class="md-nav__link">
+    __and__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.get_params" class="md-nav__link">
+    get_params()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.to_model" class="md-nav__link">
+    to_model()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.update_params" class="md-nav__link">
+    update_params()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput" class="md-nav__link">
+    LinearRampInput
+  </a>
+  
+    <nav class="md-nav" aria-label="LinearRampInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess" class="md-nav__link">
+    OrnsteinUhlenbeckProcess
+  </a>
+  
+    <nav class="md-nav" aria-label="OrnsteinUhlenbeckProcess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.numba_ou" class="md-nav__link">
+    numba_ou()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput" class="md-nav__link">
+    SinusoidalInput
+  </a>
+  
+    <nav class="md-nav" aria-label="SinusoidalInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput" class="md-nav__link">
+    SquareInput
+  </a>
+  
+    <nav class="md-nav" aria-label="SquareInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput" class="md-nav__link">
+    StepInput
+  </a>
+  
+    <nav class="md-nav" aria-label="StepInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Stimulus" class="md-nav__link">
+    Stimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="Stimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Stimulus.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus" class="md-nav__link">
+    SummedStimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="SummedStimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.WienerProcess" class="md-nav__link">
+    WienerProcess
+  </a>
+  
+    <nav class="md-nav" aria-label="WienerProcess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.WienerProcess.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ZeroInput" class="md-nav__link">
+    ZeroInput
+  </a>
+  
+    <nav class="md-nav" aria-label="ZeroInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ZeroInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.RectifiedInput" class="md-nav__link">
+    RectifiedInput()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus" class="md-nav__link">
+    neurolib.utils.stimulus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs" class="md-nav__link">
+    BaseMultipleInputs
+  </a>
+  
+    <nav class="md-nav" aria-label="BaseMultipleInputs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__getitem__" class="md-nav__link">
+    __getitem__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.__len__" class="md-nav__link">
+    __len__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.get_params" class="md-nav__link">
+    get_params()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.BaseMultipleInputs.update_params" class="md-nav__link">
+    update_params()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus" class="md-nav__link">
+    ConcatenatedStimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="ConcatenatedStimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ConcatenatedStimulus.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput" class="md-nav__link">
+    ExponentialInput
+  </a>
+  
+    <nav class="md-nav" aria-label="ExponentialInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ExponentialInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input" class="md-nav__link">
+    Input
+  </a>
+  
+    <nav class="md-nav" aria-label="Input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__add__" class="md-nav__link">
+    __add__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__and__" class="md-nav__link">
+    __and__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.get_params" class="md-nav__link">
+    get_params()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.to_model" class="md-nav__link">
+    to_model()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Input.update_params" class="md-nav__link">
+    update_params()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput" class="md-nav__link">
+    LinearRampInput
+  </a>
+  
+    <nav class="md-nav" aria-label="LinearRampInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.LinearRampInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess" class="md-nav__link">
+    OrnsteinUhlenbeckProcess
+  </a>
+  
+    <nav class="md-nav" aria-label="OrnsteinUhlenbeckProcess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.numba_ou" class="md-nav__link">
+    numba_ou()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput" class="md-nav__link">
+    SinusoidalInput
+  </a>
+  
+    <nav class="md-nav" aria-label="SinusoidalInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SinusoidalInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput" class="md-nav__link">
+    SquareInput
+  </a>
+  
+    <nav class="md-nav" aria-label="SquareInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SquareInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput" class="md-nav__link">
+    StepInput
+  </a>
+  
+    <nav class="md-nav" aria-label="StepInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.StepInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Stimulus" class="md-nav__link">
+    Stimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="Stimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.Stimulus.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus" class="md-nav__link">
+    SummedStimulus
+  </a>
+  
+    <nav class="md-nav" aria-label="SummedStimulus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus.as_array" class="md-nav__link">
+    as_array()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.SummedStimulus.as_cubic_splines" class="md-nav__link">
+    as_cubic_splines()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.WienerProcess" class="md-nav__link">
+    WienerProcess
+  </a>
+  
+    <nav class="md-nav" aria-label="WienerProcess">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.WienerProcess.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ZeroInput" class="md-nav__link">
+    ZeroInput
+  </a>
+  
+    <nav class="md-nav" aria-label="ZeroInput">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.ZeroInput.generate_input" class="md-nav__link">
+    generate_input()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.stimulus.RectifiedInput" class="md-nav__link">
+    RectifiedInput()
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/neurolib-dev/neurolib/edit/master/docs/utils/stimulus.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="stimulus">Stimulus</h1>
+
+
+  <div class="doc doc-object doc-module">
+
+<a id="neurolib.utils.stimulus"></a>
+    <div class="doc doc-contents first">
+
+      <p>Functions for creating stimuli and noise inputs for models.</p>
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs">
+        <code>BaseMultipleInputs</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Base class for stimuli consisting of multiple time series, such as summed inputs or concatenated inputs.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs.__getitem__">
+<code class="highlight language-python"><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return inputs by index. This also allows iteration.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return inputs by index. This also allows iteration.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inputs</code></td>
+        <td><code>list[`Input`]</code></td>
+        <td><p>List of Inputs to combine</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param inputs: List of Inputs to combine</span>
+<span class="sd">    :type inputs: list[`Input`]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">Input</span><span class="p">)</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs.__len__">
+<code class="highlight language-python"><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return number of inputs.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return number of inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs.get_params">
+<code class="highlight language-python"><span class="n">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Get all parameters recursively for all inputs.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get all parameters recursively for all inputs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+        <span class="o">**</span><span class="p">{</span><span class="sa">f</span><span class="s2">&quot;input_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="nb">input</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">)},</span>
+    <span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.BaseMultipleInputs.update_params">
+<code class="highlight language-python"><span class="n">update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_dict</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Update all parameters recursively.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update all parameters recursively.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="nb">input</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">input</span><span class="o">.</span><span class="n">update_params</span><span class="p">(</span><span class="n">params_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;input_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="p">{}))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.ConcatenatedStimulus">
+        <code>ConcatenatedStimulus</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Represents temporal concatenation of of arbitrary many stimuli.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>    summed_stimulus = SinusoidalInput(...) &amp; OrnsteinUhlenbeckProcess(...)
+</code></pre></div></p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ConcatenatedStimulus.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">length_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>length_ratios</code></td>
+        <td><code>list[int|float]</code></td>
+        <td><p>Ratios of lengths of concatenated stimuli</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">length_ratios</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param length_ratios: Ratios of lengths of concatenated stimuli</span>
+<span class="sd">    :type length_ratios: list[int|float]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">length_ratios</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">length_ratios</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">length_ratios</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="n">length</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">length</span> <span class="ow">in</span> <span class="n">length_ratios</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span> <span class="o">=</span> <span class="n">length_ratios</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ConcatenatedStimulus.as_array">
+<code class="highlight language-python"><span class="n">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return concatenation of all stimuli as numpy array.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return concatenation of all stimuli as numpy array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># normalize ratios to sum = 1</span>
+    <span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">]</span>
+    <span class="n">concat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+        <span class="p">[</span><span class="nb">input</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">ratios</span><span class="p">)],</span>
+        <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">duration</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="c1"># due to rounding errors, the overall length might be longer by a few dt</span>
+    <span class="k">return</span> <span class="n">concat</span><span class="p">[:,</span> <span class="p">:</span><span class="n">length</span><span class="p">]</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ConcatenatedStimulus.as_cubic_splines">
+<code class="highlight language-python"><span class="n">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return as cubic Hermite splines.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>shift_start_time</code></td>
+        <td><code>float</code></td>
+        <td><p>By how much to shift the stimulus start time</p></td>
+        <td><code>0.0</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="c1"># normalize ratios to sum = 1</span>
+    <span class="n">ratios</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">]</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">as_cubic_splines</span><span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="n">ratios</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nb">input</span><span class="p">,</span> <span class="n">ratio</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">ratios</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+        <span class="n">last_time</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">time</span>
+        <span class="n">temp</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">as_cubic_splines</span><span class="p">(</span><span class="n">duration</span> <span class="o">*</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="n">last_time</span><span class="p">)</span>
+        <span class="c1"># `extend` adds an iteratable (whole `CubicHermiteSpline` is an</span>
+        <span class="c1"># iterable of `Anchors`) to the current spline</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">temp</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.ExponentialInput">
+        <code>ExponentialInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Exponential rise or decay input.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ExponentialInput.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp_max</span><span class="p">,</span> <span class="n">exp_coef</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span> <span class="n">exp_type</span><span class="o">=</span><span class="s1">&#39;rise&#39;</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inp_max</code></td>
+        <td><code>float</code></td>
+        <td><p>Maximum of stimulus.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>exp_coeficient</code></td>
+        <td><code>float</code></td>
+        <td><p>Coeffiecent for the exponential (the higher the coefficient, the faster it rises or decays).</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>exp_type</code></td>
+        <td><code>str</code></td>
+        <td><p>Whether to "rise" or to "decay".</p></td>
+        <td><code>&#39;rise&#39;</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">inp_max</span><span class="p">,</span>
+    <span class="n">exp_coef</span><span class="o">=</span><span class="mf">30.0</span><span class="p">,</span>
+    <span class="n">exp_type</span><span class="o">=</span><span class="s2">&quot;rise&quot;</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param inp_max: Maximum of stimulus.</span>
+<span class="sd">    :type inp_max: float</span>
+<span class="sd">    :param exp_coeficient: Coeffiecent for the exponential (the higher the</span>
+<span class="sd">        coefficient, the faster it rises or decays).</span>
+<span class="sd">    :type exp_coeficient: float</span>
+<span class="sd">    :param exp_type: Whether to &quot;rise&quot; or to &quot;decay&quot;.</span>
+<span class="sd">    :type exp_type: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">=</span> <span class="n">inp_max</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">exp_coef</span> <span class="o">=</span> <span class="n">exp_coef</span>
+    <span class="k">assert</span> <span class="n">exp_type</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rise&quot;</span><span class="p">,</span> <span class="s2">&quot;decay&quot;</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">exp_type</span> <span class="o">=</span> <span class="n">exp_type</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ExponentialInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">exponential</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">exp_coef</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">exp_type</span> <span class="o">==</span> <span class="s2">&quot;rise&quot;</span><span class="p">:</span>
+        <span class="n">exponential</span> <span class="o">=</span> <span class="o">-</span><span class="n">exponential</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">exponential</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.Input">
+        <code>Input</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generates input to model.</p>
+<p>Base class for other input types.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.__add__">
+<code class="highlight language-python"><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Sum two inputs into one SummedStimulus.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Sum two inputs into one SummedStimulus.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Input</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">SummedStimulus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">SummedStimulus</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">inputs</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SummedStimulus</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.__and__">
+<code class="highlight language-python"><span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Concatenate two inputs into ConcatenatedStimulus.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__and__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Concatenate two inputs into ConcatenatedStimulus.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">Input</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ConcatenatedStimulus</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ConcatenatedStimulus</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">inputs</span><span class="p">,</span> <span class="n">length_ratios</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">length_ratios</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ConcatenatedStimulus</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>n</code></td>
+        <td><code>int</code></td>
+        <td><p>Number of spatial dimensions / independent realizations of the input. For determinstic inputs, the array is just copied, for stociastic / noisy inputs, this means independent realizations.</p></td>
+        <td><code>1</code></td>
+      </tr>
+      <tr>
+        <td><code>seed</code></td>
+        <td><code>int|None</code></td>
+        <td><p>Seed for the random number generator.</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param n: Number of spatial dimensions / independent realizations of the input.</span>
+<span class="sd">        For determinstic inputs, the array is just copied,</span>
+<span class="sd">        for stociastic / noisy inputs, this means independent realizations.</span>
+<span class="sd">    :type n: int</span>
+<span class="sd">    :param seed: Seed for the random number generator.</span>
+<span class="sd">    :type seed: int|None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">n</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">seed</span> <span class="o">=</span> <span class="n">seed</span>
+    <span class="c1"># seed the generator</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+    <span class="c1"># get parameter names</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getfullargspec</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span><span class="o">.</span><span class="n">args</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.as_array">
+<code class="highlight language-python"><span class="n">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return input as numpy array.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return input as numpy array.</span>
+
+<span class="sd">    :param duration: Duration of the input, in milliseconds</span>
+<span class="sd">    :type duration: float</span>
+<span class="sd">    :param dt: dt of input, in milliseconds</span>
+<span class="sd">    :type dt: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">array</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.as_cubic_splines">
+<code class="highlight language-python"><span class="n">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return as cubic Hermite splines.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>shift_start_time</code></td>
+        <td><code>float</code></td>
+        <td><p>By how much to shift the stimulus start time</p></td>
+        <td><code>0.0</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return as cubic Hermite splines.</span>
+
+<span class="sd">    :param duration: Duration of the input, in milliseconds</span>
+<span class="sd">    :type duration: float</span>
+<span class="sd">    :param dt: dt of input, in milliseconds</span>
+<span class="sd">    :type dt: float</span>
+<span class="sd">    :param shift_start_time: By how much to shift the stimulus start time</span>
+<span class="sd">    :type shift_start_time: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">splines</span> <span class="o">=</span> <span class="n">CubicHermiteSpline</span><span class="o">.</span><span class="n">from_data</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">+</span> <span class="n">shift_start_time</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_input</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">splines</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to generate input.</span>
+
+<span class="sd">    :param duration: Duration of the input, in milliseconds</span>
+<span class="sd">    :type duration: float</span>
+<span class="sd">    :param dt: dt of input, in milliseconds</span>
+<span class="sd">    :type dt: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.get_params">
+<code class="highlight language-python"><span class="n">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return the parameters of the input as dict.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the parameters of the input as dict.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">(</span><span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">param_names</span><span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="o">**</span><span class="n">params</span><span class="p">}</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.to_model">
+<code class="highlight language-python"><span class="n">to_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return numpy array of stimuli based on model parameters.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>model.params[&quot;ext_exc_input&quot;] = SinusoidalInput(...).to_model(model)
+</code></pre></div></p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>model</code></td>
+        <td><code>`neurolib.models.Model`</code></td>
+        <td><p>neurolib's model</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">to_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return numpy array of stimuli based on model parameters.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    ```</span>
+<span class="sd">    model.params[&quot;ext_exc_input&quot;] = SinusoidalInput(...).to_model(model)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    :param model: neurolib&#39;s model</span>
+<span class="sd">    :type model: `neurolib.models.Model`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">Model</span><span class="p">)</span>
+    <span class="c1"># set number of spatial dimensions as the number of nodes in the brian network</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;N&quot;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">],</span> <span class="n">dt</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dt&quot;</span><span class="p">])</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Input.update_params">
+<code class="highlight language-python"><span class="n">update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_dict</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Update model input parameters.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>params_dict</code></td>
+        <td><code>dict</code></td>
+        <td><p>New parameters for this input</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_params</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_dict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update model input parameters.</span>
+
+<span class="sd">    :param params_dict: New parameters for this input</span>
+<span class="sd">    :type params_dict: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_sanitize</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Change string `None` to actual None - can happen with Exploration or</span>
+<span class="sd">        Evolution, since `pypet` does None -&gt; &quot;None&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;None&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">for</span> <span class="n">param</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">params_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">_sanitize</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.LinearRampInput">
+        <code>LinearRampInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Linear ramp input.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.LinearRampInput.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inp_max</span><span class="p">,</span> <span class="n">ramp_length</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>inp_max</code></td>
+        <td><code>float</code></td>
+        <td><p>Maximum of stimulus.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>ramp_length</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of linear ramp, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">inp_max</span><span class="p">,</span>
+    <span class="n">ramp_length</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param inp_max: Maximum of stimulus.</span>
+<span class="sd">    :type inp_max: float</span>
+<span class="sd">    :param ramp_length: Duration of linear ramp, in milliseconds</span>
+<span class="sd">    :type ramp_length: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">=</span> <span class="n">inp_max</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span> <span class="o">=</span> <span class="n">ramp_length</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.LinearRampInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">linear_inp</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">inp_max</span> <span class="o">*</span> <span class="p">(</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ramp_length</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">linear_inp</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.OrnsteinUhlenbeckProcess">
+        <code>OrnsteinUhlenbeckProcess</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Ornstein–Uhlenbeck input, i.e.
+    dX = (mu - X)/tau * dt + sigma*dW</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>mu</code></td>
+        <td><code>float</code></td>
+        <td><p>Drift of the OU process</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>sigma</code></td>
+        <td><code>float</code></td>
+        <td><p>Standard deviation of the Wiener process, i.e. strength of the noise</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>tau</code></td>
+        <td><code>float</code></td>
+        <td><p>Timescale of the OU process, in ms</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">mu</span><span class="p">,</span>
+    <span class="n">sigma</span><span class="p">,</span>
+    <span class="n">tau</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param mu: Drift of the OU process</span>
+<span class="sd">    :type mu: float</span>
+<span class="sd">    :param sigma: Standard deviation of the Wiener process, i.e. strength of the noise</span>
+<span class="sd">    :type sigma: float</span>
+<span class="sd">    :param tau: Timescale of the OU process, in ms</span>
+<span class="sd">    :type tau: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mu</span> <span class="o">=</span> <span class="n">mu</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span> <span class="o">=</span> <span class="n">sigma</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">tau</span> <span class="o">=</span> <span class="n">tau</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">numba_ou</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tau</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.OrnsteinUhlenbeckProcess.numba_ou">
+<code class="highlight language-python"><span class="n">numba_ou</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Generation of Ornstein-Uhlenback input - wrapped in numba's jit for
+speed.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="nd">@numba</span><span class="o">.</span><span class="n">njit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">numba_ou</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">tau</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generation of Ornstein-Uhlenback input - wrapped in numba&#39;s jit for</span>
+<span class="sd">    speed.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">dt</span> <span class="o">*</span> <span class="p">((</span><span class="n">mu</span> <span class="o">-</span> <span class="n">x</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="n">tau</span><span class="p">)</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.SinusoidalInput">
+        <code>SinusoidalInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Sinusoidal input.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SinusoidalInput.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">dc_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>amplitude</code></td>
+        <td><code>float</code></td>
+        <td><p>Amplitude of the sinusoid.</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>frequency</code></td>
+        <td><code>float</code></td>
+        <td><p>Frequency of the sinus oscillation, in Hz</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dc_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether the sinusoid oscillates around 0 (False), or has a positive DC bias, thus non-negative (True).</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="p">,</span>
+    <span class="n">dc_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param amplitude: Amplitude of the sinusoid.</span>
+<span class="sd">    :type amplitude: float</span>
+<span class="sd">    :param frequency: Frequency of the sinus oscillation, in Hz</span>
+<span class="sd">    :type frequency: float</span>
+<span class="sd">    :param dc_bias: Whether the sinusoid oscillates around 0</span>
+<span class="sd">        (False), or has a positive DC bias, thus non-negative (True).</span>
+<span class="sd">    :type dc_bias: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dc_bias</span> <span class="o">=</span> <span class="n">dc_bias</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SinusoidalInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">sinusoid</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_bias</span><span class="p">:</span>
+        <span class="n">sinusoid</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">sinusoid</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.SquareInput">
+        <code>SquareInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Oscillatory square input.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SquareInput.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">amplitude</span><span class="p">,</span> <span class="n">frequency</span><span class="p">,</span> <span class="n">dc_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>amplitude</code></td>
+        <td><code>float</code></td>
+        <td><p>Amplitude of the square</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>frequency</code></td>
+        <td><code>float</code></td>
+        <td><p>Frequency of the square oscillation, in Hz</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dc_bias</code></td>
+        <td><code>bool</code></td>
+        <td><p>Whether the square oscillates around 0 (False), or has a positive DC bias, thus non-negative (True).</p></td>
+        <td><code>False</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">amplitude</span><span class="p">,</span>
+    <span class="n">frequency</span><span class="p">,</span>
+    <span class="n">dc_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param amplitude: Amplitude of the square</span>
+<span class="sd">    :type amplitude: float</span>
+<span class="sd">    :param frequency: Frequency of the square oscillation, in Hz</span>
+<span class="sd">    :type frequency: float</span>
+<span class="sd">    :param dc_bias: Whether the square oscillates around 0</span>
+<span class="sd">        (False), or has a positive DC bias, thus non-negative (True).</span>
+<span class="sd">    :type dc_bias: bool</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">=</span> <span class="n">amplitude</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dc_bias</span> <span class="o">=</span> <span class="n">dc_bias</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SquareInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="n">square_inp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span> <span class="o">*</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frequency</span> <span class="o">/</span> <span class="mf">1000.0</span><span class="p">))</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dc_bias</span><span class="p">:</span>
+        <span class="n">square_inp</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">amplitude</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">square_inp</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.StepInput">
+        <code>StepInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Step input.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.StepInput.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_size</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>step_size</code></td>
+        <td><code>float</code></td>
+        <td><p>Size of the step, i.e., the amplitude.</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">step_size</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param step_size: Size of the step, i.e., the amplitude.</span>
+<span class="sd">    :type step_size: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span> <span class="o">=</span> <span class="n">step_size</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">start</span><span class="o">=</span><span class="n">start</span><span class="p">,</span>
+        <span class="n">end</span><span class="o">=</span><span class="n">end</span><span class="p">,</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.StepInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_trim_stim</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_size</span><span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.Stimulus">
+        <code>Stimulus</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Generates a stimulus with optional start and end times.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.Stimulus.__init__">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-properties">
+      <small class="doc doc-property doc-property-special"><code>special</code></small>
+  </span>
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>start</code></td>
+        <td><code>float</code></td>
+        <td><p>start of the stimulus, in milliseconds</p></td>
+        <td><code>None</code></td>
+      </tr>
+      <tr>
+        <td><code>end</code></td>
+        <td><code>float</code></td>
+        <td><p>end of the stimulus, in milliseconds</p></td>
+        <td><code>None</code></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">start</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param start: start of the stimulus, in milliseconds</span>
+<span class="sd">    :type start: float</span>
+<span class="sd">    :param end: end of the stimulus, in milliseconds</span>
+<span class="sd">    :type end: float</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">end</span> <span class="o">=</span> <span class="n">end</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_default_start</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_default_end</span> <span class="o">=</span> <span class="n">end</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span>
+        <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.SummedStimulus">
+        <code>SummedStimulus</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Represents the summation of arbitrary many stimuli.</p>
+<p>Example:
+<div class="highlight"><pre><span></span><code>    summed_stimulus = SinusoidalInput(...) + OrnsteinUhlenbeckProcess(...)
+</code></pre></div></p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SummedStimulus.as_array">
+<code class="highlight language-python"><span class="n">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return sum of all inputes as numpy array.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_array</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return sum of all inputes as numpy array.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="nb">input</span><span class="o">.</span><span class="n">as_array</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">]),</span>
+        <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.SummedStimulus.as_cubic_splines">
+<code class="highlight language-python"><span class="n">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Return sum of all inputes as cubic Hermite splines.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">as_cubic_splines</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="o">=</span><span class="mf">0.0</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return sum of all inputes as cubic Hermite splines.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">as_cubic_splines</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="p">)</span>
+    <span class="k">for</span> <span class="nb">input</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+        <span class="n">result</span><span class="o">.</span><span class="n">plus</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">as_cubic_splines</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">shift_start_time</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">result</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.WienerProcess">
+        <code>WienerProcess</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Stimulus sampled from a Wiener process, i.e. drawn from standard normal distribution N(0, sqrt(dt)).</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.WienerProcess.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">dt</span><span class="p">),</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-class">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.ZeroInput">
+        <code>ZeroInput</code>
+
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>No stimulus, i.e. all zeros. Can be used to add a delay between two stimuli.</p>
+
+
+
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
+<h3 class="doc doc-heading" id="neurolib.utils.stimulus.ZeroInput.generate_input">
+<code class="highlight language-python"><span class="n">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span></code>
+
+
+</h3>
+
+    <div class="doc doc-contents ">
+
+      <p>Function to generate input.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>duration</code></td>
+        <td><code>float</code></td>
+        <td><p>Duration of the input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>dt</code></td>
+        <td><code>float</code></td>
+        <td><p>dt of input, in milliseconds</p></td>
+        <td><em>required</em></td>
+      </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_get_times</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">times</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+
+
+
+
+  <div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.stimulus.RectifiedInput">
+<code class="highlight language-python"><span class="n">RectifiedInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></code>
+
+
+</h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Return rectified input with exponential decay, i.e. a negative step followed by a
+slow decay to zero, followed by a positive step and again a slow decay to zero.
+Can be used for bistablity detection.</p>
+
+<p><strong>Parameters:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <td><code>amplitude</code></td>
+        <td><code>float</code></td>
+        <td><p>Amplitude (both negative and positive) for the step</p></td>
+        <td><em>required</em></td>
+      </tr>
+      <tr>
+        <td><code>n</code></td>
+        <td><code>int</code></td>
+        <td><p>Number of realizations (spatial dimension)</p></td>
+        <td><code>1</code></td>
+      </tr>
+  </tbody>
+</table>
+<p><strong>Returns:</strong></p>
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>`ConctatenatedInput`</code></td>
+      <td><p>Concatenated input which represents the rectified stimulus with exponential decay</p></td>
+    </tr>
+  </tbody>
+</table>
+        <details class="quote">
+          <summary>Source code in <code>neurolib/utils/stimulus.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">RectifiedInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return rectified input with exponential decay, i.e. a negative step followed by a</span>
+<span class="sd">    slow decay to zero, followed by a positive step and again a slow decay to zero.</span>
+<span class="sd">    Can be used for bistablity detection.</span>
+
+<span class="sd">    :param amplitude: Amplitude (both negative and positive) for the step</span>
+<span class="sd">    :type amplitude: float</span>
+<span class="sd">    :param n: Number of realizations (spatial dimension)</span>
+<span class="sd">    :type n: int</span>
+<span class="sd">    :return: Concatenated input which represents the rectified stimulus with exponential decay</span>
+<span class="sd">    :rtype: `ConctatenatedInput`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="n">ConcatenatedStimulus</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=-</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>
+            <span class="n">ExponentialInput</span><span class="p">(</span><span class="n">inp_max</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">exp_type</span><span class="o">=</span><span class="s2">&quot;rise&quot;</span><span class="p">,</span> <span class="n">exp_coef</span><span class="o">=</span><span class="mf">12.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=-</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>
+            <span class="n">ExponentialInput</span><span class="p">(</span><span class="n">amplitude</span><span class="p">,</span> <span class="n">exp_type</span><span class="o">=</span><span class="s2">&quot;decay&quot;</span><span class="p">,</span> <span class="n">exp_coef</span><span class="o">=</span><span class="mf">7.5</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>
+            <span class="n">StepInput</span><span class="p">(</span><span class="n">step_size</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">),</span>
+        <span class="p">],</span>
+        <span class="n">length_ratios</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">)</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+  </div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../signal/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Signal" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Signal
+            </div>
+          </div>
+        </a>
+      
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+      <a href="https://twitter.com/neurolib-dev" target="_blank" rel="noopener" title="neurolib on Twitter" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.756773cc.min.js"></script>
+      
+        <script src="../../js/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
