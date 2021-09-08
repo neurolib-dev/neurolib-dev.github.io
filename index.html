@@ -10,7 +10,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.2">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.6">
     
     
       
@@ -18,10 +18,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.1118c9be.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.802231af.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ba0d045b.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -263,68 +263,6 @@
   <a href="#what-is-neurolib" class="md-nav__link">
     What is neurolib?
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#whole-brain-modeling" class="md-nav__link">
-    Whole-brain modeling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single-node" class="md-nav__link">
-    Single node
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whole-brain-network" class="md-nav__link">
-    Whole-brain network
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameter-exploration" class="md-nav__link">
-    Parameter exploration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#evolutionary-optimization" class="md-nav__link">
-    Evolutionary optimization
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -923,68 +861,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whole-brain-modeling" class="md-nav__link">
-    Whole-brain modeling
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-layout" class="md-nav__link">
-    Project layout
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#single-node" class="md-nav__link">
-    Single node
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#whole-brain-network" class="md-nav__link">
-    Whole-brain network
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#parameter-exploration" class="md-nav__link">
-    Parameter exploration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#evolutionary-optimization" class="md-nav__link">
-    Evolutionary optimization
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#more-information" class="md-nav__link">
     More information
   </a>
@@ -1066,30 +942,38 @@ Examples:
 <a href="#parameter-exploration">Parameter exploration</a> ·
 <a href="#evolutionary-optimization">Evolutionary optimization</a>
 <br><br>    
-
 </p>
+<p><div class="highlight"><pre><span></span><code>## Whole-brain modeling
 
-<h2 id="whole-brain-modeling">Whole-brain modeling</h2>
-<p>Typically, in whole-brain modeling, diffusion tensor imaging (DTI) is used to infer the structural connectivity (the connection strength) between different brain areas. In a DTI scan, the direction of the diffusion of molecules is measured across the whole brain. Using <a href="https://en.wikipedia.org/wiki/Tractography">tractography</a>, this information can yield the distribution of axonal fibers in the brain that connect distant brain areas, called the connectome. Together with an atlas that divides the brain into distinct areas, a matrix can be computed that encodes how many fibers go from one area to another, the so-called structural connectivity (SC) matrix. This matrix defines the coupling strengths between brain areas and acts as an adjacency matrix of the brain network. The fiber length determines the signal transmission delay between all brain areas. Combining the structural data with a computational model of the neuronal activity of each brain area, we can create a dynamical model of the whole brain.</p>
-<p>The resulting whole-brain model consists of interconnected brain areas, with each brain area having their internal neural dynamics. The neural activity can also be used to simulate hemodynamic <a href="https://en.wikipedia.org/wiki/Blood-oxygen-level-dependent_imaging">BOLD</a> activity using the Balloon-Windkessel model, which can be compared to empirical fMRI data. Often, BOLD activity is used to compute correlations of activity between brain areas, the so called <a href="https://en.wikipedia.org/wiki/Resting_state_fMRI#Functional">resting state functional connectivity</a>, resulting in a matrix with correlations between each brain area. This matrix can then be fitted to empirical fMRI recordings of the resting-state activity of the brain.</p>
-<p>Below is an animation of the neuronal activity of a whole-brain model plotted on a brain.</p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/brain_slow_waves_small.gif">
-</p>
+Typically, in whole-brain modeling, diffusion tensor imaging (DTI) is used to infer the structural connectivity (the connection strength) between different brain areas. In a DTI scan, the direction of the diffusion of molecules is measured across the whole brain. Using [tractography](https://en.wikipedia.org/wiki/Tractography), this information can yield the distribution of axonal fibers in the brain that connect distant brain areas, called the connectome. Together with an atlas that divides the brain into distinct areas, a matrix can be computed that encodes how many fibers go from one area to another, the so-called structural connectivity (SC) matrix. This matrix defines the coupling strengths between brain areas and acts as an adjacency matrix of the brain network. The fiber length determines the signal transmission delay between all brain areas. Combining the structural data with a computational model of the neuronal activity of each brain area, we can create a dynamical model of the whole brain.
 
-<h2 id="installation">Installation</h2>
-<p>The easiest way to get going is to install the pypi package using <code>pip</code>:</p>
-<p><div class="highlight"><pre><span></span><code>pip install neurolib
+The resulting whole-brain model consists of interconnected brain areas, with each brain area having their internal neural dynamics. The neural activity can also be used to simulate hemodynamic [BOLD](https://en.wikipedia.org/wiki/Blood-oxygen-level-dependent_imaging) activity using the Balloon-Windkessel model, which can be compared to empirical fMRI data. Often, BOLD activity is used to compute correlations of activity between brain areas, the so called [resting state functional connectivity](https://en.wikipedia.org/wiki/Resting_state_fMRI#Functional), resulting in a matrix with correlations between each brain area. This matrix can then be fitted to empirical fMRI recordings of the resting-state activity of the brain.
+
+
+Below is an animation of the neuronal activity of a whole-brain model plotted on a brain.
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/brain_slow_waves_small.gif&quot;&gt;
+&lt;/p&gt;
+
+## Installation
+
+The easiest way to get going is to install the pypi package using `pip`:
+
+pip install neurolib
 </code></pre></div>
-Alternatively, you can also clone this repository and install all dependencies with</p>
-<p><div class="highlight"><pre><span></span><code>git clone https://github.com/neurolib-dev/neurolib.git
+<div class="highlight"><pre><span></span><code>Alternatively, you can also clone this repository and install all dependencies with
+
+git clone https://github.com/neurolib-dev/neurolib.git
 cd neurolib/
 pip install -r requirements.txt
 pip install .
 </code></pre></div>
-It is recommended to clone or fork the entire repository since it will also include all examples and tests.</p>
-<h2 id="project-layout">Project layout</h2>
-<div class="highlight"><pre><span></span><code>neurolib/                   # Main module
+<div class="highlight"><pre><span></span><code>It is recommended to clone or fork the entire repository since it will also include all examples and tests.
+
+## Project layout
+
+neurolib/                   # Main module
 ├── models/                     # Neural mass models
     ├──model.py                 # Base model class
     └── /.../               # Implemented mass models
@@ -1110,71 +994,86 @@ It is recommended to clone or fork the entire repository since it will also incl
 ├── docs/                   # Documentation 
 └── tests/                  # Automated tests
 </code></pre></div>
-<h2 id="examples">Examples</h2>
-<p>Example <a href="../examples/">IPython Notebooks</a> on how to use the library can be found in the <code>./examples/</code> directory, don't forget to check them out! You can run the examples in your browser using Binder by clicking <a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib.git/master?filepath=examples">here</a> or one of the following links:</p>
-<ul>
-<li><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=examples%2Fexample-0-aln-minimal.ipynb">Example 0.0</a> - Basic use of the <code>aln</code> model</li>
-<li><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=examples%2Fexample-0.3-fhn-minimal.ipynb">Example 0.3</a> - Fitz-Hugh Nagumo model <code>fhn</code> on a brain network</li>
-<li><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=examples%2Fexample-0.6-custom-model.ipynb">Example 0.6</a> - Minimal example of how to implement your own model in <code>neurolib</code></li>
-<li><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=examples%2Fexample-1.2-brain-network-exploration.ipynb">Example 1.2</a> - Parameter exploration of a brain network and fitting to BOLD data</li>
-<li><a href="https://mybinder.org/v2/gh/neurolib-dev/neurolib/master?filepath=examples%2Fexample-2-evolutionary-optimization-minimal.ipynb">Example 2.0</a> - A simple example of the evolutionary optimization framework </li>
-</ul>
-<p>A basic overview of the functionality of <code>neurolib</code> is also given in the following. </p>
-<h3 id="single-node">Single node</h3>
-<p>This example is available in detail as a <a href="../examples/example-0-aln-minimal.ipynb">IPython Notebook</a>. </p>
-<p>To create a single <code>aln</code> model with the default parameters, simply run</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.models.aln</span> <span class="kn">import</span> <span class="n">ALNModel</span>
+<div class="highlight"><pre><span></span><code><span class="c1">## Examples</span>
+
+<span class="n">Example</span> <span class="p">[</span><span class="n">IPython</span> <span class="n">Notebooks</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="p">)</span> <span class="n">on</span> <span class="n">how</span> <span class="n">to</span> <span class="n">use</span> <span class="n">the</span> <span class="n">library</span> <span class="n">can</span> <span class="n">be</span> <span class="n">found</span> <span class="ow">in</span> <span class="n">the</span> <span class="err">`</span><span class="o">./</span><span class="n">examples</span><span class="o">/</span><span class="err">`</span> <span class="n">directory</span><span class="p">,</span> <span class="n">don</span><span class="s1">&#39;t forget to check them out! You can run the examples in your browser using Binder by clicking [here](https://mybinder.org/v2/gh/neurolib-dev/neurolib.git/master?filepath=examples) or one of the following links:</span>
+
+<span class="o">-</span> <span class="p">[</span><span class="n">Example</span> <span class="mf">0.0</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mybinder</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">gh</span><span class="o">/</span><span class="n">neurolib</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">neurolib</span><span class="o">/</span><span class="n">master</span><span class="err">?</span><span class="n">filepath</span><span class="o">=</span><span class="n">examples</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">aln</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span> <span class="o">-</span> <span class="n">Basic</span> <span class="n">use</span> <span class="n">of</span> <span class="n">the</span> <span class="err">`</span><span class="n">aln</span><span class="err">`</span> <span class="n">model</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">Example</span> <span class="mf">0.3</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mybinder</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">gh</span><span class="o">/</span><span class="n">neurolib</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">neurolib</span><span class="o">/</span><span class="n">master</span><span class="err">?</span><span class="n">filepath</span><span class="o">=</span><span class="n">examples</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="o">-</span><span class="mf">0.3</span><span class="o">-</span><span class="n">fhn</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span> <span class="o">-</span> <span class="n">Fitz</span><span class="o">-</span><span class="n">Hugh</span> <span class="n">Nagumo</span> <span class="n">model</span> <span class="err">`</span><span class="n">fhn</span><span class="err">`</span> <span class="n">on</span> <span class="n">a</span> <span class="n">brain</span> <span class="n">network</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">Example</span> <span class="mf">0.6</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mybinder</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">gh</span><span class="o">/</span><span class="n">neurolib</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">neurolib</span><span class="o">/</span><span class="n">master</span><span class="err">?</span><span class="n">filepath</span><span class="o">=</span><span class="n">examples</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="o">-</span><span class="mf">0.6</span><span class="o">-</span><span class="n">custom</span><span class="o">-</span><span class="n">model</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span> <span class="o">-</span> <span class="n">Minimal</span> <span class="n">example</span> <span class="n">of</span> <span class="n">how</span> <span class="n">to</span> <span class="n">implement</span> <span class="n">your</span> <span class="n">own</span> <span class="n">model</span> <span class="ow">in</span> <span class="err">`</span><span class="n">neurolib</span><span class="err">`</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">Example</span> <span class="mf">1.2</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mybinder</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">gh</span><span class="o">/</span><span class="n">neurolib</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">neurolib</span><span class="o">/</span><span class="n">master</span><span class="err">?</span><span class="n">filepath</span><span class="o">=</span><span class="n">examples</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="n">brain</span><span class="o">-</span><span class="n">network</span><span class="o">-</span><span class="n">exploration</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span> <span class="o">-</span> <span class="n">Parameter</span> <span class="n">exploration</span> <span class="n">of</span> <span class="n">a</span> <span class="n">brain</span> <span class="n">network</span> <span class="ow">and</span> <span class="n">fitting</span> <span class="n">to</span> <span class="n">BOLD</span> <span class="n">data</span>
+<span class="o">-</span> <span class="p">[</span><span class="n">Example</span> <span class="mf">2.0</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">mybinder</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">v2</span><span class="o">/</span><span class="n">gh</span><span class="o">/</span><span class="n">neurolib</span><span class="o">-</span><span class="n">dev</span><span class="o">/</span><span class="n">neurolib</span><span class="o">/</span><span class="n">master</span><span class="err">?</span><span class="n">filepath</span><span class="o">=</span><span class="n">examples</span><span class="o">%</span><span class="mi">2</span><span class="n">Fexample</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">evolutionary</span><span class="o">-</span><span class="n">optimization</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span> <span class="o">-</span> <span class="n">A</span> <span class="n">simple</span> <span class="n">example</span> <span class="n">of</span> <span class="n">the</span> <span class="n">evolutionary</span> <span class="n">optimization</span> <span class="n">framework</span> 
+
+<span class="n">A</span> <span class="n">basic</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">the</span> <span class="n">functionality</span> <span class="n">of</span> <span class="err">`</span><span class="n">neurolib</span><span class="err">`</span> <span class="ow">is</span> <span class="n">also</span> <span class="n">given</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">following</span><span class="o">.</span> 
+
+<span class="c1">### Single node</span>
+
+<span class="n">This</span> <span class="n">example</span> <span class="ow">is</span> <span class="n">available</span> <span class="ow">in</span> <span class="n">detail</span> <span class="k">as</span> <span class="n">a</span> <span class="p">[</span><span class="n">IPython</span> <span class="n">Notebook</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">aln</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span><span class="o">.</span> 
+
+<span class="n">To</span> <span class="n">create</span> <span class="n">a</span> <span class="n">single</span> <span class="err">`</span><span class="n">aln</span><span class="err">`</span> <span class="n">model</span> <span class="k">with</span> <span class="n">the</span> <span class="n">default</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">simply</span> <span class="n">run</span>
+
+<span class="kn">from</span> <span class="nn">neurolib.models.aln</span> <span class="kn">import</span> <span class="n">ALNModel</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># add some noise</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
-<p>The results from this small simulation can be plotted easily:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="n">The</span> <span class="n">results</span> <span class="kn">from</span> <span class="nn">this</span> <span class="n">small</span> <span class="n">simulation</span> <span class="n">can</span> <span class="n">be</span> <span class="n">plotted</span> <span class="n">easily</span><span class="p">:</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </code></pre></div>
-<p align="left">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/single_timeseries.png">
-</p>
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/single_timeseries.png&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 
-<h3 id="whole-brain-network">Whole-brain network</h3>
-<p>A detailed example is available as a <a href="../examples/example-0-aln-minimal.ipynb">IPython Notebook</a>. </p>
-<p>To simulate a whole-brain network model, first we need to load a DTI and a resting-state fMRI dataset. <code>neurolib</code> already provides some example data for you:</p>
-<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.loadData</span> <span class="kn">import</span> <span class="n">Dataset</span>
+<span class="c1">### Whole-brain network</span>
+
+<span class="n">A</span> <span class="n">detailed</span> <span class="n">example</span> <span class="ow">is</span> <span class="n">available</span> <span class="k">as</span> <span class="n">a</span> <span class="p">[</span><span class="n">IPython</span> <span class="n">Notebook</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="mi">0</span><span class="o">-</span><span class="n">aln</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span><span class="o">.</span> 
+
+<span class="n">To</span> <span class="n">simulate</span> <span class="n">a</span> <span class="n">whole</span><span class="o">-</span><span class="n">brain</span> <span class="n">network</span> <span class="n">model</span><span class="p">,</span> <span class="n">first</span> <span class="n">we</span> <span class="n">need</span> <span class="n">to</span> <span class="n">load</span> <span class="n">a</span> <span class="n">DTI</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">resting</span><span class="o">-</span><span class="n">state</span> <span class="n">fMRI</span> <span class="n">dataset</span><span class="o">.</span> <span class="err">`</span><span class="n">neurolib</span><span class="err">`</span> <span class="n">already</span> <span class="n">provides</span> <span class="n">some</span> <span class="n">example</span> <span class="n">data</span> <span class="k">for</span> <span class="n">you</span><span class="p">:</span>
+
+<span class="kn">from</span> <span class="nn">neurolib.utils.loadData</span> <span class="kn">import</span> <span class="n">Dataset</span>
 
 <span class="n">ds</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="s2">&quot;gw&quot;</span><span class="p">)</span>
 </code></pre></div>
-The dataset that we just loaded, looks like this:</p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/gw_data.png">
-</p>
+<div class="highlight"><pre><span></span><code><span class="n">The</span> <span class="n">dataset</span> <span class="n">that</span> <span class="n">we</span> <span class="n">just</span> <span class="n">loaded</span><span class="p">,</span> <span class="n">looks</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span>
 
-<p>We initialize a model with the dataset and run it:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/gw_data.png&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="n">We</span> <span class="n">initialize</span> <span class="n">a</span> <span class="n">model</span> <span class="k">with</span> <span class="n">the</span> <span class="n">dataset</span> <span class="ow">and</span> <span class="n">run</span> <span class="n">it</span><span class="p">:</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">1000</span> <span class="c1"># in ms, simulates for 5 minutes</span>
 
 <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-This can take several minutes to compute, since we are simulating 80 brain regions for 5 minutes realtime. Note that we specified <code>bold=True</code> which simulates the BOLD model in parallel to the neuronal model. The resulting firing rates and BOLD functional connectivity looks like this:</p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/gw_simulated.png">
-</p>
+<div class="highlight"><pre><span></span><code><span class="n">This</span> <span class="n">can</span> <span class="n">take</span> <span class="n">several</span> <span class="n">minutes</span> <span class="n">to</span> <span class="n">compute</span><span class="p">,</span> <span class="n">since</span> <span class="n">we</span> <span class="n">are</span> <span class="n">simulating</span> <span class="mi">80</span> <span class="n">brain</span> <span class="n">regions</span> <span class="k">for</span> <span class="mi">5</span> <span class="n">minutes</span> <span class="n">realtime</span><span class="o">.</span> <span class="n">Note</span> <span class="n">that</span> <span class="n">we</span> <span class="n">specified</span> <span class="err">`</span><span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="err">`</span> <span class="n">which</span> <span class="n">simulates</span> <span class="n">the</span> <span class="n">BOLD</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">parallel</span> <span class="n">to</span> <span class="n">the</span> <span class="n">neuronal</span> <span class="n">model</span><span class="o">.</span> <span class="n">The</span> <span class="n">resulting</span> <span class="n">firing</span> <span class="n">rates</span> <span class="ow">and</span> <span class="n">BOLD</span> <span class="n">functional</span> <span class="n">connectivity</span> <span class="n">looks</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span>
+<span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/gw_simulated.png&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 
-<p>The quality of the fit of this simulation can be computed by correlating the simulated functional connectivity matrix above to the empirical resting-state functional connectivity for each subject of the dataset. This gives us an estimate of how well the model reproduces inter-areal BOLD correlations. As a rule of thumb, a value above 0.5 is considered good. </p>
-<p>We can compute the quality of the fit of the simulated data using <code>func.fc()</code> which calculates a functional connectivity matrix of <code>N</code> (<code>N</code> = number of brain regions) time series. We use <code>func.matrix_correlation()</code> to compare this matrix to empirical data.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]),</span> <span class="n">fcemp</span><span class="p">)</span> <span class="k">for</span> <span class="n">fcemp</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">]</span>
+<span class="n">The</span> <span class="n">quality</span> <span class="n">of</span> <span class="n">the</span> <span class="n">fit</span> <span class="n">of</span> <span class="n">this</span> <span class="n">simulation</span> <span class="n">can</span> <span class="n">be</span> <span class="n">computed</span> <span class="n">by</span> <span class="n">correlating</span> <span class="n">the</span> <span class="n">simulated</span> <span class="n">functional</span> <span class="n">connectivity</span> <span class="n">matrix</span> <span class="n">above</span> <span class="n">to</span> <span class="n">the</span> <span class="n">empirical</span> <span class="n">resting</span><span class="o">-</span><span class="n">state</span> <span class="n">functional</span> <span class="n">connectivity</span> <span class="k">for</span> <span class="n">each</span> <span class="n">subject</span> <span class="n">of</span> <span class="n">the</span> <span class="n">dataset</span><span class="o">.</span> <span class="n">This</span> <span class="n">gives</span> <span class="n">us</span> <span class="n">an</span> <span class="n">estimate</span> <span class="n">of</span> <span class="n">how</span> <span class="n">well</span> <span class="n">the</span> <span class="n">model</span> <span class="n">reproduces</span> <span class="n">inter</span><span class="o">-</span><span class="n">areal</span> <span class="n">BOLD</span> <span class="n">correlations</span><span class="o">.</span> <span class="n">As</span> <span class="n">a</span> <span class="n">rule</span> <span class="n">of</span> <span class="n">thumb</span><span class="p">,</span> <span class="n">a</span> <span class="n">value</span> <span class="n">above</span> <span class="mf">0.5</span> <span class="ow">is</span> <span class="n">considered</span> <span class="n">good</span><span class="o">.</span> 
+
+<span class="n">We</span> <span class="n">can</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">quality</span> <span class="n">of</span> <span class="n">the</span> <span class="n">fit</span> <span class="n">of</span> <span class="n">the</span> <span class="n">simulated</span> <span class="n">data</span> <span class="n">using</span> <span class="err">`</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">()</span><span class="err">`</span> <span class="n">which</span> <span class="n">calculates</span> <span class="n">a</span> <span class="n">functional</span> <span class="n">connectivity</span> <span class="n">matrix</span> <span class="n">of</span> <span class="err">`</span><span class="n">N</span><span class="err">`</span> <span class="p">(</span><span class="err">`</span><span class="n">N</span><span class="err">`</span> <span class="o">=</span> <span class="n">number</span> <span class="n">of</span> <span class="n">brain</span> <span class="n">regions</span><span class="p">)</span> <span class="n">time</span> <span class="n">series</span><span class="o">.</span> <span class="n">We</span> <span class="n">use</span> <span class="err">`</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">()</span><span class="err">`</span> <span class="n">to</span> <span class="n">compare</span> <span class="n">this</span> <span class="n">matrix</span> <span class="n">to</span> <span class="n">empirical</span> <span class="n">data</span><span class="o">.</span>
+
+<span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]),</span> <span class="n">fcemp</span><span class="p">)</span> <span class="k">for</span> <span class="n">fcemp</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correlation per subject:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean FC/FC correlation: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Correlation per subject: [&#39;0.34&#39;, &#39;0.61&#39;, &#39;0.54&#39;, &#39;0.7&#39;, &#39;0.54&#39;, &#39;0.64&#39;, &#39;0.69&#39;, &#39;0.47&#39;, &#39;0.59&#39;, &#39;0.72&#39;, &#39;0.58&#39;]
 Mean FC/FC correlation: 0.58
-</code></pre></div></p>
-<h3 id="parameter-exploration">Parameter exploration</h3>
-<p>A detailed example of a single-node exploration is available as a <a href="../examples/example-1-aln-parameter-exploration.ipynb">IPython Notebook</a>. For an example of a brain network exploration, see <a href="../examples/example-1.2-brain-network-exploration.ipynb">this Notebook</a>.</p>
-<p>Whenever you work with a model, it is of great importance to know what kind of dynamics it exhibits given a certain set of parameters. It is often useful to get an overview of the state space of a given model of interest. For example in the case of <code>aln</code>, the dynamics depends a lot on the mean inputs to the excitatory and the inhibitory population. <code>neurolib</code> makes it very easy to quickly explore parameter spaces of a given model:</p>
-<p><div class="highlight"><pre><span></span><code><span class="c1"># create model</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1">### Parameter exploration</span>
+<span class="n">A</span> <span class="n">detailed</span> <span class="n">example</span> <span class="n">of</span> <span class="n">a</span> <span class="n">single</span><span class="o">-</span><span class="n">node</span> <span class="n">exploration</span> <span class="ow">is</span> <span class="n">available</span> <span class="k">as</span> <span class="n">a</span> <span class="p">[</span><span class="n">IPython</span> <span class="n">Notebook</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">aln</span><span class="o">-</span><span class="n">parameter</span><span class="o">-</span><span class="n">exploration</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span><span class="o">.</span> <span class="n">For</span> <span class="n">an</span> <span class="n">example</span> <span class="n">of</span> <span class="n">a</span> <span class="n">brain</span> <span class="n">network</span> <span class="n">exploration</span><span class="p">,</span> <span class="n">see</span> <span class="p">[</span><span class="n">this</span> <span class="n">Notebook</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="mf">1.2</span><span class="o">-</span><span class="n">brain</span><span class="o">-</span><span class="n">network</span><span class="o">-</span><span class="n">exploration</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">Whenever</span> <span class="n">you</span> <span class="n">work</span> <span class="k">with</span> <span class="n">a</span> <span class="n">model</span><span class="p">,</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">of</span> <span class="n">great</span> <span class="n">importance</span> <span class="n">to</span> <span class="n">know</span> <span class="n">what</span> <span class="n">kind</span> <span class="n">of</span> <span class="n">dynamics</span> <span class="n">it</span> <span class="n">exhibits</span> <span class="n">given</span> <span class="n">a</span> <span class="n">certain</span> <span class="nb">set</span> <span class="n">of</span> <span class="n">parameters</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">often</span> <span class="n">useful</span> <span class="n">to</span> <span class="n">get</span> <span class="n">an</span> <span class="n">overview</span> <span class="n">of</span> <span class="n">the</span> <span class="n">state</span> <span class="n">space</span> <span class="n">of</span> <span class="n">a</span> <span class="n">given</span> <span class="n">model</span> <span class="n">of</span> <span class="n">interest</span><span class="o">.</span> <span class="n">For</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">case</span> <span class="n">of</span> <span class="err">`</span><span class="n">aln</span><span class="err">`</span><span class="p">,</span> <span class="n">the</span> <span class="n">dynamics</span> <span class="n">depends</span> <span class="n">a</span> <span class="n">lot</span> <span class="n">on</span> <span class="n">the</span> <span class="n">mean</span> <span class="n">inputs</span> <span class="n">to</span> <span class="n">the</span> <span class="n">excitatory</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">inhibitory</span> <span class="n">population</span><span class="o">.</span> <span class="err">`</span><span class="n">neurolib</span><span class="err">`</span> <span class="n">makes</span> <span class="n">it</span> <span class="n">very</span> <span class="n">easy</span> <span class="n">to</span> <span class="n">quickly</span> <span class="n">explore</span> <span class="n">parameter</span> <span class="n">spaces</span> <span class="n">of</span> <span class="n">a</span> <span class="n">given</span> <span class="n">model</span><span class="p">:</span>
+
+<span class="c1"># create model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
 <span class="c1"># define the parameter space to explore</span>
 <span class="n">parameters</span> <span class="o">=</span> <span class="n">ParameterSpace</span><span class="p">({</span><span class="s2">&quot;mue_ext_mean&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">21</span><span class="p">),</span>  <span class="c1"># input to E</span>
@@ -1185,33 +1084,41 @@ Mean FC/FC correlation: 0.58
 
 <span class="n">search</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>                
 </code></pre></div>
-That's it!. You can now use the builtin functions to load the simulation results from disk and perform your analysis:</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">That</span><span class="s1">&#39;s it!. You can now use the builtin functions to load the simulation results from disk and perform your analysis:</span>
+
+<span class="n">search</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
 
 <span class="c1"># calculate maximum firing rate for each parameter</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
     <span class="n">search</span><span class="o">.</span><span class="n">dfResults</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;max_r&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">search</span><span class="o">.</span><span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">][:,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):])</span>
 </code></pre></div>
-We can plot the results to get something close to a bifurcation diagram!</p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/exploration_aln.png">
-</p>
+<div class="highlight"><pre><span></span><code><span class="n">We</span> <span class="n">can</span> <span class="n">plot</span> <span class="n">the</span> <span class="n">results</span> <span class="n">to</span> <span class="n">get</span> <span class="n">something</span> <span class="n">close</span> <span class="n">to</span> <span class="n">a</span> <span class="n">bifurcation</span> <span class="n">diagram</span><span class="err">!</span>
 
-<h3 id="evolutionary-optimization">Evolutionary optimization</h3>
-<p>A detailed example is available as a <a href="../examples/example-2-evolutionary-optimization-minimal.ipynb">IPython Notebook</a>. </p>
-<p><code>neurolib</code> also implements evolutionary parameter optimization, which works particularly well with brain networks. In an evolutionary algorithm, each simulation is represented as an individual and the parameters of the simulation, for example coupling strengths or noise level values, are represented as the genes of each individual. An individual is a part of a population. In each generation, individuals are evaluated and ranked according to a fitness criterion. For whole-brain network simulations, this could be the fit of the simulated activity to empirical data. Then, individuals with a high fitness value are <code>selected</code> as parents and <code>mate</code> to create offspring. These offspring undergo random <code>mutations</code> of their genes. After all offspring are evaluated, the best individuals of the population are selected to transition into the next generation. This process goes on for a given amount generations until a stopping criterion is reached. This could be a predefined maximum number of generations or when a large enough population with high fitness values is found. </p>
-<p>An example genealogy tree is shown below. You can see the evolution starting at the top and individuals reproducing generation by generation. The color indicates the fitness.</p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/evolution_tree.png", width="400">
-</p>
+<span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/exploration_aln.png&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 
-<p><code>neurolib</code> makes it very easy to set up your own evolutionary optimization and everything else is handled under the hood. You can chose between two implemented evolutionary algorithms: <code>adaptive</code> is a gaussian mutation and rank selection algorithm with adaptive step size that ensures convergence (a schematic is shown in the image below). <code>nsga2</code> is an implementation of the popular multi-objective optimization algorithm by Deb et al. 2002. </p>
-<p align="center">
-  <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/evolutionary-algorithm.png", width="400">
-</p>
+<span class="c1">### Evolutionary optimization</span>
 
-<p>Of course, if you like, you can dig deeper, define your own selection, mutation and mating operators. In the following demonstration, we will simply evaluate the fitness of each individual as the distance to the unit circle. After a couple of generations of mating, mutating and selecting, only individuals who are close to the circle should survive:</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">neurolib.utils.parameterSpace</span> <span class="kn">import</span> <span class="n">ParameterSpace</span>
+<span class="n">A</span> <span class="n">detailed</span> <span class="n">example</span> <span class="ow">is</span> <span class="n">available</span> <span class="k">as</span> <span class="n">a</span> <span class="p">[</span><span class="n">IPython</span> <span class="n">Notebook</span><span class="p">](</span><span class="o">../</span><span class="n">examples</span><span class="o">/</span><span class="n">example</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="n">evolutionary</span><span class="o">-</span><span class="n">optimization</span><span class="o">-</span><span class="n">minimal</span><span class="o">.</span><span class="n">ipynb</span><span class="p">)</span><span class="o">.</span> 
+
+<span class="err">`</span><span class="n">neurolib</span><span class="err">`</span> <span class="n">also</span> <span class="n">implements</span> <span class="n">evolutionary</span> <span class="n">parameter</span> <span class="n">optimization</span><span class="p">,</span> <span class="n">which</span> <span class="n">works</span> <span class="n">particularly</span> <span class="n">well</span> <span class="k">with</span> <span class="n">brain</span> <span class="n">networks</span><span class="o">.</span> <span class="n">In</span> <span class="n">an</span> <span class="n">evolutionary</span> <span class="n">algorithm</span><span class="p">,</span> <span class="n">each</span> <span class="n">simulation</span> <span class="ow">is</span> <span class="n">represented</span> <span class="k">as</span> <span class="n">an</span> <span class="n">individual</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">parameters</span> <span class="n">of</span> <span class="n">the</span> <span class="n">simulation</span><span class="p">,</span> <span class="k">for</span> <span class="n">example</span> <span class="n">coupling</span> <span class="n">strengths</span> <span class="ow">or</span> <span class="n">noise</span> <span class="n">level</span> <span class="n">values</span><span class="p">,</span> <span class="n">are</span> <span class="n">represented</span> <span class="k">as</span> <span class="n">the</span> <span class="n">genes</span> <span class="n">of</span> <span class="n">each</span> <span class="n">individual</span><span class="o">.</span> <span class="n">An</span> <span class="n">individual</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">part</span> <span class="n">of</span> <span class="n">a</span> <span class="n">population</span><span class="o">.</span> <span class="n">In</span> <span class="n">each</span> <span class="n">generation</span><span class="p">,</span> <span class="n">individuals</span> <span class="n">are</span> <span class="n">evaluated</span> <span class="ow">and</span> <span class="n">ranked</span> <span class="n">according</span> <span class="n">to</span> <span class="n">a</span> <span class="n">fitness</span> <span class="n">criterion</span><span class="o">.</span> <span class="n">For</span> <span class="n">whole</span><span class="o">-</span><span class="n">brain</span> <span class="n">network</span> <span class="n">simulations</span><span class="p">,</span> <span class="n">this</span> <span class="n">could</span> <span class="n">be</span> <span class="n">the</span> <span class="n">fit</span> <span class="n">of</span> <span class="n">the</span> <span class="n">simulated</span> <span class="n">activity</span> <span class="n">to</span> <span class="n">empirical</span> <span class="n">data</span><span class="o">.</span> <span class="n">Then</span><span class="p">,</span> <span class="n">individuals</span> <span class="k">with</span> <span class="n">a</span> <span class="n">high</span> <span class="n">fitness</span> <span class="n">value</span> <span class="n">are</span> <span class="err">`</span><span class="n">selected</span><span class="err">`</span> <span class="k">as</span> <span class="n">parents</span> <span class="ow">and</span> <span class="err">`</span><span class="n">mate</span><span class="err">`</span> <span class="n">to</span> <span class="n">create</span> <span class="n">offspring</span><span class="o">.</span> <span class="n">These</span> <span class="n">offspring</span> <span class="n">undergo</span> <span class="n">random</span> <span class="err">`</span><span class="n">mutations</span><span class="err">`</span> <span class="n">of</span> <span class="n">their</span> <span class="n">genes</span><span class="o">.</span> <span class="n">After</span> <span class="nb">all</span> <span class="n">offspring</span> <span class="n">are</span> <span class="n">evaluated</span><span class="p">,</span> <span class="n">the</span> <span class="n">best</span> <span class="n">individuals</span> <span class="n">of</span> <span class="n">the</span> <span class="n">population</span> <span class="n">are</span> <span class="n">selected</span> <span class="n">to</span> <span class="n">transition</span> <span class="n">into</span> <span class="n">the</span> <span class="nb">next</span> <span class="n">generation</span><span class="o">.</span> <span class="n">This</span> <span class="n">process</span> <span class="n">goes</span> <span class="n">on</span> <span class="k">for</span> <span class="n">a</span> <span class="n">given</span> <span class="n">amount</span> <span class="n">generations</span> <span class="n">until</span> <span class="n">a</span> <span class="n">stopping</span> <span class="n">criterion</span> <span class="ow">is</span> <span class="n">reached</span><span class="o">.</span> <span class="n">This</span> <span class="n">could</span> <span class="n">be</span> <span class="n">a</span> <span class="n">predefined</span> <span class="n">maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">generations</span> <span class="ow">or</span> <span class="n">when</span> <span class="n">a</span> <span class="n">large</span> <span class="n">enough</span> <span class="n">population</span> <span class="k">with</span> <span class="n">high</span> <span class="n">fitness</span> <span class="n">values</span> <span class="ow">is</span> <span class="n">found</span><span class="o">.</span> 
+
+<span class="n">An</span> <span class="n">example</span> <span class="n">genealogy</span> <span class="n">tree</span> <span class="ow">is</span> <span class="n">shown</span> <span class="n">below</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">see</span> <span class="n">the</span> <span class="n">evolution</span> <span class="n">starting</span> <span class="n">at</span> <span class="n">the</span> <span class="n">top</span> <span class="ow">and</span> <span class="n">individuals</span> <span class="n">reproducing</span> <span class="n">generation</span> <span class="n">by</span> <span class="n">generation</span><span class="o">.</span> <span class="n">The</span> <span class="n">color</span> <span class="n">indicates</span> <span class="n">the</span> <span class="n">fitness</span><span class="o">.</span>
+
+<span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/evolution_tree.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;400&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="err">`</span><span class="n">neurolib</span><span class="err">`</span> <span class="n">makes</span> <span class="n">it</span> <span class="n">very</span> <span class="n">easy</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">your</span> <span class="n">own</span> <span class="n">evolutionary</span> <span class="n">optimization</span> <span class="ow">and</span> <span class="n">everything</span> <span class="k">else</span> <span class="ow">is</span> <span class="n">handled</span> <span class="n">under</span> <span class="n">the</span> <span class="n">hood</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">chose</span> <span class="n">between</span> <span class="n">two</span> <span class="n">implemented</span> <span class="n">evolutionary</span> <span class="n">algorithms</span><span class="p">:</span> <span class="err">`</span><span class="n">adaptive</span><span class="err">`</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">gaussian</span> <span class="n">mutation</span> <span class="ow">and</span> <span class="n">rank</span> <span class="n">selection</span> <span class="n">algorithm</span> <span class="k">with</span> <span class="n">adaptive</span> <span class="n">step</span> <span class="n">size</span> <span class="n">that</span> <span class="n">ensures</span> <span class="n">convergence</span> <span class="p">(</span><span class="n">a</span> <span class="n">schematic</span> <span class="ow">is</span> <span class="n">shown</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">image</span> <span class="n">below</span><span class="p">)</span><span class="o">.</span> <span class="err">`</span><span class="n">nsga2</span><span class="err">`</span> <span class="ow">is</span> <span class="n">an</span> <span class="n">implementation</span> <span class="n">of</span> <span class="n">the</span> <span class="n">popular</span> <span class="n">multi</span><span class="o">-</span><span class="n">objective</span> <span class="n">optimization</span> <span class="n">algorithm</span> <span class="n">by</span> <span class="n">Deb</span> <span class="n">et</span> <span class="n">al</span><span class="o">.</span> <span class="mf">2002.</span> 
+
+<span class="o">&lt;</span><span class="n">p</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;https://github.com/neurolib-dev/neurolib/raw/master/resources/evolutionary-algorithm.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;400&quot;</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+
+<span class="n">Of</span> <span class="n">course</span><span class="p">,</span> <span class="k">if</span> <span class="n">you</span> <span class="n">like</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">dig</span> <span class="n">deeper</span><span class="p">,</span> <span class="n">define</span> <span class="n">your</span> <span class="n">own</span> <span class="n">selection</span><span class="p">,</span> <span class="n">mutation</span> <span class="ow">and</span> <span class="n">mating</span> <span class="n">operators</span><span class="o">.</span> <span class="n">In</span> <span class="n">the</span> <span class="n">following</span> <span class="n">demonstration</span><span class="p">,</span> <span class="n">we</span> <span class="n">will</span> <span class="n">simply</span> <span class="n">evaluate</span> <span class="n">the</span> <span class="n">fitness</span> <span class="n">of</span> <span class="n">each</span> <span class="n">individual</span> <span class="k">as</span> <span class="n">the</span> <span class="n">distance</span> <span class="n">to</span> <span class="n">the</span> <span class="n">unit</span> <span class="n">circle</span><span class="o">.</span> <span class="n">After</span> <span class="n">a</span> <span class="n">couple</span> <span class="n">of</span> <span class="n">generations</span> <span class="n">of</span> <span class="n">mating</span><span class="p">,</span> <span class="n">mutating</span> <span class="ow">and</span> <span class="n">selecting</span><span class="p">,</span> <span class="n">only</span> <span class="n">individuals</span> <span class="n">who</span> <span class="n">are</span> <span class="n">close</span> <span class="n">to</span> <span class="n">the</span> <span class="n">circle</span> <span class="n">should</span> <span class="n">survive</span><span class="p">:</span>
+
+<span class="kn">from</span> <span class="nn">neurolib.utils.parameterSpace</span> <span class="kn">import</span> <span class="n">ParameterSpace</span>
 <span class="kn">from</span> <span class="nn">neurolib.optimize.evolution</span> <span class="kn">import</span> <span class="n">Evolution</span>
 
 <span class="k">def</span> <span class="nf">optimize_me</span><span class="p">(</span><span class="n">traj</span><span class="p">):</span>
@@ -1233,10 +1140,11 @@ We can plot the results to get something close to a bifurcation diagram!</p>
 <span class="n">evolution</span> <span class="o">=</span> <span class="n">Evolution</span><span class="p">(</span><span class="n">optimize_me</span><span class="p">,</span> <span class="n">pars</span><span class="p">,</span> <span class="n">weightList</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">],</span> <span class="n">POP_INIT_SIZE</span><span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">POP_SIZE</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">NGEN</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">evolution</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>    
 </code></pre></div>
-<p>That's it! Now we can check the results:</p>
-<div class="highlight"><pre><span></span><code><span class="n">evolution</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="n">That</span><span class="s1">&#39;s it! Now we can check the results:</span>
+
+<span class="n">evolution</span><span class="o">.</span><span class="n">loadResults</span><span class="p">()</span>
 <span class="n">evolution</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
+</code></pre></div></p>
 <p>This will gives us a summary of the last generation and plots a distribution of the individuals (and their parameters). Below is an animation of 10 generations of the evolutionary process. Ass you can see, after a couple of generations, all remaining individuals lie very close to the unit circle.</p>
 <p align="center">
   <img src="https://github.com/neurolib-dev/neurolib/raw/master/resources/evolution_animated.gif">
@@ -1324,10 +1232,10 @@ Bernstein Center for Computational Neuroscience Berlin, Germany  </p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.409db549.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.2b46852b.min.js"></script>
+      <script src="assets/javascripts/bundle.756773cc.min.js"></script>
       
         <script src="js/config.js"></script>
       
