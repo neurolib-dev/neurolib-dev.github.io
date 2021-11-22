@@ -2047,6 +2047,10 @@ and stores all data into the pypet hdf file.</p>
 <span class="sd">    :param bold: if True, will load and return only BOLD output</span>
 <span class="sd">    :type bold: bool</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_sanitize_nc_key</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">k</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;|&quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+
     <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;Run `loadResults()` first to populate the results&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dfResults</span><span class="p">)</span>
     <span class="c1"># create intrisinsic dims for one run</span>
@@ -2069,6 +2073,8 @@ and stores all data into the pypet hdf file.</p>
         <span class="n">expand_coords</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="c1"># iterate exploration coordinates</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">expl_coords</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># sanitize keys in the case of stars etc</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">_sanitize_nc_key</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
             <span class="c1"># if single values, just assing</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">)):</span>
                 <span class="n">expand_coords</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span>
@@ -2089,8 +2095,9 @@ and stores all data into the pypet hdf file.</p>
     <span class="n">combined</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">combine_by_coords</span><span class="p">([</span><span class="n">da</span><span class="o">.</span><span class="n">to_dataset</span><span class="p">()</span> <span class="k">for</span> <span class="n">da</span> <span class="ow">in</span> <span class="n">dataarrays</span><span class="p">])[</span><span class="s2">&quot;exploration&quot;</span><span class="p">]</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterSpace</span><span class="o">.</span><span class="n">star</span><span class="p">:</span>
         <span class="c1"># if we explored over star params, unwrap them into attributes</span>
-        <span class="n">combined</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">orig_search_coords</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">k</span><span class="p">}</span>
-
+        <span class="n">combined</span><span class="o">.</span><span class="n">attrs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">_sanitize_nc_key</span><span class="p">(</span><span class="n">k</span><span class="p">):</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">orig_search_coords</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="s2">&quot;*&quot;</span> <span class="ow">in</span> <span class="n">k</span>
+        <span class="p">}</span>
     <span class="k">return</span> <span class="n">combined</span>
 </code></pre></div>
         </details>
