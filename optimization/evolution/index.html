@@ -1176,13 +1176,13 @@
 <a id="neurolib.optimize.evolution.evolution.Evolution"></a>
     <div class="doc doc-contents first">
 
-      <p>Evolutionary parameter optimization. This class helps you to optimize any function or model using an evlutionary algorithm.
+      <p>Evolutionary parameter optimization. This class helps you to optimize any function or model using an evolutionary algorithm.
 It uses the package <code>deap</code> and supports its builtin mating and selection functions as well as custom ones.</p>
 
         <details class="quote">
           <summary>Source code in <code>neurolib/optimize/evolution/evolution.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Evolution</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Evolutionary parameter optimization. This class helps you to optimize any function or model using an evlutionary algorithm.</span>
+    <span class="sd">&quot;&quot;&quot;Evolutionary parameter optimization. This class helps you to optimize any function or model using an evolutionary algorithm.</span>
 <span class="sd">    It uses the package `deap` and supports its builtin mating and selection functions as well as custom ones.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -1574,8 +1574,19 @@ It uses the package <code>deap</code> and supports its builtin mating and select
 
         <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;population&quot;</span><span class="p">,</span> <span class="n">deap</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">initRepeat</span><span class="p">,</span> <span class="nb">list</span><span class="p">,</span> <span class="n">toolbox</span><span class="o">.</span><span class="n">individual</span><span class="p">)</span>
         <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;map&quot;</span><span class="p">,</span> <span class="n">pypetEnvironment</span><span class="o">.</span><span class="n">run</span><span class="p">)</span>
-        <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="n">evalFunction</span><span class="p">)</span>
         <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;run_map&quot;</span><span class="p">,</span> <span class="n">pypetEnvironment</span><span class="o">.</span><span class="n">run_map</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">_worker</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+            <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Wrapper to get original exception from inner, `fn`, function.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                <span class="k">raise</span>
+
+        <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;evaluate&quot;</span><span class="p">,</span> <span class="n">partial</span><span class="p">(</span><span class="n">_worker</span><span class="p">,</span> <span class="n">fn</span><span class="o">=</span><span class="n">evalFunction</span><span class="p">))</span>
 
         <span class="c1"># Operator registering</span>
 
@@ -1637,7 +1648,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
 
         <span class="c1"># This error can have different reasons but is most likely</span>
         <span class="c1"># due to multiprocessing problems. One possibility is that your evaluation</span>
-        <span class="c1"># funciton is not pickleable or that it returns an object that is not pickleable.</span>
+        <span class="c1"># function is not pickleable or that it returns an object that is not pickleable.</span>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">evolutionResult</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;No results returned from simulations.&quot;</span>
 
         <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">evolutionResult</span><span class="p">):</span>
@@ -1672,7 +1683,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">())]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 
     <span class="k">def</span> <span class="nf">getInvalidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Returns a list of the invalid population.</span>
@@ -1683,7 +1694,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
 <span class="sd">        :rtype: list</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 
     <span class="k">def</span> <span class="nf">_tagPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Take a fresh population and add id&#39;s and attributes such as parameters that we can use later</span>
@@ -1746,7 +1757,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start of evolution&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_evolution</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traj</span><span class="o">.</span><span class="n">NGEN</span><span class="p">):</span>
-            <span class="c1"># ------- Weed out the invalid individuals and replace them by random new indivuals -------- #</span>
+            <span class="c1"># ------- Weed out the invalid individuals and replace them by random new individuals -------- #</span>
             <span class="n">validpop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
             <span class="c1"># replace invalid individuals</span>
             <span class="n">invalidpop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getInvalidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
@@ -1908,11 +1919,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving evolution to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">loadEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulatoins.</span>
+        <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
 
 <span class="sd">        Example usage:</span>
 <span class="sd">        ```</span>
-<span class="sd">        evaluateSimulation = lambda x: x # the funciton can be ommited, that&#39;s why we define a lambda here</span>
+<span class="sd">        evaluateSimulation = lambda x: x # the function can be omitted, that&#39;s why we define a lambda here</span>
 <span class="sd">        pars = ParameterSpace([&#39;a&#39;, &#39;b&#39;], # should be same as previously saved evolution</span>
 <span class="sd">                      [[0.0, 4.0], [0.0, 5.0]])</span>
 <span class="sd">        evolution = Evolution(evaluateSimulation, pars, weightList = [1.0])</span>
@@ -2855,7 +2866,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="sd">    :rtype: list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 </code></pre></div>
         </details>
     </div>
@@ -3133,7 +3144,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="sd">    :rtype: list</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pop</span> <span class="o">=</span> <span class="n">pop</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">pop</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">())]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 </code></pre></div>
         </details>
     </div>
@@ -3313,9 +3324,9 @@ This object can be further used to easily analyse the population.</p>
 
     <div class="doc doc-contents ">
 
-      <p>Load evolution from previously saved simulatoins.</p>
+      <p>Load evolution from previously saved simulations.</p>
 <p>Example usage:
-<div class="highlight"><pre><span></span><code>evaluateSimulation = lambda x: x # the funciton can be ommited, that&#39;s why we define a lambda here
+<div class="highlight"><pre><span></span><code>evaluateSimulation = lambda x: x # the function can be omitted, that&#39;s why we define a lambda here
 pars = ParameterSpace([&#39;a&#39;, &#39;b&#39;], # should be same as previously saved evolution
               [[0.0, 4.0], [0.0, 5.0]])
 evolution = Evolution(evaluateSimulation, pars, weightList = [1.0])
@@ -3359,11 +3370,11 @@ evolution = evolution.loadEvolution(&quot;data/evolution-results-2020-05-15-00H-
         <details class="quote">
           <summary>Source code in <code>neurolib/optimize/evolution/evolution.py</code></summary>
           <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">loadEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulatoins.</span>
+    <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
 
 <span class="sd">    Example usage:</span>
 <span class="sd">    ```</span>
-<span class="sd">    evaluateSimulation = lambda x: x # the funciton can be ommited, that&#39;s why we define a lambda here</span>
+<span class="sd">    evaluateSimulation = lambda x: x # the function can be omitted, that&#39;s why we define a lambda here</span>
 <span class="sd">    pars = ParameterSpace([&#39;a&#39;, &#39;b&#39;], # should be same as previously saved evolution</span>
 <span class="sd">                  [[0.0, 4.0], [0.0, 5.0]])</span>
 <span class="sd">    evolution = Evolution(evaluateSimulation, pars, weightList = [1.0])</span>
@@ -3567,7 +3578,7 @@ using <code>runInitial()</code>, this will be done.</p>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start of evolution&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_evolution</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
     <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">gIdx</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">traj</span><span class="o">.</span><span class="n">NGEN</span><span class="p">):</span>
-        <span class="c1"># ------- Weed out the invalid individuals and replace them by random new indivuals -------- #</span>
+        <span class="c1"># ------- Weed out the invalid individuals and replace them by random new individuals -------- #</span>
         <span class="n">validpop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
         <span class="c1"># replace invalid individuals</span>
         <span class="n">invalidpop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getInvalidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
