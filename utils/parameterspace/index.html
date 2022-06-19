@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
     
     
       
@@ -17,11 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3de6f41f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -809,27 +810,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.lowerBound" class="md-nav__link">
-    lowerBound
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.ndims" class="md-nav__link">
-    ndims
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.upperBound" class="md-nav__link">
-    upperBound
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#neurolib.utils.parameterSpace.ParameterSpace.__init__" class="md-nav__link">
     __init__()
   </a>
@@ -853,6 +833,27 @@
         <li class="md-nav__item">
   <a href="#neurolib.utils.parameterSpace.ParameterSpace.getRandom" class="md-nav__link">
     getRandom()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.lowerBound" class="md-nav__link">
+    lowerBound()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.ndims" class="md-nav__link">
+    ndims()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.upperBound" class="md-nav__link">
+    upperBound()
   </a>
   
 </li>
@@ -934,27 +935,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.lowerBound" class="md-nav__link">
-    lowerBound
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.ndims" class="md-nav__link">
-    ndims
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#neurolib.utils.parameterSpace.ParameterSpace.upperBound" class="md-nav__link">
-    upperBound
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#neurolib.utils.parameterSpace.ParameterSpace.__init__" class="md-nav__link">
     __init__()
   </a>
@@ -982,6 +962,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.lowerBound" class="md-nav__link">
+    lowerBound()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.ndims" class="md-nav__link">
+    ndims()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#neurolib.utils.parameterSpace.ParameterSpace.upperBound" class="md-nav__link">
+    upperBound()
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1003,16 +1004,243 @@
 <h1 id="parameterspace">ParameterSpace</h1>
 
 
-  <div class="doc doc-object doc-class">
+<div class="doc doc-object doc-class">
+
 
 <a id="neurolib.utils.parameterSpace.ParameterSpace"></a>
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
 
+  
       <p>Parameter space</p>
+
 
         <details class="quote">
           <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ParameterSpace</span><span class="p">:</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">ParameterSpace</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parameter space</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -1048,16 +1276,14 @@
             <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
                 <span class="n">parameters</span><span class="p">,</span> <span class="nb">dict</span>
             <span class="p">),</span> <span class="s2">&quot;Parameters must be a dict, if no values are given in `parameterValues`&quot;</span>
-            <span class="n">processedParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># check if all names are strings</span>
             <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pn</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">pn</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]),</span> <span class="s2">&quot;Parameter names must all be strings.&quot;</span>
             <span class="c1"># check if all parameter values are lists</span>
             <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">parameterValues</span><span class="p">]),</span> <span class="s2">&quot;Parameter values must be a list.&quot;</span>
             <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameterListsToDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="p">)</span>
-            <span class="n">processedParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">processedParameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameterNames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameterValues</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
@@ -1210,6 +1436,9 @@
                 <span class="c1"># kind = &quot;point&quot; is a single point in parameter space, one value only</span>
                 <span class="c1"># kind = &quot;bound&quot; is a bounded parameter space with 2 values: min and max</span>
                 <span class="c1"># kind = &quot;grid&quot; is a grid space with as many values on each axis as wished</span>
+
+                <span class="c1"># first, we assume grid</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;grid&quot;</span>
                 <span class="n">parameterLengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
                 <span class="c1"># if all parameters have the same length</span>
                 <span class="k">if</span> <span class="n">parameterLengths</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">parameterLengths</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">parameterLengths</span><span class="p">):</span>
@@ -1217,8 +1446,7 @@
                         <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;point&quot;</span>
                     <span class="k">elif</span> <span class="n">parameterLengths</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
                         <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;bound&quot;</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;grid&quot;</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Assuming parameter kind &quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">kind</span><span class="si">}</span><span class="s1">&quot;&#39;</span><span class="p">)</span>
 
         <span class="c1"># do some kind-specific tests</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="s2">&quot;bound&quot;</span><span class="p">:</span>
@@ -1237,10 +1465,10 @@
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">):</span>
             <span class="n">parameters</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
         <span class="k">return</span> <span class="n">parameters</span>
-</code></pre></div>
+</code></pre></div></td></tr></table></div>
         </details>
 
-
+  
 
   <div class="doc doc-children">
 
@@ -1249,138 +1477,131 @@
 
 
 
-  <div class="doc doc-object doc-attribute">
 
 
 
-<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.lowerBound">
-<code class="highlight language-python"><span class="n">lowerBound</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-property"><code>property</code></small>
-      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
-  </span>
-
-</h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Returns lower bound of all parameters as a list</p>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-attribute">
-
-
-
-<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.ndims">
-<code class="highlight language-python"><span class="n">ndims</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-property"><code>property</code></small>
-      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
-  </span>
-
-</h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Number of dimensions (parameters)</p>
-    </div>
-
-  </div>
-
-
-
-  <div class="doc doc-object doc-attribute">
-
-
-
-<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.upperBound">
-<code class="highlight language-python"><span class="n">upperBound</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-property"><code>property</code></small>
-      <small class="doc doc-property doc-property-readonly"><code>readonly</code></small>
-  </span>
-
-</h2>
-
-    <div class="doc doc-contents ">
-
-      <p>Returns upper bound of all parameters as a list</p>
-    </div>
-
-  </div>
-
-
-
-
-
-
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.__init__">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-special"><code>special</code></small>
-  </span>
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Initialize parameter space. Parameter space can be initialized in two ways:
 Either a <code>parameters</code> is a dictionary of the form <code>{"parName1" : [0, 1, 2], "parName2" : [3, 4]}</code>,
 or <code>parameters</code> is a list of names and <code>parameterValues</code> are values of each parameter.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>parameters</code></td>
-        <td><code>`dict, list[str, str]`</code></td>
-        <td><p>parameter dictionary or list of names of parameters e.g. <code>['x', 'y']</code></p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
-      <tr>
-        <td><code>parameterValues</code></td>
-        <td><code>`list[list[float, float]]`</code></td>
-        <td><p>list of parameter values (must be floats) e.g. <code>[[x_min, x_max], [y_min, y_max], ...]</code></p></td>
-        <td><code>None</code></td>
-      </tr>
-      <tr>
-        <td><code>kind</code></td>
-        <td><code>str</code></td>
-        <td><p>string describing the kind of parameter space: - <code>point</code>: a single point in parameter space - <code>bound</code>: a bound in parameter space, i.e. two values per parameter - <code>grid</code>: a cartesian product over parameters - <code>sequence</code>: a sequence of univariate parameter changes - only one will change at the time, other parameters will stay as default - <code>explicit</code>: explicitely define a parameter space, i.e lists of all parameters have to have the same length - None: parameterSpace tries to auto-detect the correct kind</p></td>
-        <td><code>None</code></td>
-      </tr>
-      <tr>
-        <td><code>allow_star_notation</code></td>
-        <td><code>bool</code></td>
-        <td><p>whether to allow star notation in parameter names - MultiModel</p></td>
-        <td><code>False</code></td>
-      </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>parameters</code></td>
+          <td>
+                <code>`dict, list[str, str]`</code>
+          </td>
+          <td><p>parameter dictionary or list of names of parameters e.g. <code>['x', 'y']</code></p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>parameterValues</code></td>
+          <td>
+                <code>`list[list[float, float]]`</code>
+          </td>
+          <td><p>list of parameter values (must be floats) e.g. <code>[[x_min, x_max], [y_min, y_max], ...]</code></p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>kind</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>string describing the kind of parameter space: - <code>point</code>: a single point in parameter space - <code>bound</code>: a bound in parameter space, i.e. two values per parameter - <code>grid</code>: a cartesian product over parameters - <code>sequence</code>: a sequence of univariate parameter changes - only one will change at the time, other parameters will stay as default - <code>explicit</code>: explicitely define a parameter space, i.e lists of all parameters have to have the same length - None: parameterSpace tries to auto-detect the correct kind</p></td>
+          <td>
+                <code>None</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>allow_star_notation</code></td>
+          <td>
+                <code>bool</code>
+          </td>
+          <td><p>whether to allow star notation in parameter names - MultiModel</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">allow_star_notation</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize parameter space. Parameter space can be initialized in two ways:</span>
 <span class="sd">    Either a `parameters` is a dictionary of the form `{&quot;parName1&quot; : [0, 1, 2], &quot;parName2&quot; : [3, 4]}`,</span>
@@ -1411,16 +1632,14 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
         <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span>
             <span class="n">parameters</span><span class="p">,</span> <span class="nb">dict</span>
         <span class="p">),</span> <span class="s2">&quot;Parameters must be a dict, if no values are given in `parameterValues`&quot;</span>
-        <span class="n">processedParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="c1"># check if all names are strings</span>
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pn</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">for</span> <span class="n">pn</span> <span class="ow">in</span> <span class="n">parameters</span><span class="p">]),</span> <span class="s2">&quot;Parameter names must all be strings.&quot;</span>
         <span class="c1"># check if all parameter values are lists</span>
         <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">([</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pv</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">parameterValues</span><span class="p">]),</span> <span class="s2">&quot;Parameter values must be a list.&quot;</span>
         <span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameterListsToDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">parameterValues</span><span class="p">)</span>
-        <span class="n">processedParameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="n">processedParameters</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processParameterDict</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">parameterNames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">parameterValues</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
@@ -1432,113 +1651,136 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
     <span class="c1"># set attributes of this class to make it accessible</span>
     <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">):</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterValues</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.__str__">
-<code class="highlight language-python"><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
-  <span class="doc doc-properties">
-      <small class="doc doc-property doc-property-special"><code>special</code></small>
-  </span>
+<code class="highlight language-python"><span class="fm">__str__</span><span class="p">()</span></code>
 
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Print the named_tuple object</p>
 
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Print the named_tuple object&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.dict">
-<code class="highlight language-python"><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
-
+<code class="highlight language-python"><span class="nb">dict</span><span class="p">()</span></code>
 
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Returns the parameter space as a dicitonary of lists.</p>
 
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the parameter space as a dicitonary of lists.</span>
 <span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-method">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.getRandom">
-<code class="highlight language-python"><span class="n">getRandom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
-
+<code class="highlight language-python"><span class="n">getRandom</span><span class="p">(</span><span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>This function returns a random single parameter from the whole space
 in the form of { "par1" : 1, "par2" : 2}.</p>
 <p>This function is used by neurolib/optimize/exploarion.py
 to add parameters of the space to pypet (for initialization)</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>safe</code></td>
-        <td></td>
-        <td><p>Return a "safe" parameter or the original. Safe refers to returning python floats, not, for example numpy.float64 (necessary for pypet). ;type safe: bool</p></td>
-        <td><code>False</code></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getRandom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>safe</code></td>
+          <td>
+          </td>
+          <td><p>Return a "safe" parameter or the original. Safe refers to returning python floats, not, for example numpy.float64 (necessary for pypet). ;type safe: bool</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getRandom</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">safe</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;This function returns a random single parameter from the whole space</span>
 <span class="sd">    in the form of { &quot;par1&quot; : 1, &quot;par2&quot; : 2}.</span>
 
@@ -1562,25 +1804,122 @@ to add parameters of the space to pypet (for initialization)</p>
         <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
             <span class="n">randomPar</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">randomPar</span>
-</code></pre></div>
-        </details>
-    </div>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.lowerBound">
+<code class="highlight language-python"><span class="n">lowerBound</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns lower bound of all parameters as a list</p>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">lowerBound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns lower bound of all parameters as a list&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterValues</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.ndims">
+<code class="highlight language-python"><span class="n">ndims</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Number of dimensions (parameters)</p>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">ndims</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Number of dimensions (parameters)&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 class="doc doc-heading" id="neurolib.utils.parameterSpace.ParameterSpace.upperBound">
+<code class="highlight language-python"><span class="n">upperBound</span><span class="p">()</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Returns upper bound of all parameters as a list</p>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/parameterSpace.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@property</span>
+<span class="k">def</span> <span class="nf">upperBound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Returns upper bound of all parameters as a list&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterValues</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
 
   </div>
 
-
-
-
-
-
   </div>
 
-    </div>
-
-  </div>
+</div>
 
               
             </article>
+            
           </div>
         </div>
         
@@ -1588,7 +1927,8 @@ to add parameters of the space to pypet (for initialization)</p>
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../functions/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Functions" rel="prev">
@@ -1648,10 +1988,10 @@ to add parameters of the space to pypet (for initialization)</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a877e258.min.js"></script>
       
         <script src="../../js/config.js"></script>
       

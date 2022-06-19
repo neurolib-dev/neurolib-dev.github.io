@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.3.6">
     
     
       
@@ -17,11 +17,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.3de6f41f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4a0965b7.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cc9b2e1e.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
         
+      
       
     
     
@@ -1031,13 +1032,13 @@
 <h1 id="functions">Functions</h1>
 
 
-  <div class="doc doc-object doc-module">
+<div class="doc doc-object doc-module">
+
 
 <a id="neurolib.utils.functions"></a>
-    <div class="doc doc-contents first">
+  <div class="doc doc-contents first">
 
-
-
+  
 
   <div class="doc doc-children">
 
@@ -1048,58 +1049,78 @@
 
 
 
-  <div class="doc doc-object doc-function">
+
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.fc">
 <code class="highlight language-python"><span class="n">fc</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Functional connectivity matrix of timeseries multidimensional <code>ts</code> (Nxt).
 Pearson correlation (from <code>np.corrcoef()</code> is used).</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>ts</code></td>
-        <td><code>numpy.ndarray</code></td>
-        <td><p>Nxt timeseries</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>numpy.ndarray</code></td>
-      <td><p>N x N functional connectivity matrix</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fc</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ts</code></td>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>Nxt timeseries</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>N x N functional connectivity matrix</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fc</span><span class="p">(</span><span class="n">ts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Functional connectivity matrix of timeseries multidimensional `ts` (Nxt).</span>
 <span class="sd">    Pearson correlation (from `np.corrcoef()` is used).</span>
 
@@ -1111,79 +1132,128 @@ Pearson correlation (from <code>np.corrcoef()</code> is used).</p>
     <span class="n">fc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
     <span class="n">fc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan_to_num</span><span class="p">(</span><span class="n">fc</span><span class="p">)</span>  <span class="c1"># remove NaNs</span>
     <span class="k">return</span> <span class="n">fc</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.fcd">
 <code class="highlight language-python"><span class="n">fcd</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windowsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">stepsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Computes FCD (functional connectivity dynamics) matrix, as described in Deco's whole-brain model papers.
 Default paramters are suited for computing FCS matrices of BOLD timeseries:
 A windowsize of 30 at the BOLD sampling rate of 0.5 Hz equals 60s and stepsize = 5 equals 10s.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>ts</code></td>
-        <td><code>numpy.ndarray</code></td>
-        <td><p>Nxt timeseries</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ts</code></td>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>Nxt timeseries</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>windowsize</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>Size of each rolling window in timesteps, defaults to 30</p></td>
+          <td>
+                <code>30</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>stepsize</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>Stepsize between each rolling window, defaults to 5</p></td>
+          <td>
+                <code>5</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>windowsize</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Size of each rolling window in timesteps, defaults to 30</p></td>
-        <td><code>30</code></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td><code>stepsize</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Stepsize between each rolling window, defaults to 5</p></td>
-        <td><code>5</code></td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>numpy.ndarray</code></td>
-      <td><p>T x T FCD matrix</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">fcd</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windowsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">stepsize</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>T x T FCD matrix</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">fcd</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">windowsize</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">stepsize</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes FCD (functional connectivity dynamics) matrix, as described in Deco&#39;s whole-brain model papers.</span>
 <span class="sd">    Default paramters are suited for computing FCS matrices of BOLD timeseries:</span>
 <span class="sd">    A windowsize of 30 at the BOLD sampling rate of 0.5 Hz equals 60s and stepsize = 5 equals 10s.</span>
@@ -1219,89 +1289,138 @@ A windowsize of 30 at the BOLD sampling rate of 0.5 Hz equals 60s and stepsize =
         <span class="k">return</span> <span class="n">FCd</span>
     <span class="k">except</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.getMeanPowerSpectrum">
 <code class="highlight language-python"><span class="n">getMeanPowerSpectrum</span><span class="p">(</span><span class="n">activities</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Returns the mean power spectrum of multiple timeseries.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>activities</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>N-dimensional timeseries</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>activities</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>N-dimensional timeseries</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dt</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>Simulation time step</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>maxfr</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>Maximum frequency in Hz to cutoff from return, defaults to 70</p></td>
+          <td>
+                <code>70</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>spectrum_windowsize</code></td>
+          <td>
+                <code>float, optional</code>
+          </td>
+          <td><p>Length of the window used in Welch's method (in seconds), defaults to 1.0</p></td>
+          <td>
+                <code>1.0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>normalize</code></td>
+          <td>
+                <code>bool, optional</code>
+          </td>
+          <td><p>Maximum power is normalized to 1 if True, defaults to False</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>dt</code></td>
-        <td><code>float</code></td>
-        <td><p>Simulation time step</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td><code>maxfr</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Maximum frequency in Hz to cutoff from return, defaults to 70</p></td>
-        <td><code>70</code></td>
-      </tr>
-      <tr>
-        <td><code>spectrum_windowsize</code></td>
-        <td><code>float, optional</code></td>
-        <td><p>Length of the window used in Welch's method (in seconds), defaults to 1.0</p></td>
-        <td><code>1.0</code></td>
-      </tr>
-      <tr>
-        <td><code>normalize</code></td>
-        <td><code>bool, optional</code></td>
-        <td><p>Maximum power is normalized to 1 if True, defaults to False</p></td>
-        <td><code>False</code></td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>[np.ndarray, np.ndarray]</code></td>
-      <td><p>Frquencies and the power of each frequency</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getMeanPowerSpectrum</span><span class="p">(</span><span class="n">activities</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>[np.ndarray, np.ndarray]</code>
+          </td>
+          <td><p>Frquencies and the power of each frequency</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getMeanPowerSpectrum</span><span class="p">(</span><span class="n">activities</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns the mean power spectrum of multiple timeseries.</span>
 
 <span class="sd">    :param activities: N-dimensional timeseries</span>
@@ -1329,89 +1448,144 @@ A windowsize of 30 at the BOLD sampling rate of 0.5 Hz equals 60s and stepsize =
     <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
         <span class="n">powers</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">powers</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">powers</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.getPowerSpectrum">
 <code class="highlight language-python"><span class="n">getPowerSpectrum</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Returns a power spectrum using Welch's method.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>activity</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>One-dimensional timeseries</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>activity</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>One-dimensional timeseries</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>dt</code></td>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>Simulation time step</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>maxfr</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>Maximum frequency in Hz to cutoff from return, defaults to 70</p></td>
+          <td>
+                <code>70</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>spectrum_windowsize</code></td>
+          <td>
+                <code>float, optional</code>
+          </td>
+          <td><p>Length of the window used in Welch's method (in seconds), defaults to 1.0</p></td>
+          <td>
+                <code>1.0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>normalize</code></td>
+          <td>
+                <code>bool, optional</code>
+          </td>
+          <td><p>Maximum power is normalized to 1 if True, defaults to False</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>dt</code></td>
-        <td><code>float</code></td>
-        <td><p>Simulation time step</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td><code>maxfr</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>Maximum frequency in Hz to cutoff from return, defaults to 70</p></td>
-        <td><code>70</code></td>
-      </tr>
-      <tr>
-        <td><code>spectrum_windowsize</code></td>
-        <td><code>float, optional</code></td>
-        <td><p>Length of the window used in Welch's method (in seconds), defaults to 1.0</p></td>
-        <td><code>1.0</code></td>
-      </tr>
-      <tr>
-        <td><code>normalize</code></td>
-        <td><code>bool, optional</code></td>
-        <td><p>Maximum power is normalized to 1 if True, defaults to False</p></td>
-        <td><code>False</code></td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>[np.ndarray, np.ndarray]</code></td>
-      <td><p>Frquencies and the power of each frequency</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">getPowerSpectrum</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>[np.ndarray, np.ndarray]</code>
+          </td>
+          <td><p>Frquencies and the power of each frequency</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getPowerSpectrum</span><span class="p">(</span><span class="n">activity</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">maxfr</span><span class="o">=</span><span class="mi">70</span><span class="p">,</span> <span class="n">spectrum_windowsize</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns a power spectrum using Welch&#39;s method.</span>
 
 <span class="sd">    :param activity: One-dimensional timeseries</span>
@@ -1445,86 +1619,168 @@ A windowsize of 30 at the BOLD sampling rate of 0.5 Hz equals 60s and stepsize =
     <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
         <span class="n">Pxx_spec</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">Pxx_spec</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">f</span><span class="p">,</span> <span class="n">Pxx_spec</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.kuramoto">
 <code class="highlight language-python"><span class="n">kuramoto</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Computes the Kuramoto order parameter of a timeseries which is a measure for synchrony.
 Can smooth timeseries if there is noise.
 Peaks are then detected using a peakfinder. From these peaks a phase is derived and then
 the amount of phase synchrony (the Kuramoto order parameter) is computed.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>traces</code></td>
-        <td><code>numpy.ndarray</code></td>
-        <td><p>Multidimensional timeseries array</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>traces</code></td>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>Multidimensional timeseries array</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>smoothing</code></td>
+          <td>
+                <code>float, optional</code>
+          </td>
+          <td><p>Gaussian smoothing strength</p></td>
+          <td>
+                <code>0.0</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>distance</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>minimum distance between peaks in samples</p></td>
+          <td>
+                <code>10</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>prominence</code></td>
+          <td>
+                <code>int, optional</code>
+          </td>
+          <td><p>vertical distance between the peak and its lowest contour line</p></td>
+          <td>
+                <code>5</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>smoothing</code></td>
-        <td><code>float, optional</code></td>
-        <td><p>Gaussian smoothing strength</p></td>
-        <td><code>0.0</code></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td><code>distance</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>minimum distance between peaks in samples</p></td>
-        <td><code>10</code></td>
-      </tr>
-      <tr>
-        <td><code>prominence</code></td>
-        <td><code>int, optional</code></td>
-        <td><p>vertical distance between the peak and its lowest contour line</p></td>
-        <td><code>5</code></td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>numpy.ndarray</code></td>
-      <td><p>Timeseries of Kuramoto order paramter</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">kuramoto</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>Timeseries of Kuramoto order paramter</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">kuramoto</span><span class="p">(</span><span class="n">traces</span><span class="p">,</span> <span class="n">smoothing</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prominence</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Computes the Kuramoto order parameter of a timeseries which is a measure for synchrony.</span>
 <span class="sd">    Can smooth timeseries if there is noise.</span>
@@ -1589,72 +1845,94 @@ the amount of phase synchrony (the Kuramoto order parameter) is computed.</p>
     <span class="c1"># determine kuramoto order paramter</span>
     <span class="n">kuramoto</span> <span class="o">=</span> <span class="n">_estimate_r</span><span class="p">(</span><span class="n">nTraces</span><span class="p">,</span> <span class="n">nTimes</span><span class="p">,</span> <span class="n">phases</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">kuramoto</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.matrix_correlation">
 <code class="highlight language-python"><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">M2</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Pearson correlation of the lower triagonal of two matrices.
 The triangular matrix is offset by k = 1 in order to ignore the diagonal line</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>M1</code></td>
-        <td><code>numpy.ndarray</code></td>
-        <td><p>First matrix</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>M1</code></td>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>First matrix</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>M2</code></td>
+          <td>
+                <code>numpy.ndarray</code>
+          </td>
+          <td><p>Second matrix</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>M2</code></td>
-        <td><code>numpy.ndarray</code></td>
-        <td><p>Second matrix</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>float</code></td>
-      <td><p>Correlation coefficient</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">matrix_correlation</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">M2</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>Correlation coefficient</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">matrix_correlation</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">M2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Pearson correlation of the lower triagonal of two matrices.</span>
 <span class="sd">    The triangular matrix is offset by k = 1 in order to ignore the diagonal line</span>
 
@@ -1667,72 +1945,101 @@ The triangular matrix is offset by k = 1 in order to ignore the diagonal line</p
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">cc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">M1</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">M1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span> <span class="n">M2</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span><span class="p">(</span><span class="n">M2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)])[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">cc</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.matrix_kolmogorov">
 <code class="highlight language-python"><span class="n">matrix_kolmogorov</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Computes the Kolmogorov distance between the distributions of lower-triangular entries of two matrices
 See: https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test#Two-sample_Kolmogorov%E2%80%93Smirnov_test</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>m1</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>matrix 1</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>m1</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>matrix 1</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>m2</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>matrix 2</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>m2</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>matrix 2</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>float</code></td>
-      <td><p>2-sample KS statistics</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">matrix_kolmogorov</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>2-sample KS statistics</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">matrix_kolmogorov</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">m2</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes the Kolmogorov distance between the distributions of lower-triangular entries of two matrices</span>
 <span class="sd">    See: https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test#Two-sample_Kolmogorov%E2%80%93Smirnov_test</span>
 
@@ -1752,73 +2059,98 @@ See: https://en.wikipedia.org/wiki/Kolmogorov%E2%80%93Smirnov_test#Two-sample_Ko
 
     <span class="c1"># return the distance, omit p-value</span>
     <span class="k">return</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ks_2samp</span><span class="p">(</span><span class="n">m1_vals</span><span class="p">,</span> <span class="n">m2_vals</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.ts_kolmogorov">
 <code class="highlight language-python"><span class="n">ts_kolmogorov</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="o">**</span><span class="n">fcd_kwargs</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Computes kolmogorov distance between two timeseries.
 This is done by first computing two FCD matrices (one for each timeseries)
 and then measuring the Kolmogorov distance of the upper triangle of these matrices.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>ts1</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>Timeseries 1</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ts1</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>Timeseries 1</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>ts2</code></td>
+          <td>
+                <code>np.ndarray</code>
+          </td>
+          <td><p>Timeseries 2</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>ts2</code></td>
-        <td><code>np.ndarray</code></td>
-        <td><p>Timeseries 2</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>float</code></td>
-      <td><p>2-sample KS statistics</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ts_kolmogorov</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="o">**</span><span class="n">fcd_kwargs</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>2-sample KS statistics</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ts_kolmogorov</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="o">**</span><span class="n">fcd_kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Computes kolmogorov distance between two timeseries.</span>
 <span class="sd">    This is done by first computing two FCD matrices (one for each timeseries)</span>
 <span class="sd">    and then measuring the Kolmogorov distance of the upper triangle of these matrices.</span>
@@ -1834,77 +2166,112 @@ and then measuring the Kolmogorov distance of the upper triangle of these matric
     <span class="n">fcd2</span> <span class="o">=</span> <span class="n">fcd</span><span class="p">(</span><span class="n">ts2</span><span class="p">,</span> <span class="o">**</span><span class="n">fcd_kwargs</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">matrix_kolmogorov</span><span class="p">(</span><span class="n">fcd1</span><span class="p">,</span> <span class="n">fcd2</span><span class="p">)</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
+</div>
 
-
-  <div class="doc doc-object doc-function">
+<div class="doc doc-object doc-function">
 
 
 
 <h2 class="doc doc-heading" id="neurolib.utils.functions.weighted_correlation">
 <code class="highlight language-python"><span class="n">weighted_correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span></code>
 
-
 </h2>
 
-    <div class="doc doc-contents ">
 
+  <div class="doc doc-contents ">
+  
       <p>Weighted Pearson correlation of two series.</p>
 
-<p><strong>Parameters:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>x</code></td>
-        <td><code>list, np.array</code></td>
-        <td><p>Timeseries 1</p></td>
-        <td><em>required</em></td>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
       </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>x</code></td>
+          <td>
+                <code>list, np.array</code>
+          </td>
+          <td><p>Timeseries 1</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>y</code></td>
+          <td>
+                <code>list, np.array</code>
+          </td>
+          <td><p>Timeseries 2, must have same length as x</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>w</code></td>
+          <td>
+                <code>list, np.array</code>
+          </td>
+          <td><p>Weight vector, must have same length as x and y</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
       <tr>
-        <td><code>y</code></td>
-        <td><code>list, np.array</code></td>
-        <td><p>Timeseries 2, must have same length as x</p></td>
-        <td><em>required</em></td>
+        <th>Type</th>
+        <th>Description</th>
       </tr>
-      <tr>
-        <td><code>w</code></td>
-        <td><code>list, np.array</code></td>
-        <td><p>Weight vector, must have same length as x and y</p></td>
-        <td><em>required</em></td>
-      </tr>
-  </tbody>
-</table>
-<p><strong>Returns:</strong></p>
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>float</code></td>
-      <td><p>Weighted correlation coefficient</p></td>
-    </tr>
-  </tbody>
-</table>
-        <details class="quote">
-          <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">weighted_correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    </thead>
+    <tbody>
+        <tr>
+          <td>
+                <code>float</code>
+          </td>
+          <td><p>Weighted correlation coefficient</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>neurolib/utils/functions.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">weighted_correlation</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Weighted Pearson correlation of two series.</span>
 
 <span class="sd">    :param x: Timeseries 1</span>
@@ -1926,25 +2293,23 @@ and then measuring the Kolmogorov distance of the upper triangle of these matric
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">weighted_mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">weighted_mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">weighted_cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">weighted_cov</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">weighted_cov</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
-</code></pre></div>
-        </details>
-    </div>
-
+</code></pre></div></td></tr></table></div>
+      </details>
   </div>
 
-
-
+</div>
 
 
 
   </div>
 
-    </div>
-
   </div>
+
+</div>
 
               
             </article>
+            
           </div>
         </div>
         
@@ -1952,7 +2317,8 @@ and then measuring the Kolmogorov distance of the upper triangle of these matric
       
         <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
         <a href="../dataset/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dataset" rel="prev">
@@ -2012,10 +2378,10 @@ and then measuring the Kolmogorov distance of the upper triangle of these matric
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.85cb4492.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a877e258.min.js"></script>
       
         <script src="../../js/config.js"></script>
       
