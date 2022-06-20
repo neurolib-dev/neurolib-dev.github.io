@@ -1168,24 +1168,24 @@ without any arguments. </p>
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="c1"># Create the model</span>
-<span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">()</span>
 
 <span class="c1"># Each model comes with a set of default parameters which are are a dictionary. </span>
 <span class="c1"># Let&#39;s change the parameter that controls the duration of a simulation to 10s.</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="mi">1000</span>  
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="mi">1000</span>  
 
 <span class="c1"># For convenience, we could also use:</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">duration</span> <span class="o">=</span> <span class="mf">10.0</span> <span class="o">*</span> <span class="mi">1000</span>
 
 <span class="c1"># In the aln model an Ornstein-Uhlenbeck process is simulated in parallel</span>
 <span class="c1"># as the source of input noise fluctuations. Here we can set the variance</span>
 <span class="c1"># of the process. </span>
 <span class="c1"># For more info: https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process </span>
 <span class="c1"># Let&#39;s add some noise.</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.1</span>
 
 <span class="c1"># Finally, we run the model</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
 
 </div>
@@ -1203,14 +1203,14 @@ without any arguments. </p>
 <p>Accessing the outputs is straight-forward. Every model's outputs
 are stored in the <code>model.outputs</code> attribute. According to the specific
 name of each of the model's outputs, they can also be accessed as a 
-key of the Model object, i.e. <code>aln['rates_exc']</code>.</p>
+key of the Model object, i.e. <code>model['rates_exc']</code>.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">aln</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">],</span> <span class="n">aln</span><span class="p">[</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">],</span> <span class="n">model</span><span class="p">[</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;t [ms]&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Rate [Hz]&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
@@ -1233,10 +1233,10 @@ key of the Model object, i.e. <code>aln['rates_exc']</code>.</p>
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><span class="c1"># Outputs are also available as an xr DataArray</span>
-<span class="n">xr</span> <span class="o">=</span> <span class="n">aln</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span>
+<span class="n">xr</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">xr</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span>
 <span class="c1"># outputs can also be accessed via attributes in dot.notation</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">,</span> <span class="n">aln</span><span class="o">.</span><span class="n">rates_exc</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rates_exc&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">rates_exc</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -1271,7 +1271,7 @@ rates_exc [[0.54644307 0.48676051 0.43664265 ... 0.06910043 0.06969732 0.0703108
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Below, you can see a schematic of the <code>aln</code> model. As you can see, a single node consists of one excitatory (red) and one inhibitory population (blue). The parameter that controls the mean input to the excitatory population is <span class="arithmatex">\(\mu_{E}\)</span> or <code>aln.params["mue_ext_mean"]</code> .</p>
+<p>Below, you can see a schematic of the <code>aln</code> model. As you can see, a single node consists of one excitatory (red) and one inhibitory population (blue). The parameter that controls the mean input to the excitatory population is <span class="arithmatex">\(\mu_{E}\)</span> or <code>model.params["mue_ext_mean"]</code> .</p>
 </div>
 </div>
 </div>
@@ -1294,8 +1294,8 @@ rates_exc [[0.54644307 0.48676051 0.43664265 ... 0.06910043 0.06969732 0.0703108
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="mi">1000</span>  
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="mi">1000</span>  
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
 
 </div>
@@ -1310,7 +1310,7 @@ rates_exc [[0.54644307 0.48676051 0.43664265 ... 0.06910043 0.06969732 0.0703108
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>
 </code></pre></div>
 
 </div>
@@ -1332,12 +1332,12 @@ rates_exc [[0.54644307 0.48676051 0.43664265 ... 0.06910043 0.06969732 0.0703108
 <span class="k">for</span> <span class="n">mue</span> <span class="ow">in</span> <span class="n">mue_inputs</span><span class="p">:</span>
     <span class="c1"># Note: this has to be a vector since it is input for all nodes</span>
     <span class="c1"># (but we have only one node in this example)</span>
-    <span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mue</span>
-    <span class="n">aln</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mue</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
     <span class="c1"># we add the maximum and the minimum of the last second of the </span>
     <span class="c1"># simulation to a list</span>
-    <span class="n">max_rate_e</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):]))</span>
-    <span class="n">min_rate_e</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):]))</span>
+    <span class="n">max_rate_e</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):]))</span>
+    <span class="n">min_rate_e</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]):]))</span>
 </code></pre></div>
 
 </div>
@@ -1419,9 +1419,9 @@ rates_exc [[0.54644307 0.48676051 0.43664265 ... 0.06910043 0.06969732 0.0703108
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">ALNModel</span><span class="p">(</span><span class="n">Cmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Cmat</span><span class="p">,</span> <span class="n">Dmat</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">Dmat</span><span class="p">)</span>
 
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">1000</span> 
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.2</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">1000</span> 
 <span class="c1"># Info: value 0.2*60*1000 is low for testing</span>
 <span class="c1"># use 5*60*1000 for real simulation</span>
 </code></pre></div>
@@ -1441,12 +1441,12 @@ close to the E-I limit cycle.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.57</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.6</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mue_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.57</span>
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;mui_ext_mean&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.6</span>
 <span class="c1"># We set an appropriate level of noise</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.09</span>
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;sigma_ou&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.09</span>
 <span class="c1"># And turn on adaptation with a low value of spike-triggered adaptation currents.</span>
-<span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">5.0</span>
 </code></pre></div>
 
 </div>
@@ -1457,8 +1457,8 @@ close to the E-I limit cycle.</p>
 <p>Let's have a look what the data looks like. We can access the
 data of each model by calling its internal attrivbutes.
 Here, we plot the structural connectivity matrix by calling 
-<code>aln.params['Cmat']</code> and fiber length matrix by calling 
-<code>aln.params['lengthMat']</code>.
+<code>model.params['Cmat']</code> and fiber length matrix by calling 
+<code>model.params['lengthMat']</code>.
 Of course, we can also access the dataset using the <code>Dataset</code>
 object itself. For example the functional conencity matrices 
 of the BOLD timeseries in the datasets are given as list with 
@@ -1473,10 +1473,10 @@ of the BOLD timeseries in the datasets are given as list with
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.28</span><span class="p">)</span>
 
-<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Cmat&#39;</span><span class="p">],</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">10e-5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Cmat&#39;</span><span class="p">])))</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Cmat&#39;</span><span class="p">],</span> <span class="n">norm</span><span class="o">=</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">10e-5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;Cmat&#39;</span><span class="p">])))</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Cmat&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;lengthMat&#39;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;lengthMat&#39;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Dmat&quot;</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.046</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.04</span><span class="p">)</span>
 <span class="n">im</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
@@ -1533,7 +1533,7 @@ particularly useful for very long and many parallel simulations.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">chunksize</span> <span class="o">=</span> <span class="mi">100000</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -1549,7 +1549,7 @@ particularly useful for very long and many parallel simulations.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">aln</span><span class="o">.</span><span class="n">outputs</span>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="o">.</span><span class="n">outputs</span>
 </code></pre></div>
 
 </div>
@@ -1580,8 +1580,8 @@ particularly useful for very long and many parallel simulations.</p>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For convenience, they can also be accessed directly using attributes of the model with the outputs name, like <code>aln.rates_exc</code>. The outputs are also available as xr DataArrays as <code>aln.xr()</code>.</p>
-<p>The since we used <code>bold=True</code> to simulate BOLD, we can also access <code>aln.BOLD.BOLD</code> for the actual BOLD activity, and <code>aln.BOLD.t</code> for the time steps of the BOLD simulation (which are downsampled to <code>0.5 Hz</code> by default).</p>
+<p>For convenience, they can also be accessed directly using attributes of the model with the outputs name, like <code>model.rates_exc</code>. The outputs are also available as xr DataArrays as <code>model.xr()</code>.</p>
+<p>The since we used <code>bold=True</code> to simulate BOLD, we can also access <code>model.BOLD.BOLD</code> for the actual BOLD activity, and <code>model.BOLD.t</code> for the time steps of the BOLD simulation (which are downsampled to <code>0.5 Hz</code> by default).</p>
 </div>
 </div>
 </div>
@@ -1597,8 +1597,8 @@ particularly useful for very long and many parallel simulations.</p>
 
 <div class="highlight"><pre><span></span><code><span class="c1"># Plot functional connectivity and BOLD timeseries (z-scored)</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">,</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width_ratios&#39;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]))</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">mstats</span><span class="o">.</span><span class="n">zscore</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="o">&gt;</span><span class="mi">10000</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">[</span><span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="o">&gt;</span><span class="mi">10000</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">aln</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]]);</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">mstats</span><span class="o">.</span><span class="n">zscore</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="o">&gt;</span><span class="mi">10000</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="o">&gt;</span><span class="mi">10000</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">t_BOLD</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;N&#39;</span><span class="p">]]);</span>
 
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;FC&quot;</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Node&quot;</span><span class="p">)</span>
@@ -1607,7 +1607,7 @@ particularly useful for very long and many parallel simulations.</p>
 
 <span class="c1"># the results of the model are also accesible through an xarray DataArray</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">75</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">aln</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;rates_exc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">);</span>
 </code></pre></div>
 
 </div>
@@ -1641,7 +1641,7 @@ particularly useful for very long and many parallel simulations.</p>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">aln</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]),</span> <span class="n">fcemp</span><span class="p">)</span> <span class="k">for</span> <span class="n">fcemp</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">matrix_correlation</span><span class="p">(</span><span class="n">func</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">BOLD</span><span class="o">.</span><span class="n">BOLD</span><span class="p">[:,</span> <span class="mi">5</span><span class="p">:]),</span> <span class="n">fcemp</span><span class="p">)</span> <span class="k">for</span> <span class="n">fcemp</span> <span class="ow">in</span> <span class="n">ds</span><span class="o">.</span><span class="n">FCs</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Correlation per subject:&quot;</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">scores</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean FC/FC correlation: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">:</span><span class="s2">.2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
