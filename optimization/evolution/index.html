@@ -8,8 +8,14 @@
       
       
       
+      
+        <link rel="prev" href="../../models/parameters/">
+      
+      
+        <link rel="next" href="../../utils/dataset/">
+      
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.5.10">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
     
     
       
@@ -17,11 +23,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.975780f9.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.558e4712.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
-        
       
       
 
@@ -60,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="None" data-md-color-accent="None">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
   
     
     
@@ -138,7 +143,7 @@
           <div class="md-search-result__meta">
             Initializing search
           </div>
-          <ol class="md-search-result__list"></ol>
+          <ol class="md-search-result__list" role="presentation"></ol>
         </div>
       </div>
     </div>
@@ -246,12 +251,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_3">
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
           Examples
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -560,12 +566,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_4">
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
           Exploration
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -608,12 +615,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_5">
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
           Models
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -672,12 +680,13 @@
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       
       
-      
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_6" tabindex="0" aria-expanded="true">
           Optimization
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -894,12 +903,13 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
       
       
       
-      
-        <label class="md-nav__link" for="__nav_7">
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
           Utils
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -1167,10 +1177,9 @@
                 
                   
 
-  <a href="https://github.com/neurolib-dev/neurolib/edit/master/docs/optimization/evolution.md" title="Edit this page" class="md-content__button md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
-  </a>
+  
+  
+
 
 
 <h1 id="evolution">Evolution</h1>
@@ -2142,7 +2151,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
 <span class="normal">971</span>
 <span class="normal">972</span>
 <span class="normal">973</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Evolution</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Evolutionary parameter optimization. This class helps you to optimize any function or model using an evolutionary algorithm.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Evolutionary parameter optimization. This class helps you to optimize any function or model using an evolutionary algorithm.</span>
 <span class="sd">    It uses the package `deap` and supports its builtin mating and selection functions as well as custom ones.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -2169,7 +2178,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">individualGenerator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">IND_GENERATOR_P</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initialize evolutionary optimization.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize evolutionary optimization.</span>
 <span class="sd">        :param evalFunction: Evaluation function of a run that provides a fitness vector and simulation outputs</span>
 <span class="sd">        :type evalFunction: function</span>
 <span class="sd">        :param parameterSpace: Parameter space to run evolution in.</span>
@@ -2361,7 +2370,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="bp">self</span><span class="o">.</span><span class="n">last_id</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose_plotting</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Run the evolution or continue previous evolution. If evolution was not initialized first</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the evolution or continue previous evolution. If evolution was not initialized first</span>
 <span class="sd">        using `runInitial()`, this will be done.</span>
 
 <span class="sd">        :param verbose: Print and plot state of evolution during run, defaults to False</span>
@@ -2376,7 +2385,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="bp">self</span><span class="o">.</span><span class="n">runEvolution</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">getIndividualFromTraj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get individual from pypet trajectory</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get individual from pypet trajectory</span>
 
 <span class="sd">        :param traj: Pypet trajectory</span>
 <span class="sd">        :type traj: `pypet.trajectory.Trajectory`</span>
@@ -2395,7 +2404,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">individual</span>
 
     <span class="k">def</span> <span class="nf">getModelFromTraj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Return the appropriate model with parameters for this individual</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the appropriate model with parameters for this individual</span>
 <span class="sd">        :params traj: Pypet trajectory with individual (traj.individual) or directly a deap.Individual</span>
 
 <span class="sd">        :returns model: Model with the parameters of this individual.</span>
@@ -2414,7 +2423,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">model</span>
 
     <span class="k">def</span> <span class="nf">getIndividualFromHistory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Searches the entire evolution history for an individual with a specific id and returns it.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Searches the entire evolution history for an individual with a specific id and returns it.</span>
 
 <span class="sd">        :param id: Individual id</span>
 <span class="sd">        :type id: int</span>
@@ -2429,7 +2438,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="kc">None</span>
 
     <span class="k">def</span> <span class="nf">individualToDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">individual</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Convert an individual to a parameter dictionary.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert an individual to a parameter dictionary.</span>
 
 <span class="sd">        :param individual: Individual (`DEAP` type)</span>
 <span class="sd">        :type individual: `deap.creator.Individual`</span>
@@ -2439,7 +2448,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">ParametersInterval</span><span class="p">(</span><span class="o">*</span><span class="p">(</span><span class="n">individual</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">paramInterval</span><span class="p">)]))</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_initPypetTrajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">,</span> <span class="n">paramInterval</span><span class="p">,</span> <span class="n">POP_SIZE</span><span class="p">,</span> <span class="n">NGEN</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initializes pypet trajectory and store all simulation parameters for later analysis.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes pypet trajectory and store all simulation parameters for later analysis.</span>
 
 <span class="sd">        :param traj: Pypet trajectory (must be already initialized!)</span>
 <span class="sd">        :type traj: `pypet.trajectory.Trajectory`</span>
@@ -2499,7 +2508,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">parentSelectionOperator</span><span class="p">,</span>
         <span class="n">individualGenerator</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Initializes DEAP and registers all methods to the deap.toolbox</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes DEAP and registers all methods to the deap.toolbox</span>
 
 <span class="sd">        :param toolbox: Deap toolbox</span>
 <span class="sd">        :type toolbox: deap.base.Toolbox</span>
@@ -2537,7 +2546,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">toolbox</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;run_map&quot;</span><span class="p">,</span> <span class="n">pypetEnvironment</span><span class="o">.</span><span class="n">run_map</span><span class="p">)</span>
 
         <span class="k">def</span> <span class="nf">_worker</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">            Wrapper to get original exception from inner, `fn`, function.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">try</span><span class="p">:</span>
@@ -2563,7 +2572,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Evolution: Selection operator: </span><span class="si">{</span><span class="n">selectionOperator</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_evalPopulationUsingPypet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">,</span> <span class="n">toolbox</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">gIdx</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Evaluate the fitness of the popoulation of the current generation using pypet</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate the fitness of the popoulation of the current generation using pypet</span>
 <span class="sd">        :param traj: Pypet trajectory</span>
 <span class="sd">        :type traj: `pypet.trajectory.Trajectory`</span>
 <span class="sd">        :param toolbox: `deap` toolbox</span>
@@ -2635,7 +2644,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">pop</span>
 
     <span class="k">def</span> <span class="nf">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a list of the valid population.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of the valid population.</span>
 
 <span class="sd">        :params pop: Population to check, defaults to self.pop</span>
 <span class="sd">        :type pop: deap population</span>
@@ -2646,7 +2655,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 
     <span class="k">def</span> <span class="nf">getInvalidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a list of the invalid population.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a list of the invalid population.</span>
 
 <span class="sd">        :params pop: Population to check, defaults to self.pop</span>
 <span class="sd">        :type pop: deap population</span>
@@ -2657,7 +2666,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pop</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">values</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()]</span>
 
     <span class="k">def</span> <span class="nf">_tagPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Take a fresh population and add id&#39;s and attributes such as parameters that we can use later</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Take a fresh population and add id&#39;s and attributes such as parameters that we can use later</span>
 
 <span class="sd">        :param pop: Fresh population</span>
 <span class="sd">        :type pop: list</span>
@@ -2679,7 +2688,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">pop</span>
 
     <span class="k">def</span> <span class="nf">runInitial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Run the first round of evolution with the initial population of size `POP_INIT_SIZE`</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the first round of evolution with the initial population of size `POP_INIT_SIZE`</span>
 <span class="sd">        and select the best `POP_SIZE` for the following evolution. This needs to be run before `runEvolution()`</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_initial_population</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -2712,7 +2721,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="bp">self</span><span class="o">.</span><span class="n">_t_end_initial_population</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">runEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Run the evolutionary optimization process for `NGEN` generations.&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run the evolutionary optimization process for `NGEN` generations.&quot;&quot;&quot;</span>
         <span class="c1"># Start evolution</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start of evolution&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_evolution</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -2799,7 +2808,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="bp">self</span><span class="o">.</span><span class="n">_buildEvolutionTree</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_buildEvolutionTree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Builds a genealogy tree that is networkx compatible.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Builds a genealogy tree that is networkx compatible.</span>
 
 <span class="sd">        Plot the tree using:</span>
 
@@ -2825,7 +2834,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
                 <span class="bp">self</span><span class="o">.</span><span class="n">id_score</span><span class="p">[</span><span class="n">p</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">score</span>
 
     <span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bestN</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Print and plot information about the evolution and the current population</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print and plot information about the evolution and the current population</span>
 
 <span class="sd">        :param plot: plot a plot using `matplotlib`, defaults to True</span>
 <span class="sd">        :type plot: bool, optional</span>
@@ -2863,11 +2872,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
             <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">plotProgress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Plots progress of fitnesses of current evolution run&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Plots progress of fitnesses of current evolution run&quot;&quot;&quot;</span>
         <span class="n">eu</span><span class="o">.</span><span class="n">plotProgress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">saveEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Save evolution to file using dill.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save evolution to file using dill.</span>
 
 <span class="sd">        :param fname: Filename, defaults to a path in ./data/</span>
 <span class="sd">        :type fname: str, optional</span>
@@ -2879,7 +2888,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saving evolution to </span><span class="si">{</span><span class="n">fname</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">loadEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
 
 <span class="sd">        Example usage:</span>
 <span class="sd">        ```</span>
@@ -2912,7 +2921,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">evolution</span>
 
     <span class="k">def</span> <span class="nf">_outputToDf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Loads outputs dictionary from evolution from the .outputs attribute</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads outputs dictionary from evolution from the .outputs attribute</span>
 <span class="sd">        and writes data into a dataframe.</span>
 
 <span class="sd">        :param pop: Population of which to get outputs from.</span>
@@ -2950,7 +2959,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">df</span>
 
     <span class="k">def</span> <span class="nf">_dropDuplicatesFromDf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Drops duplicates from dfEvolution dataframe.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Drops duplicates from dfEvolution dataframe.</span>
 <span class="sd">        Tries vanilla drop_duplicates, which fails if the Dataframe contains</span>
 <span class="sd">        data objects like numpy.arrays. Tries to drop via key &quot;id&quot; if it fails.</span>
 
@@ -2970,7 +2979,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">df</span>
 
     <span class="k">def</span> <span class="nf">dfPop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame of the current generation&#39;s population parameters.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame of the current generation&#39;s population parameters.</span>
 <span class="sd">        This object can be further used to easily analyse the population.</span>
 <span class="sd">        :return: Pandas DataFrame with all individuals and their parameters</span>
 <span class="sd">        :rtype: `pandas.core.frame.DataFrame`</span>
@@ -3003,7 +3012,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">dfPop</span>
 
     <span class="k">def</span> <span class="nf">dfEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame with the individuals of the the whole evolution.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame with the individuals of the the whole evolution.</span>
 <span class="sd">        This method can be usef after loading an evolution from disk using loadEvolution()</span>
 
 <span class="sd">        :return: Pandas DataFrame with all individuals and their parameters</span>
@@ -3041,7 +3050,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="k">return</span> <span class="n">dfEvolution</span>
 
     <span class="k">def</span> <span class="nf">loadResults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trajectoryName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Load results from a hdf file of a previous evolution and store the</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Load results from a hdf file of a previous evolution and store the</span>
 <span class="sd">        pypet trajectory in `self.traj`</span>
 
 <span class="sd">        :param filename: hdf filename of the previous run, defaults to None</span>
@@ -3054,12 +3063,12 @@ It uses the package <code>deap</code> and supports its builtin mating and select
         <span class="bp">self</span><span class="o">.</span><span class="n">traj</span> <span class="o">=</span> <span class="n">pu</span><span class="o">.</span><span class="n">loadPypetTrajectory</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">trajectoryName</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">getScores</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Returns the scores of the current valid population&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the scores of the current valid population&quot;&quot;&quot;</span>
         <span class="n">validPop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pop</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">score</span> <span class="k">for</span> <span class="n">pop</span> <span class="ow">in</span> <span class="n">validPop</span><span class="p">])</span>
 
     <span class="k">def</span> <span class="nf">getScoresDuringEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Get the scores of each generation&#39;s population.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get the scores of each generation&#39;s population.</span>
 
 <span class="sd">        :param traj: Pypet trajectory. If not given, the current trajectory is used, defaults to None</span>
 <span class="sd">        :type traj: `pypet.trajectory.Trajectory`, optional</span>
@@ -3552,7 +3561,7 @@ It uses the package <code>deap</code> and supports its builtin mating and select
     <span class="n">individualGenerator</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">IND_GENERATOR_P</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Initialize evolutionary optimization.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize evolutionary optimization.</span>
 <span class="sd">    :param evalFunction: Evaluation function of a run that provides a fitness vector and simulation outputs</span>
 <span class="sd">    :type evalFunction: function</span>
 <span class="sd">    :param parameterSpace: Parameter space to run evolution in.</span>
@@ -3820,7 +3829,7 @@ This method can be usef after loading an evolution from disk using loadEvolution
 <span class="normal">916</span>
 <span class="normal">917</span>
 <span class="normal">918</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dfEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame with the individuals of the the whole evolution.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame with the individuals of the the whole evolution.</span>
 <span class="sd">    This method can be usef after loading an evolution from disk using loadEvolution()</span>
 
 <span class="sd">    :return: Pandas DataFrame with all individuals and their parameters</span>
@@ -3929,7 +3938,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">878</span>
 <span class="normal">879</span>
 <span class="normal">880</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dfPop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame of the current generation&#39;s population parameters.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a `pandas` DataFrame of the current generation&#39;s population parameters.</span>
 <span class="sd">    This object can be further used to easily analyse the population.</span>
 <span class="sd">    :return: Pandas DataFrame with all individuals and their parameters</span>
 <span class="sd">    :rtype: `pandas.core.frame.DataFrame`</span>
@@ -4038,7 +4047,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">304</span>
 <span class="normal">305</span>
 <span class="normal">306</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getIndividualFromHistory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Searches the entire evolution history for an individual with a specific id and returns it.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Searches the entire evolution history for an individual with a specific id and returns it.</span>
 
 <span class="sd">    :param id: Individual id</span>
 <span class="sd">    :type id: int</span>
@@ -4133,7 +4142,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">270</span>
 <span class="normal">271</span>
 <span class="normal">272</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getIndividualFromTraj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get individual from pypet trajectory</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get individual from pypet trajectory</span>
 
 <span class="sd">    :param traj: Pypet trajectory</span>
 <span class="sd">    :type traj: `pypet.trajectory.Trajectory`</span>
@@ -4224,7 +4233,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">532</span>
 <span class="normal">533</span>
 <span class="normal">534</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getInvalidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a list of the invalid population.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a list of the invalid population.</span>
 
 <span class="sd">    :params pop: Population to check, defaults to self.pop</span>
 <span class="sd">    :type pop: deap population</span>
@@ -4315,7 +4324,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">289</span>
 <span class="normal">290</span>
 <span class="normal">291</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getModelFromTraj</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Return the appropriate model with parameters for this individual</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the appropriate model with parameters for this individual</span>
 <span class="sd">    :params traj: Pypet trajectory with individual (traj.individual) or directly a deap.Individual</span>
 
 <span class="sd">    :returns model: Model with the parameters of this individual.</span>
@@ -4358,7 +4367,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">934</span>
 <span class="normal">935</span>
 <span class="normal">936</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getScores</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns the scores of the current valid population&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns the scores of the current valid population&quot;&quot;&quot;</span>
     <span class="n">validPop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">pop</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">pop</span><span class="o">.</span><span class="n">fitness</span><span class="o">.</span><span class="n">score</span> <span class="k">for</span> <span class="n">pop</span> <span class="ow">in</span> <span class="n">validPop</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
@@ -4481,7 +4490,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">971</span>
 <span class="normal">972</span>
 <span class="normal">973</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getScoresDuringEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">traj</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Get the scores of each generation&#39;s population.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the scores of each generation&#39;s population.</span>
 
 <span class="sd">    :param traj: Pypet trajectory. If not given, the current trajectory is used, defaults to None</span>
 <span class="sd">    :type traj: `pypet.trajectory.Trajectory`, optional</span>
@@ -4590,7 +4599,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">521</span>
 <span class="normal">522</span>
 <span class="normal">523</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getValidPopulation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Returns a list of the valid population.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a list of the valid population.</span>
 
 <span class="sd">    :params pop: Population to check, defaults to self.pop</span>
 <span class="sd">    :type pop: deap population</span>
@@ -4672,7 +4681,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">individualToDict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">individual</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert an individual to a parameter dictionary.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert an individual to a parameter dictionary.</span>
 
 <span class="sd">    :param individual: Individual (`DEAP` type)</span>
 <span class="sd">    :type individual: `deap.creator.Individual`</span>
@@ -4783,7 +4792,7 @@ This object can be further used to easily analyse the population.</p>
 <span class="normal">738</span>
 <span class="normal">739</span>
 <span class="normal">740</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bestN</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">info</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Print and plot information about the evolution and the current population</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Print and plot information about the evolution and the current population</span>
 
 <span class="sd">    :param plot: plot a plot using `matplotlib`, defaults to True</span>
 <span class="sd">    :type plot: bool, optional</span>
@@ -4922,7 +4931,7 @@ evolution = evolution.loadEvolution(&quot;data/evolution-results-2020-05-15-00H-
 <span class="normal">787</span>
 <span class="normal">788</span>
 <span class="normal">789</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">loadEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load evolution from previously saved simulations.</span>
 
 <span class="sd">    Example usage:</span>
 <span class="sd">    ```</span>
@@ -5022,7 +5031,7 @@ pypet trajectory in <code>self.traj</code></p>
 <span class="normal">929</span>
 <span class="normal">930</span>
 <span class="normal">931</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">loadResults</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">trajectoryName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Load results from a hdf file of a previous evolution and store the</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load results from a hdf file of a previous evolution and store the</span>
 <span class="sd">    pypet trajectory in `self.traj`</span>
 
 <span class="sd">    :param filename: hdf filename of the previous run, defaults to None</span>
@@ -5058,7 +5067,7 @@ pypet trajectory in <code>self.traj</code></p>
         <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">742</span>
 <span class="normal">743</span>
 <span class="normal">744</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">plotProgress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Plots progress of fitnesses of current evolution run&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots progress of fitnesses of current evolution run&quot;&quot;&quot;</span>
     <span class="n">eu</span><span class="o">.</span><span class="n">plotProgress</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="n">reverse</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -5121,7 +5130,7 @@ using <code>runInitial()</code>, this will be done.</p>
 <span class="normal">251</span>
 <span class="normal">252</span>
 <span class="normal">253</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">verbose_plotting</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run the evolution or continue previous evolution. If evolution was not initialized first</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the evolution or continue previous evolution. If evolution was not initialized first</span>
 <span class="sd">    using `runInitial()`, this will be done.</span>
 
 <span class="sd">    :param verbose: Print and plot state of evolution during run, defaults to False</span>
@@ -5242,7 +5251,7 @@ using <code>runInitial()</code>, this will be done.</p>
 <span class="normal">674</span>
 <span class="normal">675</span>
 <span class="normal">676</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">runEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run the evolutionary optimization process for `NGEN` generations.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the evolutionary optimization process for `NGEN` generations.&quot;&quot;&quot;</span>
     <span class="c1"># Start evolution</span>
     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start of evolution&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_evolution</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -5382,7 +5391,7 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
 <span class="normal">587</span>
 <span class="normal">588</span>
 <span class="normal">589</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">runInitial</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Run the first round of evolution with the initial population of size `POP_INIT_SIZE`</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run the first round of evolution with the initial population of size `POP_INIT_SIZE`</span>
 <span class="sd">    and select the best `POP_SIZE` for the following evolution. This needs to be run before `runEvolution()`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_t_start_initial_population</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -5470,7 +5479,7 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
 <span class="normal">754</span>
 <span class="normal">755</span>
 <span class="normal">756</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">saveEvolution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Save evolution to file using dill.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Save evolution to file using dill.</span>
 
 <span class="sd">    :param fname: Filename, defaults to a path in ./data/</span>
 <span class="sd">    :type fname: str, optional</span>
@@ -5509,42 +5518,6 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
       
         <footer class="md-footer">
   
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../../models/parameters/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Parameters" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Parameters
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../utils/dataset/" class="md-footer__link md-footer__link--next" aria-label="Next: Dataset" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Dataset
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -5571,10 +5544,10 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.5a2dcb6a.min.js"></script>
+      <script src="../../assets/javascripts/bundle.51d95adb.min.js"></script>
       
         <script src="../../js/config.js"></script>
       
@@ -5582,7 +5555,6 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
-    
     
   </body>
 </html>
