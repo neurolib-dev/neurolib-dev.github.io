@@ -15,7 +15,7 @@
         <link rel="next" href="../signal/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -1583,7 +1583,11 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
           <td>
                 <code>`dict, list[str, str]`</code>
           </td>
-          <td><p>parameter dictionary or list of names of parameters e.g. <code>['x', 'y']</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>parameter dictionary or list of names of parameters e.g. <code>['x', 'y']</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -1593,7 +1597,11 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
           <td>
                 <code>`list[list[float, float]]`</code>
           </td>
-          <td><p>list of parameter values (must be floats) e.g. <code>[[x_min, x_max], [y_min, y_max], ...]</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>list of parameter values (must be floats) e.g. <code>[[x_min, x_max], [y_min, y_max], ...]</code></p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1603,7 +1611,11 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
           <td>
                 <code>str</code>
           </td>
-          <td><p>string describing the kind of parameter space: - <code>point</code>: a single point in parameter space - <code>bound</code>: a bound in parameter space, i.e. two values per parameter - <code>grid</code>: a cartesian product over parameters - <code>sequence</code>: a sequence of univariate parameter changes - only one will change at the time, other parameters will stay as default - <code>explicit</code>: explicitely define a parameter space, i.e lists of all parameters have to have the same length - None: parameterSpace tries to auto-detect the correct kind</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>string describing the kind of parameter space: - <code>point</code>: a single point in parameter space - <code>bound</code>: a bound in parameter space, i.e. two values per parameter - <code>grid</code>: a cartesian product over parameters - <code>sequence</code>: a sequence of univariate parameter changes - only one will change at the time, other parameters will stay as default - <code>explicit</code>: explicitely define a parameter space, i.e lists of all parameters have to have the same length - None: parameterSpace tries to auto-detect the correct kind</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -1613,7 +1625,11 @@ or <code>parameters</code> is a list of names and <code>parameterValues</code> a
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to allow star notation in parameter names - MultiModel</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to allow star notation in parameter names - MultiModel</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -1818,7 +1834,11 @@ to add parameters of the space to pypet (for initialization)</p>
           <td><code>safe</code></td>
           <td>
           </td>
-          <td><p>Return a "safe" parameter or the original. Safe refers to returning python floats, not, for example numpy.float64 (necessary for pypet). ;type safe: bool</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Return a "safe" parameter or the original. Safe refers to returning python floats, not, for example numpy.float64 (necessary for pypet). ;type safe: bool</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -1932,16 +1952,22 @@ to add parameters of the space to pypet (for initialization)</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
-        <script src="../../js/config.js"></script>
+        
+          <script src="../../js/config.js"></script>
+        
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
       
     
   </body>

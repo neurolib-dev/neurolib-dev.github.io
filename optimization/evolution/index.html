@@ -15,7 +15,7 @@
         <link rel="next" href="../../utils/dataset/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -3143,7 +3143,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>function</code>
           </td>
-          <td><p>Evaluation function of a run that provides a fitness vector and simulation outputs</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Evaluation function of a run that provides a fitness vector and simulation outputs</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3153,7 +3157,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>`neurolib.utils.parameterSpace.ParameterSpace`</code>
           </td>
-          <td><p>Parameter space to run evolution in.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parameter space to run evolution in.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3163,7 +3171,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>list[float], optional</code>
           </td>
-          <td><p>List of floats that defines the dimensionality of the fitness vector returned from evalFunction and the weights of each component for multiobjective optimization (positive = maximize, negative = minimize). If not given, then a single positive weight will be used, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of floats that defines the dimensionality of the fitness vector returned from evalFunction and the weights of each component for multiobjective optimization (positive = maximize, negative = minimize). If not given, then a single positive weight will be used, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3173,7 +3185,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>`neurolib.models.model.Model`, optional</code>
           </td>
-          <td><p>Model to simulate, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model to simulate, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3183,7 +3199,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>HDF file to store all results in, defaults to "evolution.hdf"</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>HDF file to store all results in, defaults to "evolution.hdf"</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;evolution.hdf&#39;</code>
           </td>
@@ -3193,7 +3213,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Number of cores to simulate on (max cores default), defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of cores to simulate on (max cores default), defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3203,7 +3227,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Size of first population to initialize evolution with (random, uniformly distributed), defaults to 100</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Size of first population to initialize evolution with (random, uniformly distributed), defaults to 100</p>
+            </div>
+          </td>
           <td>
                 <code>100</code>
           </td>
@@ -3213,7 +3241,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Size of the population during evolution, defaults to 20</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Size of the population during evolution, defaults to 20</p>
+            </div>
+          </td>
           <td>
                 <code>20</code>
           </td>
@@ -3223,7 +3255,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Numbers of generations to evaluate, defaults to 10</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Numbers of generations to evaluate, defaults to 10</p>
+            </div>
+          </td>
           <td>
                 <code>10</code>
           </td>
@@ -3233,7 +3269,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>deap operator, optional</code>
           </td>
-          <td><p>Custom mating operator, defaults to deap.tools.cxBlend</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Custom mating operator, defaults to deap.tools.cxBlend</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3243,7 +3283,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>dict, optional</code>
           </td>
-          <td><p>Mating operator keyword arguments (for the default crossover operator cxBlend, this defaults <code>alpha</code> = 0.5)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mating operator keyword arguments (for the default crossover operator cxBlend, this defaults <code>alpha</code> = 0.5)</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3253,7 +3297,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>deap operator, optional</code>
           </td>
-          <td><p>Custom mutation operator, defaults to du.gaussianAdaptiveMutation_nStepSizes</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Custom mutation operator, defaults to du.gaussianAdaptiveMutation_nStepSizes</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3263,7 +3311,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>dict, optional</code>
           </td>
-          <td><p>Mutation operator keyword arguments</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Mutation operator keyword arguments</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3273,7 +3325,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>deap operator, optional</code>
           </td>
-          <td><p>Custom selection operator, defaults to du.selBest_multiObj</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Custom selection operator, defaults to du.selBest_multiObj</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3283,7 +3339,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>dict, optional</code>
           </td>
-          <td><p>Selection operator keyword arguments</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Selection operator keyword arguments</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3292,7 +3352,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td><code>parentSelectionOperator</code></td>
           <td>
           </td>
-          <td><p>Operator for parent selection, defaults to du.selRank</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Operator for parent selection, defaults to du.selRank</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3302,7 +3366,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td>
                 <code>dict, optional</code>
           </td>
-          <td><p>Parent selection operator keyword arguments (for the default operator selRank, this defaults to <code>s</code> = 1.5 in Eiben&amp;Smith p.81)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parent selection operator keyword arguments (for the default operator selRank, this defaults to <code>s</code> = 1.5 in Eiben&amp;Smith p.81)</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3311,7 +3379,11 @@ It uses the package <code>deap</code> and supports its builtin mating and select
           <td><code>individualGenerator</code></td>
           <td>
           </td>
-          <td><p>Function to generate initial individuals, defaults to du.randomParametersAdaptive</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Function to generate initial individuals, defaults to du.randomParametersAdaptive</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3780,7 +3852,11 @@ This method can be usef after loading an evolution from disk using loadEvolution
           <td>
                 <code>`pandas.core.frame.DataFrame`</code>
           </td>
-          <td><p>Pandas DataFrame with all individuals and their parameters</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pandas DataFrame with all individuals and their parameters</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3894,7 +3970,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`pandas.core.frame.DataFrame`</code>
           </td>
-          <td><p>Pandas DataFrame with all individuals and their parameters</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pandas DataFrame with all individuals and their parameters</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4000,7 +4080,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>Individual id</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Individual id</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4021,7 +4105,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`deap.creator.Individual`</code>
           </td>
-          <td><p>Individual (<code>DEAP</code> type)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Individual (<code>DEAP</code> type)</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4091,7 +4179,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`pypet.trajectory.Trajectory`</code>
           </td>
-          <td><p>Pypet trajectory</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4112,7 +4204,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`deap.creator.Individual`</code>
           </td>
-          <td><p>Individual (<code>DEAP</code> type)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Individual (<code>DEAP</code> type)</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4190,7 +4286,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>deap population</code>
           </td>
-          <td><p>Population to check, defaults to self.pop</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Population to check, defaults to self.pop</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4211,7 +4311,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>list</code>
           </td>
-          <td><p>List of invalid population</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of invalid population</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4273,7 +4377,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`pypet.trajectory.Trajectory`</code>
           </td>
-          <td><p>Pypet trajectory with individual (traj.individual) or directly a deap.Individual</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory with individual (traj.individual) or directly a deap.Individual</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4294,7 +4402,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`neurolib.models.model.Model`</code>
           </td>
-          <td><p>Model with the parameters of this individual.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model with the parameters of this individual.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4401,7 +4513,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`pypet.trajectory.Trajectory`, optional</code>
           </td>
-          <td><p>Pypet trajectory. If not given, the current trajectory is used, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory. If not given, the current trajectory is used, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4411,7 +4527,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Drop the first (initial) generation. This can be usefull because it can have a different size (<code>POP_INIT_SIZE</code>) than the succeeding populations (<code>POP_SIZE</code>) which can make data handling tricky, defaults to True</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Drop the first (initial) generation. This can be usefull because it can have a different size (<code>POP_INIT_SIZE</code>) than the succeeding populations (<code>POP_SIZE</code>) which can make data handling tricky, defaults to True</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4421,7 +4541,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Reverse the order of each generation. This is a necessary workaraound because loading from the an hdf file returns the generations in a reversed order compared to loading each generation from the pypet trajectory in memory, defaults to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Reverse the order of each generation. This is a necessary workaraound because loading from the an hdf file returns the generations in a reversed order compared to loading each generation from the pypet trajectory in memory, defaults to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4442,7 +4566,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>tuple[list, numpy.ndarray]</code>
           </td>
-          <td><p>Tuple of list of all generations and an array of the scores of all individuals</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Tuple of list of all generations and an array of the scores of all individuals</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4556,7 +4684,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>deap population</code>
           </td>
-          <td><p>Population to check, defaults to self.pop</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Population to check, defaults to self.pop</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -4577,7 +4709,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>list</code>
           </td>
-          <td><p>List of valid population</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>List of valid population</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4639,7 +4775,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>`deap.creator.Individual`</code>
           </td>
-          <td><p>Individual (<code>DEAP</code> type)</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Individual (<code>DEAP</code> type)</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4660,7 +4800,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Parameter dictionary of this individual</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parameter dictionary of this individual</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4720,7 +4864,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>plot a plot using <code>matplotlib</code>, defaults to True</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>plot a plot using <code>matplotlib</code>, defaults to True</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4730,7 +4878,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Print summary of <code>bestN</code> best individuals, defaults to 5</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Print summary of <code>bestN</code> best individuals, defaults to 5</p>
+            </div>
+          </td>
           <td>
                 <code>5</code>
           </td>
@@ -4740,7 +4892,11 @@ This object can be further used to easily analyse the population.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Print information about the evolution environment</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Print information about the evolution environment</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4866,7 +5022,11 @@ evolution = evolution.loadEvolution(&quot;data/evolution-results-2020-05-15-00H-
           <td>
                 <code>str</code>
           </td>
-          <td><p>Filename, defaults to a path in ./data/</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Filename, defaults to a path in ./data/</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4887,7 +5047,11 @@ evolution = evolution.loadEvolution(&quot;data/evolution-results-2020-05-15-00H-
           <td>
                 <code>self</code>
           </td>
-          <td><p>Evolution</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Evolution</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -4994,7 +5158,11 @@ pypet trajectory in <code>self.traj</code></p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>hdf filename of the previous run, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hdf filename of the previous run, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5004,7 +5172,11 @@ pypet trajectory in <code>self.traj</code></p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>Name of the trajectory in the hdf file to load. If not given, the last one will be loaded, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the trajectory in the hdf file to load. If not given, the last one will be loaded, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5101,7 +5273,11 @@ using <code>runInitial()</code>, this will be done.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Print and plot state of evolution during run, defaults to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Print and plot state of evolution during run, defaults to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -5453,7 +5629,11 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>Filename, defaults to a path in ./data/</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Filename, defaults to a path in ./data/</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -5541,16 +5721,22 @@ and select the best <code>POP_SIZE</code> for the following evolution. This need
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
-        <script src="../../js/config.js"></script>
+        
+          <script src="../../js/config.js"></script>
+        
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
       
     
   </body>

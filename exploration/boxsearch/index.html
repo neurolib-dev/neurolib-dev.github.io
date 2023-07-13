@@ -15,7 +15,7 @@
         <link rel="next" href="../../models/model/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -2351,7 +2351,11 @@ for every parameter.</p>
           <td>
                 <code>`neurolib.models.model.Model`, optional</code>
           </td>
-          <td><p>Model to run for each parameter (or model to pass to the evaluation function if an evaluation function is used), defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model to run for each parameter (or model to pass to the evaluation function if an evaluation function is used), defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2361,7 +2365,11 @@ for every parameter.</p>
           <td>
                 <code>`neurolib.utils.parameterSpace.ParameterSpace`, optional</code>
           </td>
-          <td><p>Parameter space to explore, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parameter space to explore, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2371,7 +2379,11 @@ for every parameter.</p>
           <td>
                 <code>function, optional</code>
           </td>
-          <td><p>Evaluation function to call for each run., defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Evaluation function to call for each run., defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2381,7 +2393,11 @@ for every parameter.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>HDF5 storage file name, if left empty, defaults to <code>exploration.hdf</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>HDF5 storage file name, if left empty, defaults to <code>exploration.hdf</code></p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2391,7 +2407,11 @@ for every parameter.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>If True, save all outputs of model, else only default output of the model will be saved. Note: if saveAllModelOutputs==False and the model's parameter model.params['bold']==True, then BOLD output will be saved as well, defaults to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>If True, save all outputs of model, else only default output of the model will be saved. Note: if saveAllModelOutputs==False and the model's parameter model.params['bold']==True, then BOLD output will be saved as well, defaults to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2401,7 +2421,11 @@ for every parameter.</p>
           <td>
                 <code>int, optional</code>
           </td>
-          <td><p>Number of cores to simulate on (max cores default), defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Number of cores to simulate on (max cores default), defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -2590,7 +2614,11 @@ for every parameter.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Load array results (like timeseries) if True. If False, only load scalar results, defaults to True</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Load array results (like timeseries) if True. If False, only load scalar results, defaults to True</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -2600,7 +2628,11 @@ for every parameter.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Fill nan results (for example if they're not returned in a subset of runs) with zeros, default to False</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Fill nan results (for example if they're not returned in a subset of runs) with zeros, default to False</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -2744,7 +2776,11 @@ for every parameter.</p>
           <td><code>traj</code></td>
           <td>
           </td>
-          <td><p>Pypet trajectory of current run</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory of current run</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2764,7 +2800,11 @@ for every parameter.</p>
         <tr>
           <td>
           </td>
-          <td><p>Model with the parameters of this run.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Model with the parameters of this run.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2836,7 +2876,11 @@ for every parameter.</p>
           <td>
                 <code>`pypet.trajectory.Trajectory`</code>
           </td>
-          <td><p>Pypet trajectory</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2857,7 +2901,11 @@ for every parameter.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Parameter set of the current run</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Parameter set of the current run</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2923,7 +2971,11 @@ for every parameter.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>runId of result</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>runId of result</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2944,7 +2996,11 @@ for every parameter.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>result</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>result</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3024,7 +3080,11 @@ for every parameter.</p>
           <td>
                 <code>int</code>
           </td>
-          <td><p>ID of the run</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>ID of the run</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3044,7 +3104,11 @@ for every parameter.</p>
         <tr>
           <td>
           </td>
-          <td><p>Dictionary with simulated data and parameters of the run.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Dictionary with simulated data and parameters of the run.</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -3185,7 +3249,11 @@ for every parameter.</p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>hdf file name in which results are stored, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hdf file name in which results are stored, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3195,7 +3263,11 @@ for every parameter.</p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>Name of the trajectory inside the hdf file, newest will be used if left empty, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the trajectory inside the hdf file, newest will be used if left empty, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3288,7 +3360,11 @@ for every parameter.</p>
           <td>
                 <code>bool, optional</code>
           </td>
-          <td><p>Load all simulated results into memory, which will be available as the <code>.results</code> attribute. Can use a lot of RAM if your simulation is large, please use this with caution. , defaults to True</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Load all simulated results into memory, which will be available as the <code>.results</code> attribute. Can use a lot of RAM if your simulation is large, please use this with caution. , defaults to True</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3298,7 +3374,11 @@ for every parameter.</p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>hdf file name in which results are stored, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>hdf file name in which results are stored, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3308,7 +3388,11 @@ for every parameter.</p>
           <td>
                 <code>str, optional</code>
           </td>
-          <td><p>Name of the trajectory inside the hdf file, newest will be used if left empty, defaults to None</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Name of the trajectory inside the hdf file, newest will be used if left empty, defaults to None</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3318,7 +3402,11 @@ for every parameter.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>Use pypet short names as keys for the results dictionary. Use if you are experiencing errors due to natural naming collisions.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Use pypet short names as keys for the results dictionary. Use if you are experiencing errors due to natural naming collisions.</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3328,7 +3416,11 @@ for every parameter.</p>
           <td>
                 <code>float, int, optional</code>
           </td>
-          <td><p>Percentage memory cap between 0 and 100. If <code>all=True</code> is used, a memory cap can be set to avoid filling up the available RAM. Example: use <code>memory_cap = 95</code> to avoid loading more data if memory is at 95% use, defaults to 95</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Percentage memory cap between 0 and 100. If <code>all=True</code> is used, a memory cap can be set to avoid filling up the available RAM. Example: use <code>memory_cap = 95</code> to avoid loading more data if memory is at 95% use, defaults to 95</p>
+            </div>
+          </td>
           <td>
                 <code>95.0</code>
           </td>
@@ -3531,7 +3623,11 @@ and stores all data into the pypet hdf file.</p>
           <td>
                 <code>dict</code>
           </td>
-          <td><p>Simulation outputs as a dictionary.</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Simulation outputs as a dictionary.</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3541,7 +3637,11 @@ and stores all data into the pypet hdf file.</p>
           <td>
                 <code>`pypet.trajectory.Trajectory`</code>
           </td>
-          <td><p>Pypet trajectory</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>Pypet trajectory</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3638,7 +3738,11 @@ and stores all data into the pypet hdf file.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>if True, will load and return only BOLD output</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if True, will load and return only BOLD output</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -3830,16 +3934,22 @@ and stores all data into the pypet hdf file.</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
-        <script src="../../js/config.js"></script>
+        
+          <script src="../../js/config.js"></script>
+        
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
       
     
   </body>

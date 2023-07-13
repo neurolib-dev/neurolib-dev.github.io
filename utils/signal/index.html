@@ -15,7 +15,7 @@
         <link rel="next" href="../stimulus/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.9">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.18">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.85bb2934.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
       
 
@@ -2436,7 +2436,7 @@
 
         <span class="n">resampled</span> <span class="o">=</span> <span class="n">resample_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
         <span class="c1"># construct new times</span>
-        <span class="n">new_times</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">resampled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">to_frequency</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">new_times</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">resampled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">to_frequency</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="c1"># to dataframe</span>
         <span class="n">resampled</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">resampled</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">coords_not_time</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">new_times</span><span class="p">})</span>
         <span class="n">add_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;resample to </span><span class="si">{</span><span class="n">to_frequency</span><span class="si">}</span><span class="s2">Hz&quot;</span><span class="p">]</span>
@@ -2830,7 +2830,11 @@ order.</p>
           <td>
                 <code>`Signal`</code>
           </td>
-          <td><p>other <code>Signal</code> to compare with</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>other <code>Signal</code> to compare with</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2851,7 +2855,11 @@ order.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether two <code>Signals</code> are the same</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether two <code>Signals</code> are the same</p>
+            </div>
+          </td>
         </tr>
     </tbody>
   </table>
@@ -2936,7 +2944,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>`Signal`</code>
           </td>
-          <td><p>other instance of <code>Signal</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>other instance of <code>Signal</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -2946,7 +2958,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>list|None</code>
           </td>
-          <td><p>add steps to preprocessing</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>add steps to preprocessing</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3056,7 +3072,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>xr.DataArray</code>
           </td>
-          <td><p>data for the signal, assumes time dimension with time in seconds</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>data for the signal, assumes time dimension with time in seconds</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3066,7 +3086,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether time dimension is in ms</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether time dimension is in ms</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -3225,7 +3249,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>function to be applied for each 1D timeseries</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to be applied for each 1D timeseries</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3235,7 +3263,11 @@ instance with different data, but same metadata.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3337,7 +3369,11 @@ performed in each part.</p>
           <td>
                 <code>list|None</code>
           </td>
-          <td><p>segments for detrending, if None will detrend whole signal, given as indices of the time array</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>segments for detrending, if None will detrend whole signal, given as indices of the time array</p>
+            </div>
+          </td>
           <td>
                 <code>None</code>
           </td>
@@ -3347,7 +3383,11 @@ performed in each part.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3445,7 +3485,11 @@ performed in each part.</p>
           <td>
                 <code>float|None</code>
           </td>
-          <td><p>frequency below which to filter the data</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>frequency below which to filter the data</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3455,7 +3499,11 @@ performed in each part.</p>
           <td>
                 <code>float|None</code>
           </td>
-          <td><p>frequency above which to filter the data</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>frequency above which to filter the data</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3465,7 +3513,11 @@ performed in each part.</p>
           <td>
                 <code>float|str</code>
           </td>
-          <td><p>transition band width for low frequency</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>transition band width for low frequency</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;auto&#39;</code>
           </td>
@@ -3475,7 +3527,11 @@ performed in each part.</p>
           <td>
                 <code>float|str</code>
           </td>
-          <td><p>transition band width for high frequency</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>transition band width for high frequency</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;auto&#39;</code>
           </td>
@@ -3485,7 +3541,11 @@ performed in each part.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -3634,7 +3694,11 @@ performed in each part.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>filename for the Signal</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>filename for the Signal</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -3773,7 +3837,11 @@ performed in each part.</p>
           <td><code>fc_function</code></td>
           <td>
           </td>
-          <td><p>function which to use for FC computation, should take 2D array as space x time and convert it to space x space with desired measure</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function which to use for FC computation, should take 2D array as space x time and convert it to space x space with desired measure</p>
+            </div>
+          </td>
           <td>
                 <code>np.corrcoef</code>
           </td>
@@ -3877,7 +3945,11 @@ performed in each part.</p>
           <td><code>return_as</code></td>
           <td>
           </td>
-          <td><p>what to return <code>complex</code> will compute only analytical signal <code>amplitude</code> will compute amplitude, hence abs(H(x)) <code>phase_wrapped</code> will compute phase, hence angle(H(x)), in -pi,pi <code>phase_unwrapped</code> will compute phase in a continuous sense, hence monotonic</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>what to return <code>complex</code> will compute only analytical signal <code>amplitude</code> will compute amplitude, hence abs(H(x)) <code>phase_wrapped</code> will compute phase, hence angle(H(x)), in -pi,pi <code>phase_unwrapped</code> will compute phase in a continuous sense, hence monotonic</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;complex&#39;</code>
           </td>
@@ -3887,7 +3959,11 @@ performed in each part.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4001,7 +4077,11 @@ hence integers.</p>
           <td>
                 <code>tuple|list</code>
           </td>
-          <td><p>arguments you'd give to xr.isel(), i.e. slice of indices you want to select, in seconds as a len=2 list or tuple</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>arguments you'd give to xr.isel(), i.e. slice of indices you want to select, in seconds as a len=2 list or tuple</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4011,7 +4091,11 @@ hence integers.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4099,7 +4183,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>how to return columns: <code>xr</code> as xr.DataArray, <code>signal</code> as instance of NeuroSignal with the same attributes as the mother signal</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how to return columns: <code>xr</code> as xr.DataArray, <code>signal</code> as instance of NeuroSignal with the same attributes as the mother signal</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;signal&#39;</code>
           </td>
@@ -4194,7 +4282,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>normalize by std, i.e. to unit variance</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>normalize by std, i.e. to unit variance</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4204,7 +4296,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4298,7 +4394,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>float|int</code>
           </td>
-          <td><p>how much we should pad, can be time points, or seconds, see <code>in_seconds</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how much we should pad, can be time points, or seconds, see <code>in_seconds</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4308,7 +4408,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether <code>how_much</code> is in seconds, if False, it is number of time points</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether <code>how_much</code> is in seconds, if False, it is number of time points</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -4318,7 +4422,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>how to pad the signal, see <code>np.pad</code> documentation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how to pad the signal, see <code>np.pad</code> documentation</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;constant&#39;</code>
           </td>
@@ -4328,7 +4436,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>which side to pad - "before", "after", or "both"</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>which side to pad - "before", "after", or "both"</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;both&#39;</code>
           </td>
@@ -4338,7 +4450,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4477,7 +4593,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>target frequency of the signal, in Hz</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>target frequency of the signal, in Hz</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4487,7 +4607,11 @@ per column. Loops over tuples as (variable name, timeseries).</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4565,7 +4689,7 @@ per column. Loops over tuples as (variable name, timeseries).</p>
 
     <span class="n">resampled</span> <span class="o">=</span> <span class="n">resample_func</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
     <span class="c1"># construct new times</span>
-    <span class="n">new_times</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">resampled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">to_frequency</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">new_times</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">resampled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="o">/</span> <span class="n">to_frequency</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># to dataframe</span>
     <span class="n">resampled</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="n">resampled</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">coords_not_time</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">new_times</span><span class="p">})</span>
     <span class="n">add_steps</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;resample to </span><span class="si">{</span><span class="n">to_frequency</span><span class="si">}</span><span class="s2">Hz&quot;</span><span class="p">]</span>
@@ -4613,7 +4737,11 @@ centered around the midpoint.</p>
           <td>
                 <code>float</code>
           </td>
-          <td><p>window to use, in seconds</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>window to use, in seconds</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4623,7 +4751,11 @@ centered around the midpoint.</p>
           <td>
                 <code>callable</code>
           </td>
-          <td><p>function to use for reduction</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>function to use for reduction</p>
+            </div>
+          </td>
           <td>
                 <code>np.mean</code>
           </td>
@@ -4633,7 +4765,11 @@ centered around the midpoint.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to drop NaNs - will shorten time dimension, or not</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to drop NaNs - will shorten time dimension, or not</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4643,7 +4779,11 @@ centered around the midpoint.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4740,7 +4880,11 @@ centered around the midpoint.</p>
           <td>
                 <code>str</code>
           </td>
-          <td><p>filename to save, currently saves to netCDF file, which is natively supported by xarray</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>filename to save, currently saves to netCDF file, which is natively supported by xarray</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4808,7 +4952,11 @@ physical index, hence time in seconds.</p>
           <td>
                 <code>tuple|list</code>
           </td>
-          <td><p>arguments you'd give to xr.sel(), i.e. slice of times you want to select, in seconds as a len=2 list or tuple</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>arguments you'd give to xr.sel(), i.e. slice of times you want to select, in seconds as a len=2 list or tuple</p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4818,7 +4966,11 @@ physical index, hence time in seconds.</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>whether to do the operation in place or return</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>whether to do the operation in place or return</p>
+            </div>
+          </td>
           <td>
                 <code>True</code>
           </td>
@@ -4906,7 +5058,11 @@ to end with the final timeseries point!</p>
           <td>
                 <code>int|float</code>
           </td>
-          <td><p>length of the window, can be index or time in seconds, see <code>lengths_in_seconds</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>length of the window, can be index or time in seconds, see <code>lengths_in_seconds</code></p>
+            </div>
+          </td>
           <td>
               <em>required</em>
           </td>
@@ -4916,7 +5072,11 @@ to end with the final timeseries point!</p>
           <td>
                 <code>int|float</code>
           </td>
-          <td><p>how much to translate window in the temporal sense, can be index or time in seconds, see <code>lengths_in_seconds</code></p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>how much to translate window in the temporal sense, can be index or time in seconds, see <code>lengths_in_seconds</code></p>
+            </div>
+          </td>
           <td>
                 <code>1</code>
           </td>
@@ -4926,7 +5086,11 @@ to end with the final timeseries point!</p>
           <td>
                 <code>str|tuple|float</code>
           </td>
-          <td><p>windowing function to use, this is passed to <code>get_window()</code>; see <code>scipy.signal.windows.get_window</code> documentation</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>windowing function to use, this is passed to <code>get_window()</code>; see <code>scipy.signal.windows.get_window</code> documentation</p>
+            </div>
+          </td>
           <td>
                 <code>&#39;boxcar&#39;</code>
           </td>
@@ -4936,7 +5100,11 @@ to end with the final timeseries point!</p>
           <td>
                 <code>bool</code>
           </td>
-          <td><p>if True, <code>length</code> and <code>step</code> are interpreted in seconds, if False they are indices</p></td>
+          <td>
+            <div class="doc-md-description">
+              <p>if True, <code>length</code> and <code>step</code> are interpreted in seconds, if False they are indices</p>
+            </div>
+          </td>
           <td>
                 <code>False</code>
           </td>
@@ -5076,16 +5244,22 @@ to end with the final timeseries point!</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.fac441b0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
       
-        <script src="../../js/config.js"></script>
+        
+          <script src="../../js/config.js"></script>
+        
       
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
       
-        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
       
     
   </body>
