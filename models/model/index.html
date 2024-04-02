@@ -2209,24 +2209,7 @@ This class should serve as the base class for all implemented models.</p>
 <span class="normal">597</span>
 <span class="normal">598</span>
 <span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
-<span class="normal">603</span>
-<span class="normal">604</span>
-<span class="normal">605</span>
-<span class="normal">606</span>
-<span class="normal">607</span>
-<span class="normal">608</span>
-<span class="normal">609</span>
-<span class="normal">610</span>
-<span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
+<span class="normal">600</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;The Model base class runs models, manages their outputs, parameters and more.</span>
 <span class="sd">    This class should serve as the base class for all implemented models.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2285,45 +2268,47 @@ This class should serve as the base class for all implemented models.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># logging.info(f&quot;{self.name}: BOLD model initialized.&quot;)</span>
 
-    <span class="k">def</span> <span class="nf">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">get_bold_variable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+        <span class="n">default_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">default_output</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">variables</span><span class="p">[</span><span class="n">default_index</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bold_variable</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the default output of the model and simulates the BOLD model.</span>
 <span class="sd">        Adds the simulated BOLD signal to outputs.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-            <span class="c1"># first we loop through all state variables</span>
-            <span class="k">for</span> <span class="n">svn</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
-                <span class="c1"># the default output is used as the input for the bold model</span>
-                <span class="k">if</span> <span class="n">svn</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_output</span><span class="p">:</span>
-                    <span class="n">bold_input</span> <span class="o">=</span> <span class="n">sv</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
-                    <span class="c1"># logging.debug(f&quot;BOLD input `{svn}` of shape {bold_input.shape}&quot;)</span>
-                    <span class="k">if</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="p">:</span>
-                        <span class="c1"># only if the length of the output has a zero mod to the sampling rate,</span>
-                        <span class="c1"># the downsampled output from the boldModel can correctly appended to previous data</span>
-                        <span class="c1"># so: we are lazy here and simply disable appending in that case ...</span>
-                        <span class="k">if</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                            <span class="n">append</span> <span class="o">=</span> <span class="kc">False</span>
-                            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                                <span class="sa">f</span><span class="s2">&quot;Output size </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not a multiple of BOLD sampling length </span><span class="si">{</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="si">}</span><span class="s2">, will not append data.&quot;</span>
-                            <span class="p">)</span>
-                        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulating BOLD: boldModel.run(append=</span><span class="si">{</span><span class="n">append</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-                        <span class="c1"># transform bold input according to self.boldInputTransform</span>
-                        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">:</span>
-                            <span class="n">bold_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
-
-                        <span class="c1"># simulate bold model</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold_input</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
-
-                        <span class="n">t_BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">t_BOLD</span>
-                        <span class="n">BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">BOLD</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.t_BOLD&quot;</span><span class="p">,</span> <span class="n">t_BOLD</span><span class="p">)</span>
-                        <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.BOLD&quot;</span><span class="p">,</span> <span class="n">BOLD</span><span class="p">)</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">&quot;Will not simulate BOLD if output </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> not at least of duration </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-                        <span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">bold_input</span> <span class="o">=</span> <span class="n">bold_variable</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+        <span class="c1"># logging.debug(f&quot;BOLD input `{svn}` of shape {bold_input.shape}&quot;)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="p">:</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Will not simulate BOLD if output </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> not at least of duration </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="c1"># only if the length of the output has a zero mod to the sampling rate,</span>
+        <span class="c1"># the downsampled output from the boldModel can correctly appended to previous data</span>
+        <span class="c1"># so: we are lazy here and simply disable appending in that case ...</span>
+        <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">append</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Output size </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not a multiple of BOLD sampling length </span><span class="si">{</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="si">}</span><span class="s2">, will not append data.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulating BOLD: boldModel.run()&quot;</span><span class="p">)</span>
+
+        <span class="c1"># transform bold input according to self.boldInputTransform</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">:</span>
+            <span class="n">bold_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
+
+        <span class="c1"># simulate bold model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
+
+        <span class="n">t_BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">t_BOLD</span>
+        <span class="n">BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">BOLD</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.t_BOLD&quot;</span><span class="p">,</span> <span class="n">t_BOLD</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.BOLD&quot;</span><span class="p">,</span> <span class="n">BOLD</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">checkChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if the model fulfills requirements for chunkwise simulation.</span>
@@ -2391,21 +2376,16 @@ This class should serve as the base class for all implemented models.</p>
         <span class="c1"># check dt / sampling_dt</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setSamplingDt</span><span class="p">()</span>
 
-        <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
-            <span class="n">initializeBold</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="c1"># set up the bold model, if it didn&#39;t happen yet</span>
         <span class="k">if</span> <span class="n">initializeBold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
         <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-        <span class="n">append_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -2414,7 +2394,7 @@ This class should serve as the base class for all implemented models.</p>
 <span class="sd">        The model can be run in three different ways:</span>
 <span class="sd">        1) `model.run()` starts a new run.</span>
 <span class="sd">        2) `model.run(chunkwise=True)` runs the simulation in chunks of length `chunksize`.</span>
-<span class="sd">        3) `mode.run(continue_run=True)` continues the simulation of a previous run.</span>
+<span class="sd">        3) `mode.run(continue_run=True)` continues the simulation of a previous run. This has no effect during the first run.</span>
 
 <span class="sd">        :param inputs: list of inputs to the model, must have the same order as model.input_vars. Note: no sanity check is performed for performance reasons. Take care of the inputs yourself.</span>
 <span class="sd">        :type inputs: list[np.ndarray|]</span>
@@ -2424,28 +2404,24 @@ This class should serve as the base class for all implemented models.</p>
 <span class="sd">        :type chunksize: int, optional</span>
 <span class="sd">        :param bold: simulate BOLD signal (only for chunkwise integration), defaults to False</span>
 <span class="sd">        :type bold: bool, optional</span>
-<span class="sd">        :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
-<span class="sd">        :type append: bool, optional</span>
-<span class="sd">        :param continue_run: continue a simulation by using the initial values from a previous simulation</span>
+<span class="sd">        :param append_outputs: append new and chunkwise outputs to the outputs attribute, defaults to False. Note: BOLD outputs are always appended.</span>
+<span class="sd">        :type append_outputs: bool, optional</span>
+<span class="sd">        :param continue_run: continue a simulation by using the initial values from a previous simulation. This has no effect during the first run.</span>
 <span class="sd">        :type continue_run: bool</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># TODO: legacy argument support</span>
-        <span class="k">if</span> <span class="n">append_outputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">append</span> <span class="o">=</span> <span class="n">append_outputs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initializeRun</span><span class="p">(</span><span class="n">initializeBold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
         <span class="c1"># if a previous run is not to be continued clear the model&#39;s state</span>
-        <span class="k">if</span> <span class="n">continue_run</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">continue_run</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">clearModelState</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">initializeRun</span><span class="p">(</span><span class="n">initializeBold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
         <span class="c1"># enable chunkwise if chunksize is set</span>
         <span class="n">chunkwise</span> <span class="o">=</span> <span class="n">chunkwise</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">True</span>
 
         <span class="k">if</span> <span class="n">chunkwise</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">continue_run</span><span class="p">:</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -2454,10 +2430,8 @@ This class should serve as the base class for all implemented models.</p>
             <span class="c1"># check if model is safe for chunkwise integration</span>
             <span class="c1"># and whether sampling_dt is compatible with duration and chunksize</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">checkChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">bold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-                <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
-                <span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">integrateChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">integrateChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">)</span>
 
         <span class="c1"># check if there was a problem with the simulated data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checkOutputs</span><span class="p">()</span>
@@ -2479,20 +2453,17 @@ This class should serve as the base class for all implemented models.</p>
     <span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Calls each models `integration` function and saves the state and the outputs of the model.</span>
 
-<span class="sd">        :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
+<span class="sd">        :param append: append the chunkwise outputs to the outputs attribute, defaults to False</span>
 <span class="sd">        :type append: bool, optional</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># run integration</span>
         <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">storeOutputsAndStates</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">)</span>
 
-        <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
-            <span class="n">simulate_bold</span> <span class="o">=</span> <span class="kc">True</span>
-
         <span class="c1"># bold simulation after integration</span>
         <span class="k">if</span> <span class="n">simulate_bold</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">simulateBold</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">bold_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bold_variable</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">simulateBold</span><span class="p">(</span><span class="n">bold_variable</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">integrateChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Repeatedly calls the chunkwise integration for the whole duration of the simulation.</span>
@@ -2530,7 +2501,7 @@ This class should serve as the base class for all implemented models.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
         <span class="c1"># reinitialize bold model</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">storeOutputsAndStates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -2554,6 +2525,8 @@ This class should serve as the base class for all implemented models.</p>
 
     <span class="k">def</span> <span class="nf">setInitialValuesToLastState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads the last state of the model and sets the initial conditions to that state for continuing a simulation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">sv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="k">for</span> <span class="n">sv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">]):</span>
+            <span class="k">return</span>
         <span class="k">for</span> <span class="n">iv</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">):</span>
             <span class="c1"># if state variables are one-dimensional (in space only)</span>
             <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
@@ -2693,25 +2666,28 @@ This class should serve as the base class for all implemented models.</p>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to truncate data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
         <span class="c1"># subsample to sampling dt</span>
-        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
-        <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to subsample data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to subsample data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+        <span class="k">def</span> <span class="nf">save_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
+                    <span class="c1"># special treatment for time data:</span>
+                    <span class="c1"># increment the time by the last recorded duration</span>
+                    <span class="n">data</span> <span class="o">+=</span> <span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">data</span><span class="p">))</span>
+            <span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="k">return</span> <span class="n">node</span>
 
         <span class="c1"># if the output is a single name (not dot.separated)</span>
         <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
-            <span class="c1"># append data</span>
-            <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-                <span class="c1"># special treatment for time data:</span>
-                <span class="c1"># increment the time by the last recorded duration</span>
-                <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
-                    <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">data</span><span class="p">))</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># save all data into output dict</span>
-                <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+            <span class="n">save_leaf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">)</span>
             <span class="c1"># set output as an attribute</span>
             <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
         <span class="k">else</span><span class="p">:</span>
@@ -2722,18 +2698,10 @@ This class should serve as the base class for all implemented models.</p>
             <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
                 <span class="c1"># if it&#39;s the last iteration, store data</span>
                 <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-                    <span class="c1"># TODO: this needs to be append-aware like above</span>
-                    <span class="c1"># if append:</span>
-                    <span class="c1">#     if k == &quot;t&quot;:</span>
-                    <span class="c1">#         data += level[k][-1]</span>
-                    <span class="c1">#     level[k] = np.hstack((level[k], data))</span>
-                    <span class="c1"># else:</span>
-                    <span class="c1">#     level[k] = data</span>
-                    <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                    <span class="n">level</span> <span class="o">=</span> <span class="n">save_leaf</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">)</span>
                 <span class="c1"># if key is in outputs, then go deeper</span>
                 <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">level</span><span class="p">:</span>
                     <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-                    <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
                 <span class="c1"># if it&#39;s a new key, create new nested dictionary, set attribute, then go deeper</span>
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
@@ -2823,11 +2791,9 @@ This class should serve as the base class for all implemented models.</p>
         <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">timeDictKey</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;No time array found (starting with t) in output group </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">.&quot;</span>
         <span class="n">t</span> <span class="o">=</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
         <span class="k">del</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span>
-        <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">outputNames</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">outputDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-            <span class="n">outputNames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-            <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="n">outputNames</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">outputDict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+        <span class="n">outputNames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outputNames</span><span class="p">)</span>
 
         <span class="n">nNodes</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nNodes</span><span class="p">))</span>
@@ -2887,9 +2853,9 @@ Note that all outputs are saved in the attribute <code>self.outputs</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">539</span>
-<span class="normal">540</span>
-<span class="normal">541</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">524</span>
+<span class="normal">525</span>
+<span class="normal">526</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Index outputs with a dictionary-like key, e.g., `model[&#39;rates_exc&#39;]`.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOutput</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2972,7 +2938,17 @@ the initial conditions as a preparation for the next chunk.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">373</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
 <span class="normal">374</span>
 <span class="normal">375</span>
 <span class="normal">376</span>
@@ -2986,17 +2962,7 @@ the initial conditions as a preparation for the next chunk.</p>
 <span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span>
-<span class="normal">394</span>
-<span class="normal">395</span>
-<span class="normal">396</span>
-<span class="normal">397</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">autochunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">387</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">autochunk</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Executes a single chunk of integration, either for a given duration</span>
 <span class="sd">    or a single timestep `dt`. Gathers all inputs to the model and resets</span>
 <span class="sd">    the initial conditions as a preparation for the next chunk.</span>
@@ -3045,9 +3011,7 @@ Throws errors if not.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
@@ -3077,7 +3041,9 @@ Throws errors if not.</p>
 <span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
-<span class="normal">141</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">checkChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">):</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">checkChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the model fulfills requirements for chunkwise simulation.</span>
 <span class="sd">    Checks whether the sampling rate for outputs fits to chunksize and duration.</span>
 <span class="sd">    Throws errors if not.&quot;&quot;&quot;</span>
@@ -3132,18 +3098,18 @@ Throws errors if not.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">clearModelState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">clearModelState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Clears the model&#39;s state to create a fresh one&quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
     <span class="c1"># reinitialize bold model</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
       </details>
@@ -3194,7 +3160,17 @@ global delay matrix <code>Dmat</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">399</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
 <span class="normal">400</span>
 <span class="normal">401</span>
 <span class="normal">402</span>
@@ -3214,17 +3190,7 @@ global delay matrix <code>Dmat</code>.</p>
 <span class="normal">416</span>
 <span class="normal">417</span>
 <span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getMaxDelay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">419</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getMaxDelay</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Computes the maximum delay of the model. This function should be overloaded</span>
 <span class="sd">    if the model has internal delays (additional to delay between nodes defined by Dmat)</span>
 <span class="sd">    such as the delay between an excitatory and inhibitory population within each brain area.</span>
@@ -3326,20 +3292,20 @@ global delay matrix <code>Dmat</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">524</span>
-<span class="normal">525</span>
-<span class="normal">526</span>
-<span class="normal">527</span>
-<span class="normal">528</span>
-<span class="normal">529</span>
-<span class="normal">530</span>
-<span class="normal">531</span>
-<span class="normal">532</span>
-<span class="normal">533</span>
-<span class="normal">534</span>
-<span class="normal">535</span>
-<span class="normal">536</span>
-<span class="normal">537</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get an output of a given name (dot.semarated)</span>
 <span class="sd">    :param name: A key, grouped outputs in the form group.subgroup.variable</span>
 <span class="sd">    :type name: str</span>
@@ -3403,7 +3369,22 @@ global delay matrix <code>Dmat</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">543</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">528</span>
+<span class="normal">529</span>
+<span class="normal">530</span>
+<span class="normal">531</span>
+<span class="normal">532</span>
+<span class="normal">533</span>
+<span class="normal">534</span>
+<span class="normal">535</span>
+<span class="normal">536</span>
+<span class="normal">537</span>
+<span class="normal">538</span>
+<span class="normal">539</span>
+<span class="normal">540</span>
+<span class="normal">541</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
 <span class="normal">544</span>
 <span class="normal">545</span>
 <span class="normal">546</span>
@@ -3419,22 +3400,7 @@ global delay matrix <code>Dmat</code>.</p>
 <span class="normal">556</span>
 <span class="normal">557</span>
 <span class="normal">558</span>
-<span class="normal">559</span>
-<span class="normal">560</span>
-<span class="normal">561</span>
-<span class="normal">562</span>
-<span class="normal">563</span>
-<span class="normal">564</span>
-<span class="normal">565</span>
-<span class="normal">566</span>
-<span class="normal">567</span>
-<span class="normal">568</span>
-<span class="normal">569</span>
-<span class="normal">570</span>
-<span class="normal">571</span>
-<span class="normal">572</span>
-<span class="normal">573</span>
-<span class="normal">574</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getOutputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="normal">559</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">getOutputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get all outputs of an output group. Examples: `getOutputs(&quot;BOLD&quot;)` or simply `getOutputs()`</span>
 
 <span class="sd">    :param group: Group name, subgroups separated by dots. If left empty (default), all outputs of the root group</span>
@@ -3563,9 +3529,7 @@ global delay matrix <code>Dmat</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -3582,8 +3546,7 @@ global delay matrix <code>Dmat</code>.</p>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">initializeRun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializeBold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">initializeRun</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initializeBold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialization before each run.</span>
 
 <span class="sd">    :param initializeBold: initialize BOLD model</span>
@@ -3598,9 +3561,6 @@ global delay matrix <code>Dmat</code>.</p>
     <span class="c1"># check dt / sampling_dt</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">setSamplingDt</span><span class="p">()</span>
 
-    <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
-        <span class="n">initializeBold</span> <span class="o">=</span> <span class="kc">True</span>
     <span class="c1"># set up the bold model, if it didn&#39;t happen yet</span>
     <span class="k">if</span> <span class="n">initializeBold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">initializeBold</span><span class="p">()</span>
@@ -3642,7 +3602,7 @@ global delay matrix <code>Dmat</code>.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</p>
+              <p>append the chunkwise outputs to the outputs attribute, defaults to False</p>
             </div>
           </td>
           <td>
@@ -3654,39 +3614,33 @@ global delay matrix <code>Dmat</code>.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">260</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
 <span class="normal">261</span>
 <span class="normal">262</span>
 <span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">264</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calls each models `integration` function and saves the state and the outputs of the model.</span>
 
-<span class="sd">    :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
+<span class="sd">    :param append: append the chunkwise outputs to the outputs attribute, defaults to False</span>
 <span class="sd">    :type append: bool, optional</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># run integration</span>
     <span class="n">t</span><span class="p">,</span> <span class="o">*</span><span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integration</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">storeOutputsAndStates</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">)</span>
 
-    <span class="c1"># force bold if params[&#39;bold&#39;] == True</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;bold&quot;</span><span class="p">):</span>
-        <span class="n">simulate_bold</span> <span class="o">=</span> <span class="kc">True</span>
-
     <span class="c1"># bold simulation after integration</span>
     <span class="k">if</span> <span class="n">simulate_bold</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">simulateBold</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">bold_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_bold_variable</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simulateBold</span><span class="p">(</span><span class="n">bold_variable</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -3766,7 +3720,19 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">278</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
@@ -3783,19 +3749,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <span class="normal">292</span>
 <span class="normal">293</span>
 <span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrateChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">295</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">integrateChunkwise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Repeatedly calls the chunkwise integration for the whole duration of the simulation.</span>
 <span class="sd">    If `bold==True`, the BOLD model is simulated after each chunk.</span>
 
@@ -3890,21 +3844,21 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">347</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
 <span class="normal">348</span>
 <span class="normal">349</span>
 <span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">randomICs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="normal">351</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">randomICs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Generates a new set of uniformly-distributed random initial conditions for the model.</span>
 
 <span class="sd">    TODO: All parameters are drawn from the same distribution / range. Allow for independent ranges.</span>
@@ -3930,7 +3884,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 
 
 <h2 class="doc doc-heading" id="neurolib.models.model.Model.run">
-<code class="highlight language-python"><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">run</span><span class="p">(</span><span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 </h2>
 
@@ -3941,7 +3895,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <p>The model can be run in three different ways:
 1) <code>model.run()</code> starts a new run.
 2) <code>model.run(chunkwise=True)</code> runs the simulation in chunks of length <code>chunksize</code>.
-3) <code>mode.run(continue_run=True)</code> continues the simulation of a previous run.</p>
+3) <code>mode.run(continue_run=True)</code> continues the simulation of a previous run. This has no effect during the first run.</p>
 
   <p><strong>Parameters:</strong></p>
   <table>
@@ -3965,7 +3919,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
             </div>
           </td>
           <td>
-                <code>None</code>
+              <em>required</em>
           </td>
         </tr>
         <tr>
@@ -4011,13 +3965,13 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
           </td>
         </tr>
         <tr>
-          <td><code>append</code></td>
+          <td><code>append_outputs</code></td>
           <td>
                 <code>bool, optional</code>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</p>
+              <p>append new and chunkwise outputs to the outputs attribute, defaults to False. Note: BOLD outputs are always appended.</p>
             </div>
           </td>
           <td>
@@ -4031,7 +3985,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
           </td>
           <td>
             <div class="doc-md-description">
-              <p>continue a simulation by using the initial values from a previous simulation</p>
+              <p>continue a simulation by using the initial values from a previous simulation. This has no effect during the first run.</p>
             </div>
           </td>
           <td>
@@ -4043,7 +3997,8 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
+<span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
@@ -4096,23 +4051,12 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <span class="normal">232</span>
 <span class="normal">233</span>
 <span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
+<span class="normal">235</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">run</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">chunkwise</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">chunksize</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">bold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">append_outputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">append_outputs</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">continue_run</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -4121,7 +4065,7 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <span class="sd">    The model can be run in three different ways:</span>
 <span class="sd">    1) `model.run()` starts a new run.</span>
 <span class="sd">    2) `model.run(chunkwise=True)` runs the simulation in chunks of length `chunksize`.</span>
-<span class="sd">    3) `mode.run(continue_run=True)` continues the simulation of a previous run.</span>
+<span class="sd">    3) `mode.run(continue_run=True)` continues the simulation of a previous run. This has no effect during the first run.</span>
 
 <span class="sd">    :param inputs: list of inputs to the model, must have the same order as model.input_vars. Note: no sanity check is performed for performance reasons. Take care of the inputs yourself.</span>
 <span class="sd">    :type inputs: list[np.ndarray|]</span>
@@ -4131,28 +4075,24 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 <span class="sd">    :type chunksize: int, optional</span>
 <span class="sd">    :param bold: simulate BOLD signal (only for chunkwise integration), defaults to False</span>
 <span class="sd">    :type bold: bool, optional</span>
-<span class="sd">    :param append: append the chunkwise outputs to the outputs attribute, defaults to False, defaults to False</span>
-<span class="sd">    :type append: bool, optional</span>
-<span class="sd">    :param continue_run: continue a simulation by using the initial values from a previous simulation</span>
+<span class="sd">    :param append_outputs: append new and chunkwise outputs to the outputs attribute, defaults to False. Note: BOLD outputs are always appended.</span>
+<span class="sd">    :type append_outputs: bool, optional</span>
+<span class="sd">    :param continue_run: continue a simulation by using the initial values from a previous simulation. This has no effect during the first run.</span>
 <span class="sd">    :type continue_run: bool</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># TODO: legacy argument support</span>
-    <span class="k">if</span> <span class="n">append_outputs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">append</span> <span class="o">=</span> <span class="n">append_outputs</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">initializeRun</span><span class="p">(</span><span class="n">initializeBold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
     <span class="c1"># if a previous run is not to be continued clear the model&#39;s state</span>
-    <span class="k">if</span> <span class="n">continue_run</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">continue_run</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clearModelState</span><span class="p">()</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">initializeRun</span><span class="p">(</span><span class="n">initializeBold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
     <span class="c1"># enable chunkwise if chunksize is set</span>
     <span class="n">chunkwise</span> <span class="o">=</span> <span class="n">chunkwise</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">True</span>
 
     <span class="k">if</span> <span class="n">chunkwise</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">continue_run</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">setInitialValuesToLastState</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">,</span> <span class="n">simulate_bold</span><span class="o">=</span><span class="n">bold</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -4161,10 +4101,8 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
         <span class="c1"># check if model is safe for chunkwise integration</span>
         <span class="c1"># and whether sampling_dt is compatible with duration and chunksize</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">checkChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">bold</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-            <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">: BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
-            <span class="n">bold</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">integrateChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrateChunkwise</span><span class="p">(</span><span class="n">chunksize</span><span class="o">=</span><span class="n">chunksize</span><span class="p">,</span> <span class="n">bold</span><span class="o">=</span><span class="n">bold</span><span class="p">,</span> <span class="n">append_outputs</span><span class="o">=</span><span class="n">append_outputs</span><span class="p">)</span>
 
     <span class="c1"># check if there was a problem with the simulated data</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">checkOutputs</span><span class="p">()</span>
@@ -4190,17 +4128,21 @@ If <code>bold==True</code>, the BOLD model is simulated after each chunk.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setInitialValuesToLastState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setInitialValuesToLastState</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Reads the last state of the model and sets the initial conditions to that state for continuing a simulation.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">([</span><span class="n">sv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="k">for</span> <span class="n">sv</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">]):</span>
+        <span class="k">return</span>
     <span class="k">for</span> <span class="n">iv</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">init_vars</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">):</span>
         <span class="c1"># if state variables are one-dimensional (in space only)</span>
         <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="p">[</span><span class="n">sv</span><span class="p">]</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">):</span>
@@ -4260,15 +4202,15 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setInputs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Take inputs from a list and store it in the appropriate model parameter for external input.</span>
 <span class="sd">    TODO: This is not safe yet, checks should be implemented whether the model has inputs defined or not for example.</span>
 
@@ -4341,7 +4283,17 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">456</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span>
+<span class="normal">450</span>
+<span class="normal">451</span>
+<span class="normal">452</span>
+<span class="normal">453</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span>
 <span class="normal">457</span>
 <span class="normal">458</span>
 <span class="normal">459</span>
@@ -4392,22 +4344,7 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
 <span class="normal">504</span>
 <span class="normal">505</span>
 <span class="normal">506</span>
-<span class="normal">507</span>
-<span class="normal">508</span>
-<span class="normal">509</span>
-<span class="normal">510</span>
-<span class="normal">511</span>
-<span class="normal">512</span>
-<span class="normal">513</span>
-<span class="normal">514</span>
-<span class="normal">515</span>
-<span class="normal">516</span>
-<span class="normal">517</span>
-<span class="normal">518</span>
-<span class="normal">519</span>
-<span class="normal">520</span>
-<span class="normal">521</span>
-<span class="normal">522</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">507</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setOutput</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">removeICs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an output to the model, typically a simulation result.</span>
 <span class="sd">    :params name: Name of the output in dot.notation, a la &quot;outputgroup.output&quot;</span>
 <span class="sd">    :type name: str</span>
@@ -4428,25 +4365,28 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to truncate data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
 
     <span class="c1"># subsample to sampling dt</span>
-    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to subsample data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;duration&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="p">::</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_every</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Don&#39;t know how to subsample data of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">save_leaf</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">node</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">data</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
+                <span class="c1"># special treatment for time data:</span>
+                <span class="c1"># increment the time by the last recorded duration</span>
+                <span class="n">data</span> <span class="o">+=</span> <span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">data</span><span class="p">))</span>
+        <span class="n">node</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="k">return</span> <span class="n">node</span>
 
     <span class="c1"># if the output is a single name (not dot.separated)</span>
     <span class="k">if</span> <span class="s2">&quot;.&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
-        <span class="c1"># append data</span>
-        <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="n">name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">:</span>
-            <span class="c1"># special treatment for time data:</span>
-            <span class="c1"># increment the time by the last recorded duration</span>
-            <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;t&quot;</span><span class="p">:</span>
-                <span class="n">data</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">],</span> <span class="n">data</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="c1"># save all data into output dict</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+        <span class="n">save_leaf</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">)</span>
         <span class="c1"># set output as an attribute</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">name</span><span class="p">])</span>
     <span class="k">else</span><span class="p">:</span>
@@ -4457,18 +4397,10 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
             <span class="c1"># if it&#39;s the last iteration, store data</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="c1"># TODO: this needs to be append-aware like above</span>
-                <span class="c1"># if append:</span>
-                <span class="c1">#     if k == &quot;t&quot;:</span>
-                <span class="c1">#         data += level[k][-1]</span>
-                <span class="c1">#     level[k] = np.hstack((level[k], data))</span>
-                <span class="c1"># else:</span>
-                <span class="c1">#     level[k] = data</span>
-                <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
+                <span class="n">level</span> <span class="o">=</span> <span class="n">save_leaf</span><span class="p">(</span><span class="n">level</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">append</span><span class="p">)</span>
             <span class="c1"># if key is in outputs, then go deeper</span>
             <span class="k">elif</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">level</span><span class="p">:</span>
                 <span class="n">level</span> <span class="o">=</span> <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
-                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
             <span class="c1"># if it&#39;s a new key, create new nested dictionary, set attribute, then go deeper</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">level</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">dotdict</span><span class="p">({})</span>
@@ -4498,9 +4430,7 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
@@ -4513,7 +4443,9 @@ TODO: This is not safe yet, checks should be implemented whether the model has i
 <span class="normal">155</span>
 <span class="normal">156</span>
 <span class="normal">157</span>
-<span class="normal">158</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setSamplingDt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setSamplingDt</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if sampling_dt is set correctly and sets self.`sample_every`</span>
 <span class="sd">    1) Check if sampling_dt is multiple of dt</span>
 <span class="sd">    2) Check if semplind_dt is greater than duration</span>
@@ -4595,7 +4527,17 @@ However, this could be time-memory tradeoff</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">431</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
 <span class="normal">432</span>
 <span class="normal">433</span>
 <span class="normal">434</span>
@@ -4608,17 +4550,7 @@ However, this could be time-memory tradeoff</p>
 <span class="normal">441</span>
 <span class="normal">442</span>
 <span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span>
-<span class="normal">452</span>
-<span class="normal">453</span>
-<span class="normal">454</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setStateVariables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="normal">444</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">setStateVariables</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Saves the models current state variables.</span>
 
 <span class="sd">    TODO: Cut state variables to length of self.maxDelay</span>
@@ -4653,7 +4585,7 @@ However, this could be time-memory tradeoff</p>
 
 
 <h2 class="doc doc-heading" id="neurolib.models.model.Model.simulateBold">
-<code class="highlight language-python"><span class="n">simulateBold</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">simulateBold</span><span class="p">(</span><span class="n">bold_variable</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h2>
 
@@ -4665,11 +4597,7 @@ Adds the simulated BOLD signal to outputs.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 73</span>
 <span class="normal"> 74</span>
 <span class="normal"> 75</span>
 <span class="normal"> 76</span>
@@ -4703,45 +4631,45 @@ Adds the simulated BOLD signal to outputs.</p>
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
-<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">simulateBold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bold_variable</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the default output of the model and simulates the BOLD model.</span>
 <span class="sd">    Adds the simulated BOLD signal to outputs.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
-        <span class="c1"># first we loop through all state variables</span>
-        <span class="k">for</span> <span class="n">svn</span><span class="p">,</span> <span class="n">sv</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">state_vars</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
-            <span class="c1"># the default output is used as the input for the bold model</span>
-            <span class="k">if</span> <span class="n">svn</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_output</span><span class="p">:</span>
-                <span class="n">bold_input</span> <span class="o">=</span> <span class="n">sv</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
-                <span class="c1"># logging.debug(f&quot;BOLD input `{svn}` of shape {bold_input.shape}&quot;)</span>
-                <span class="k">if</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="p">:</span>
-                    <span class="c1"># only if the length of the output has a zero mod to the sampling rate,</span>
-                    <span class="c1"># the downsampled output from the boldModel can correctly appended to previous data</span>
-                    <span class="c1"># so: we are lazy here and simply disable appending in that case ...</span>
-                    <span class="k">if</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">append</span> <span class="o">=</span> <span class="kc">False</span>
-                        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                            <span class="sa">f</span><span class="s2">&quot;Output size </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not a multiple of BOLD sampling length </span><span class="si">{</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="si">}</span><span class="s2">, will not append data.&quot;</span>
-                        <span class="p">)</span>
-                    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulating BOLD: boldModel.run(append=</span><span class="si">{</span><span class="n">append</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
-
-                    <span class="c1"># transform bold input according to self.boldInputTransform</span>
-                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">:</span>
-                        <span class="n">bold_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
-
-                    <span class="c1"># simulate bold model</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold_input</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
-
-                    <span class="n">t_BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">t_BOLD</span>
-                    <span class="n">BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">BOLD</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.t_BOLD&quot;</span><span class="p">,</span> <span class="n">t_BOLD</span><span class="p">)</span>
-                    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.BOLD&quot;</span><span class="p">,</span> <span class="n">BOLD</span><span class="p">)</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-                        <span class="sa">f</span><span class="s2">&quot;Will not simulate BOLD if output </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> not at least of duration </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
-                    <span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInitialized</span><span class="p">:</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;BOLD model not initialized, not simulating BOLD. Use `run(bold=True)`&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="n">bold_input</span> <span class="o">=</span> <span class="n">bold_variable</span><span class="p">[:,</span> <span class="bp">self</span><span class="o">.</span><span class="n">startindt</span> <span class="p">:]</span>
+    <span class="c1"># logging.debug(f&quot;BOLD input `{svn}` of shape {bold_input.shape}&quot;)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Will not simulate BOLD if output </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> not at least of duration </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;dt&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="c1"># only if the length of the output has a zero mod to the sampling rate,</span>
+    <span class="c1"># the downsampled output from the boldModel can correctly appended to previous data</span>
+    <span class="c1"># so: we are lazy here and simply disable appending in that case ...</span>
+    <span class="k">if</span> <span class="n">append</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">append</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Output size </span><span class="si">{</span><span class="n">bold_input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> is not a multiple of BOLD sampling length </span><span class="si">{</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">samplingRate_NDt</span><span class="si">}</span><span class="s2">, will not append data.&quot;</span>
+        <span class="p">)</span>
+    <span class="n">logging</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulating BOLD: boldModel.run()&quot;</span><span class="p">)</span>
+
+    <span class="c1"># transform bold input according to self.boldInputTransform</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">:</span>
+        <span class="n">bold_input</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldInputTransform</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
+
+    <span class="c1"># simulate bold model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">bold_input</span><span class="p">)</span>
+
+    <span class="n">t_BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">t_BOLD</span>
+    <span class="n">BOLD</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">boldModel</span><span class="o">.</span><span class="n">BOLD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.t_BOLD&quot;</span><span class="p">,</span> <span class="n">t_BOLD</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">setOutput</span><span class="p">(</span><span class="s2">&quot;BOLD.BOLD&quot;</span><span class="p">,</span> <span class="n">BOLD</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="n">append</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
@@ -4820,24 +4748,24 @@ Adds the simulated BOLD signal to outputs.</p>
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">317</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
 <span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span>
-<span class="normal">329</span>
-<span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">storeOutputsAndStates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">322</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">storeOutputsAndStates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">variables</span><span class="p">,</span> <span class="n">append</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Takes the simulated variables of the integration and stores it to the appropriate model output and state object.</span>
 
 <span class="sd">    :param t: time vector</span>
@@ -4906,7 +4834,22 @@ element that starts with the letter "t" or it will not recognize any time axis.<
 
       <details class="quote">
         <summary>Source code in <code>neurolib/models/model.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">584</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">569</span>
+<span class="normal">570</span>
+<span class="normal">571</span>
+<span class="normal">572</span>
+<span class="normal">573</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span>
+<span class="normal">577</span>
+<span class="normal">578</span>
+<span class="normal">579</span>
+<span class="normal">580</span>
+<span class="normal">581</span>
+<span class="normal">582</span>
+<span class="normal">583</span>
+<span class="normal">584</span>
 <span class="normal">585</span>
 <span class="normal">586</span>
 <span class="normal">587</span>
@@ -4922,24 +4865,7 @@ element that starts with the letter "t" or it will not recognize any time axis.<
 <span class="normal">597</span>
 <span class="normal">598</span>
 <span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
-<span class="normal">603</span>
-<span class="normal">604</span>
-<span class="normal">605</span>
-<span class="normal">606</span>
-<span class="normal">607</span>
-<span class="normal">608</span>
-<span class="normal">609</span>
-<span class="normal">610</span>
-<span class="normal">611</span>
-<span class="normal">612</span>
-<span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">xr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+<span class="normal">600</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">xr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Converts a group of outputs to xarray. Output group needs to contain an</span>
 <span class="sd">    element that starts with the letter &quot;t&quot; or it will not recognize any time axis.</span>
 
@@ -4962,11 +4888,9 @@ element that starts with the letter "t" or it will not recognize any time axis.<
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">timeDictKey</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;No time array found (starting with t) in output group </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">.&quot;</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="k">del</span> <span class="n">outputDict</span><span class="p">[</span><span class="n">timeDictKey</span><span class="p">]</span>
-    <span class="n">outputs</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">outputNames</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">outputDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-        <span class="n">outputNames</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-        <span class="n">outputs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">outputNames</span><span class="p">,</span> <span class="n">outputs</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">outputDict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+    <span class="n">outputNames</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outputNames</span><span class="p">)</span>
 
     <span class="n">nNodes</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">nNodes</span><span class="p">))</span>
